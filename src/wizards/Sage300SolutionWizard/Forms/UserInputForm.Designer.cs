@@ -48,7 +48,6 @@
             this.pnlGenerateSolution = new System.Windows.Forms.Panel();
             this.lblGenerateHelp = new MetroFramework.Controls.MetroLabel();
             this.pnlKendo = new System.Windows.Forms.Panel();
-            this.lblKendoVersionHelp = new MetroFramework.Controls.MetroLabel();
             this.lblKendoLink = new System.Windows.Forms.LinkLabel();
             this.lblKendoFolderHelp = new MetroFramework.Controls.MetroLabel();
             this.txtKendoFolder = new MetroFramework.Controls.MetroTextBox();
@@ -64,6 +63,7 @@
             this.btnNext = new MetroFramework.Controls.MetroButton();
             this.btnBack = new MetroFramework.Controls.MetroButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.lblKendoVersionHelp = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitBase)).BeginInit();
             this.splitBase.Panel1.SuspendLayout();
             this.splitBase.Panel2.SuspendLayout();
@@ -241,7 +241,7 @@
             // 
             this.splitBase.Panel2.BackColor = System.Drawing.Color.White;
             this.splitBase.Panel2.Controls.Add(this.splitSteps);
-            this.splitBase.Size = new System.Drawing.Size(648, 387);
+            this.splitBase.Size = new System.Drawing.Size(2197, 387);
             this.splitBase.SplitterDistance = 83;
             this.splitBase.TabIndex = 7;
             // 
@@ -252,7 +252,7 @@
             this.lblUpperBorder.Location = new System.Drawing.Point(0, 82);
             this.lblUpperBorder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUpperBorder.Name = "lblUpperBorder";
-            this.lblUpperBorder.Size = new System.Drawing.Size(648, 1);
+            this.lblUpperBorder.Size = new System.Drawing.Size(2197, 1);
             this.lblUpperBorder.TabIndex = 5;
             // 
             // pictureBox1
@@ -316,7 +316,7 @@
             // splitSteps.Panel2
             // 
             this.splitSteps.Panel2.Controls.Add(this.pnlButtons);
-            this.splitSteps.Size = new System.Drawing.Size(648, 300);
+            this.splitSteps.Size = new System.Drawing.Size(2197, 300);
             this.splitSteps.SplitterDistance = 237;
             this.splitSteps.TabIndex = 5;
             // 
@@ -330,10 +330,10 @@
             this.pnlInfo.Controls.Add(this.lblNamespace);
             this.pnlInfo.Controls.Add(this.txtCompanyName);
             this.pnlInfo.Controls.Add(this.txtApplicationID);
-            this.pnlInfo.Location = new System.Drawing.Point(610, 24);
+            this.pnlInfo.Location = new System.Drawing.Point(11, 24);
             this.pnlInfo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(292, 40);
+            this.pnlInfo.Size = new System.Drawing.Size(460, 194);
             this.pnlInfo.TabIndex = 0;
             // 
             // txtNamespaceExample
@@ -360,6 +360,7 @@
             this.txtNamespaceExample.MaxLength = 32767;
             this.txtNamespaceExample.Name = "txtNamespaceExample";
             this.txtNamespaceExample.PasswordChar = '\0';
+            this.txtNamespaceExample.PromptText = "Please enter the above details first.";
             this.txtNamespaceExample.ReadOnly = true;
             this.txtNamespaceExample.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNamespaceExample.SelectedText = "";
@@ -389,7 +390,7 @@
             // pnlGenerateSolution
             // 
             this.pnlGenerateSolution.Controls.Add(this.lblGenerateHelp);
-            this.pnlGenerateSolution.Location = new System.Drawing.Point(12, 24);
+            this.pnlGenerateSolution.Location = new System.Drawing.Point(1430, 24);
             this.pnlGenerateSolution.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGenerateSolution.Name = "pnlGenerateSolution";
             this.pnlGenerateSolution.Size = new System.Drawing.Size(511, 171);
@@ -414,23 +415,11 @@
             this.pnlKendo.Controls.Add(this.lblKendoFolderHelp);
             this.pnlKendo.Controls.Add(this.txtKendoFolder);
             this.pnlKendo.Controls.Add(this.chkKendoLicense);
-            this.pnlKendo.Location = new System.Drawing.Point(610, 76);
+            this.pnlKendo.Location = new System.Drawing.Point(504, 24);
             this.pnlKendo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlKendo.Name = "pnlKendo";
-            this.pnlKendo.Size = new System.Drawing.Size(374, 65);
+            this.pnlKendo.Size = new System.Drawing.Size(481, 195);
             this.pnlKendo.TabIndex = 2;
-            // 
-            // lblKendoVersionHelp
-            // 
-            this.lblKendoVersionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblKendoVersionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblKendoVersionHelp.Location = new System.Drawing.Point(39, 151);
-            this.lblKendoVersionHelp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblKendoVersionHelp.Name = "lblKendoVersionHelp";
-            this.lblKendoVersionHelp.Size = new System.Drawing.Size(421, 43);
-            this.lblKendoVersionHelp.TabIndex = 6;
-            this.lblKendoVersionHelp.Text = "The Kendo UI version used in these projects is v2021.1.224";
-            this.lblKendoVersionHelp.WrapToLine = true;
             // 
             // lblKendoLink
             // 
@@ -439,7 +428,7 @@
             this.lblKendoLink.Location = new System.Drawing.Point(39, 125);
             this.lblKendoLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKendoLink.Name = "lblKendoLink";
-            this.lblKendoLink.Size = new System.Drawing.Size(166, 16);
+            this.lblKendoLink.Size = new System.Drawing.Size(165, 16);
             this.lblKendoLink.TabIndex = 5;
             this.lblKendoLink.TabStop = true;
             this.lblKendoLink.Text = "Kendo License Agreement";
@@ -479,6 +468,7 @@
             this.txtKendoFolder.MaxLength = 32767;
             this.txtKendoFolder.Name = "txtKendoFolder";
             this.txtKendoFolder.PasswordChar = '\0';
+            this.txtKendoFolder.PromptText = "Kendo Folder";
             this.txtKendoFolder.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtKendoFolder.SelectedText = "";
             this.txtKendoFolder.SelectionLength = 0;
@@ -518,10 +508,10 @@
             this.pnlResourceFiles.Controls.Add(this.chkChineseTraditional);
             this.pnlResourceFiles.Controls.Add(this.chkChineseSimplified);
             this.pnlResourceFiles.Controls.Add(this.chkEnglish);
-            this.pnlResourceFiles.Location = new System.Drawing.Point(610, 159);
+            this.pnlResourceFiles.Location = new System.Drawing.Point(1018, 24);
             this.pnlResourceFiles.Margin = new System.Windows.Forms.Padding(4);
             this.pnlResourceFiles.Name = "pnlResourceFiles";
-            this.pnlResourceFiles.Size = new System.Drawing.Size(153, 38);
+            this.pnlResourceFiles.Size = new System.Drawing.Size(395, 194);
             this.pnlResourceFiles.TabIndex = 4;
             // 
             // chkFrench
@@ -612,7 +602,7 @@
             this.pnlButtons.Location = new System.Drawing.Point(0, 0);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(4);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(648, 59);
+            this.pnlButtons.Size = new System.Drawing.Size(2197, 59);
             this.pnlButtons.TabIndex = 5;
             // 
             // lblLowerBorder
@@ -622,7 +612,7 @@
             this.lblLowerBorder.Location = new System.Drawing.Point(0, 0);
             this.lblLowerBorder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLowerBorder.Name = "lblLowerBorder";
-            this.lblLowerBorder.Size = new System.Drawing.Size(648, 1);
+            this.lblLowerBorder.Size = new System.Drawing.Size(2197, 1);
             this.lblLowerBorder.TabIndex = 2;
             // 
             // btnNext
@@ -661,12 +651,24 @@
             this.btnBack.UseStyleColors = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblKendoVersionHelp
+            // 
+            this.lblKendoVersionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblKendoVersionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblKendoVersionHelp.Location = new System.Drawing.Point(39, 151);
+            this.lblKendoVersionHelp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblKendoVersionHelp.Name = "lblKendoVersionHelp";
+            this.lblKendoVersionHelp.Size = new System.Drawing.Size(421, 63);
+            this.lblKendoVersionHelp.TabIndex = 6;
+            this.lblKendoVersionHelp.Text = "The Kendo UI version used in these projects is v2021.1.224";
+            this.lblKendoVersionHelp.WrapToLine = true;
+            // 
             // UserInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(688, 467);
+            this.ClientSize = new System.Drawing.Size(2237, 467);
             this.Controls.Add(this.splitBase);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

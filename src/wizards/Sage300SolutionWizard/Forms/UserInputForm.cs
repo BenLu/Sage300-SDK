@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties;
 using MetroFramework.Forms;
@@ -38,10 +39,22 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 
         /// <summary> Generate </summary>
         private bool _generate = false;
-		#endregion
 
-		#region Private Constants
-		private static class Constants
+        /// <summary>
+        /// width of the form
+        /// </summary>
+        private const int FORM_WIDTH = 688;
+
+        /// <summary>
+        /// height of the form
+        /// </summary>
+        private const int FORM_HEIGHT = 467;
+
+
+        #endregion
+
+        #region Private Constants
+        private static class Constants
 		{
             public const string KendoLicenseUrl = @"http://www.telerik.com/purchase/license-agreement/kendo-ui-complete";
 
@@ -130,6 +143,9 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 
             // Generate Step
             lblGenerateHelp.Text = Resources.GenerateTip;
+
+            // set the form size
+            Size = new Size(FORM_WIDTH, FORM_HEIGHT);
 
         }
 
