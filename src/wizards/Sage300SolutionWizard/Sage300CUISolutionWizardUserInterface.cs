@@ -138,7 +138,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
             foreach (var proj in projects)
             {
                 var templateFilename = proj + ".vstemplate";
-                var sourceFilenameAndParameters = csTemplatePath + proj + @".zip\" + templateFilename + "|" + parameters;
+                var sourceFilenameAndParameters = csTemplatePath + "Web." + proj + @".zip\" + templateFilename + "|" + parameters;
                 if (string.Compare(proj, "Web", StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     //
