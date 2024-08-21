@@ -276,7 +276,7 @@
             this.lblStepDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblStepDescription.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblStepDescription.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblStepDescription.Location = new System.Drawing.Point(12, 38);
+            this.lblStepDescription.Location = new System.Drawing.Point(12, 42);
             this.lblStepDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStepDescription.Name = "lblStepDescription";
             this.lblStepDescription.Size = new System.Drawing.Size(559, 43);
@@ -329,10 +329,10 @@
             // 
             this.pnlProjectType.Controls.Add(this.radioButtonWebApi);
             this.pnlProjectType.Controls.Add(this.radioButtonWeb);
-            this.pnlProjectType.Location = new System.Drawing.Point(1979, 24);
+            this.pnlProjectType.Location = new System.Drawing.Point(12, 18);
             this.pnlProjectType.Margin = new System.Windows.Forms.Padding(4);
             this.pnlProjectType.Name = "pnlProjectType";
-            this.pnlProjectType.Size = new System.Drawing.Size(511, 171);
+            this.pnlProjectType.Size = new System.Drawing.Size(439, 171);
             this.pnlProjectType.TabIndex = 5;
             // 
             // radioButtonWebApi
@@ -344,7 +344,9 @@
             this.radioButtonWebApi.Style = MetroFramework.MetroColorStyle.Green;
             this.radioButtonWebApi.TabIndex = 2;
             this.radioButtonWebApi.Text = "WebApi Application";
+            this.radioButtonWebApi.UseCustomForeColor = true;
             this.radioButtonWebApi.UseSelectable = true;
+            this.radioButtonWebApi.UseStyleColors = true;
             // 
             // radioButtonWeb
             // 
@@ -371,7 +373,7 @@
             this.pnlInfo.Controls.Add(this.lblNamespace);
             this.pnlInfo.Controls.Add(this.txtCompanyName);
             this.pnlInfo.Controls.Add(this.txtApplicationID);
-            this.pnlInfo.Location = new System.Drawing.Point(11, 24);
+            this.pnlInfo.Location = new System.Drawing.Point(482, 14);
             this.pnlInfo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(460, 194);
@@ -431,7 +433,7 @@
             // pnlGenerateSolution
             // 
             this.pnlGenerateSolution.Controls.Add(this.lblGenerateHelp);
-            this.pnlGenerateSolution.Location = new System.Drawing.Point(1445, 24);
+            this.pnlGenerateSolution.Location = new System.Drawing.Point(1916, 14);
             this.pnlGenerateSolution.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGenerateSolution.Name = "pnlGenerateSolution";
             this.pnlGenerateSolution.Size = new System.Drawing.Size(511, 171);
@@ -456,7 +458,7 @@
             this.pnlKendo.Controls.Add(this.lblKendoFolderHelp);
             this.pnlKendo.Controls.Add(this.txtKendoFolder);
             this.pnlKendo.Controls.Add(this.chkKendoLicense);
-            this.pnlKendo.Location = new System.Drawing.Point(504, 24);
+            this.pnlKendo.Location = new System.Drawing.Point(975, 14);
             this.pnlKendo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlKendo.Name = "pnlKendo";
             this.pnlKendo.Size = new System.Drawing.Size(481, 195);
@@ -561,7 +563,7 @@
             this.pnlResourceFiles.Controls.Add(this.chkChineseTraditional);
             this.pnlResourceFiles.Controls.Add(this.chkChineseSimplified);
             this.pnlResourceFiles.Controls.Add(this.chkEnglish);
-            this.pnlResourceFiles.Location = new System.Drawing.Point(1018, 24);
+            this.pnlResourceFiles.Location = new System.Drawing.Point(1489, 14);
             this.pnlResourceFiles.Margin = new System.Windows.Forms.Padding(4);
             this.pnlResourceFiles.Name = "pnlResourceFiles";
             this.pnlResourceFiles.Size = new System.Drawing.Size(395, 194);

@@ -86,6 +86,8 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
         public bool IncludeChineseTraditional { get; set; }
         public bool IncludeSpanish { get; set; }
         public bool IncludeFrench { get; set; }
+
+        public bool IsWebSolution => radioButtonWeb.Checked;
         #endregion
 
         #region Constructor
@@ -442,7 +444,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
             var exampleNamespace = string.Empty;
             if (companyName.Length > 0 && appId.Length > 0 && theNamespace.Length > 0)
             {
-                exampleNamespace = string.Format(NamespaceMask, theNamespace, appId, "Web");
+                exampleNamespace = string.Format(NamespaceMask, theNamespace, appId, IsWebSolution ? "Web" : "WebApi");
             }
             else
             {
