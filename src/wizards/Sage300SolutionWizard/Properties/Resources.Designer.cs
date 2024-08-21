@@ -19,7 +19,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -343,6 +343,24 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Web Project.
+        /// </summary>
+        internal static string ProjectWeb {
+            get {
+                return ResourceManager.GetString("ProjectWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Api Project.
+        /// </summary>
+        internal static string ProjectWebApi {
+            get {
+                return ResourceManager.GetString("ProjectWebApi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap sage_300_logo_gray {
@@ -422,6 +440,15 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
         internal static string StepDescriptionResourceFiles {
             get {
                 return ResourceManager.GetString("StepDescriptionResourceFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Project Type.
+        /// </summary>
+        internal static string StepProjectType {
+            get {
+                return ResourceManager.GetString("StepProjectType", resourceCulture);
             }
         }
         

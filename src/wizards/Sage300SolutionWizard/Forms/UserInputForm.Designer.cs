@@ -42,12 +42,16 @@
             this.lblStepDescription = new MetroFramework.Controls.MetroLabel();
             this.lblStepTitle = new MetroFramework.Controls.MetroLabel();
             this.splitSteps = new System.Windows.Forms.SplitContainer();
+            this.pnlProjectType = new System.Windows.Forms.Panel();
+            this.radioButtonWebApi = new MetroFramework.Controls.MetroRadioButton();
+            this.radioButtonWeb = new MetroFramework.Controls.MetroRadioButton();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.txtNamespaceExample = new MetroFramework.Controls.MetroTextBox();
             this.lblNamespaceExample = new MetroFramework.Controls.MetroLabel();
             this.pnlGenerateSolution = new System.Windows.Forms.Panel();
             this.lblGenerateHelp = new MetroFramework.Controls.MetroLabel();
             this.pnlKendo = new System.Windows.Forms.Panel();
+            this.lblKendoVersionHelp = new MetroFramework.Controls.MetroLabel();
             this.lblKendoLink = new System.Windows.Forms.LinkLabel();
             this.lblKendoFolderHelp = new MetroFramework.Controls.MetroLabel();
             this.txtKendoFolder = new MetroFramework.Controls.MetroTextBox();
@@ -63,7 +67,6 @@
             this.btnNext = new MetroFramework.Controls.MetroButton();
             this.btnBack = new MetroFramework.Controls.MetroButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.lblKendoVersionHelp = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitBase)).BeginInit();
             this.splitBase.Panel1.SuspendLayout();
             this.splitBase.Panel2.SuspendLayout();
@@ -73,6 +76,7 @@
             this.splitSteps.Panel1.SuspendLayout();
             this.splitSteps.Panel2.SuspendLayout();
             this.splitSteps.SuspendLayout();
+            this.pnlProjectType.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlGenerateSolution.SuspendLayout();
             this.pnlKendo.SuspendLayout();
@@ -241,7 +245,7 @@
             // 
             this.splitBase.Panel2.BackColor = System.Drawing.Color.White;
             this.splitBase.Panel2.Controls.Add(this.splitSteps);
-            this.splitBase.Size = new System.Drawing.Size(2197, 387);
+            this.splitBase.Size = new System.Drawing.Size(2665, 387);
             this.splitBase.SplitterDistance = 83;
             this.splitBase.TabIndex = 7;
             // 
@@ -252,7 +256,7 @@
             this.lblUpperBorder.Location = new System.Drawing.Point(0, 82);
             this.lblUpperBorder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUpperBorder.Name = "lblUpperBorder";
-            this.lblUpperBorder.Size = new System.Drawing.Size(2197, 1);
+            this.lblUpperBorder.Size = new System.Drawing.Size(2665, 1);
             this.lblUpperBorder.TabIndex = 5;
             // 
             // pictureBox1
@@ -308,6 +312,7 @@
             // 
             // splitSteps.Panel1
             // 
+            this.splitSteps.Panel1.Controls.Add(this.pnlProjectType);
             this.splitSteps.Panel1.Controls.Add(this.pnlInfo);
             this.splitSteps.Panel1.Controls.Add(this.pnlGenerateSolution);
             this.splitSteps.Panel1.Controls.Add(this.pnlKendo);
@@ -316,9 +321,45 @@
             // splitSteps.Panel2
             // 
             this.splitSteps.Panel2.Controls.Add(this.pnlButtons);
-            this.splitSteps.Size = new System.Drawing.Size(2197, 300);
+            this.splitSteps.Size = new System.Drawing.Size(2665, 300);
             this.splitSteps.SplitterDistance = 237;
             this.splitSteps.TabIndex = 5;
+            // 
+            // pnlProjectType
+            // 
+            this.pnlProjectType.Controls.Add(this.radioButtonWebApi);
+            this.pnlProjectType.Controls.Add(this.radioButtonWeb);
+            this.pnlProjectType.Location = new System.Drawing.Point(1979, 24);
+            this.pnlProjectType.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlProjectType.Name = "pnlProjectType";
+            this.pnlProjectType.Size = new System.Drawing.Size(511, 171);
+            this.pnlProjectType.TabIndex = 5;
+            // 
+            // radioButtonWebApi
+            // 
+            this.radioButtonWebApi.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.radioButtonWebApi.Location = new System.Drawing.Point(27, 79);
+            this.radioButtonWebApi.Name = "radioButtonWebApi";
+            this.radioButtonWebApi.Size = new System.Drawing.Size(188, 24);
+            this.radioButtonWebApi.Style = MetroFramework.MetroColorStyle.Green;
+            this.radioButtonWebApi.TabIndex = 2;
+            this.radioButtonWebApi.Text = "WebApi Application";
+            this.radioButtonWebApi.UseSelectable = true;
+            // 
+            // radioButtonWeb
+            // 
+            this.radioButtonWeb.Checked = true;
+            this.radioButtonWeb.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.radioButtonWeb.Location = new System.Drawing.Point(27, 45);
+            this.radioButtonWeb.Name = "radioButtonWeb";
+            this.radioButtonWeb.Size = new System.Drawing.Size(229, 24);
+            this.radioButtonWeb.Style = MetroFramework.MetroColorStyle.Green;
+            this.radioButtonWeb.TabIndex = 1;
+            this.radioButtonWeb.TabStop = true;
+            this.radioButtonWeb.Text = "Web Application";
+            this.radioButtonWeb.UseCustomForeColor = true;
+            this.radioButtonWeb.UseSelectable = true;
+            this.radioButtonWeb.UseStyleColors = true;
             // 
             // pnlInfo
             // 
@@ -390,7 +431,7 @@
             // pnlGenerateSolution
             // 
             this.pnlGenerateSolution.Controls.Add(this.lblGenerateHelp);
-            this.pnlGenerateSolution.Location = new System.Drawing.Point(1430, 24);
+            this.pnlGenerateSolution.Location = new System.Drawing.Point(1445, 24);
             this.pnlGenerateSolution.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGenerateSolution.Name = "pnlGenerateSolution";
             this.pnlGenerateSolution.Size = new System.Drawing.Size(511, 171);
@@ -420,6 +461,18 @@
             this.pnlKendo.Name = "pnlKendo";
             this.pnlKendo.Size = new System.Drawing.Size(481, 195);
             this.pnlKendo.TabIndex = 2;
+            // 
+            // lblKendoVersionHelp
+            // 
+            this.lblKendoVersionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblKendoVersionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblKendoVersionHelp.Location = new System.Drawing.Point(39, 151);
+            this.lblKendoVersionHelp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblKendoVersionHelp.Name = "lblKendoVersionHelp";
+            this.lblKendoVersionHelp.Size = new System.Drawing.Size(421, 63);
+            this.lblKendoVersionHelp.TabIndex = 6;
+            this.lblKendoVersionHelp.Text = "The Kendo UI version used in these projects is v2021.1.224";
+            this.lblKendoVersionHelp.WrapToLine = true;
             // 
             // lblKendoLink
             // 
@@ -602,7 +655,7 @@
             this.pnlButtons.Location = new System.Drawing.Point(0, 0);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(4);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(2197, 59);
+            this.pnlButtons.Size = new System.Drawing.Size(2665, 59);
             this.pnlButtons.TabIndex = 5;
             // 
             // lblLowerBorder
@@ -612,7 +665,7 @@
             this.lblLowerBorder.Location = new System.Drawing.Point(0, 0);
             this.lblLowerBorder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLowerBorder.Name = "lblLowerBorder";
-            this.lblLowerBorder.Size = new System.Drawing.Size(2197, 1);
+            this.lblLowerBorder.Size = new System.Drawing.Size(2665, 1);
             this.lblLowerBorder.TabIndex = 2;
             // 
             // btnNext
@@ -651,24 +704,12 @@
             this.btnBack.UseStyleColors = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // lblKendoVersionHelp
-            // 
-            this.lblKendoVersionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblKendoVersionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblKendoVersionHelp.Location = new System.Drawing.Point(39, 151);
-            this.lblKendoVersionHelp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblKendoVersionHelp.Name = "lblKendoVersionHelp";
-            this.lblKendoVersionHelp.Size = new System.Drawing.Size(421, 63);
-            this.lblKendoVersionHelp.TabIndex = 6;
-            this.lblKendoVersionHelp.Text = "The Kendo UI version used in these projects is v2021.1.224";
-            this.lblKendoVersionHelp.WrapToLine = true;
-            // 
             // UserInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(2237, 467);
+            this.ClientSize = new System.Drawing.Size(2705, 467);
             this.Controls.Add(this.splitBase);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -691,6 +732,7 @@
             this.splitSteps.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitSteps)).EndInit();
             this.splitSteps.ResumeLayout(false);
+            this.pnlProjectType.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.pnlGenerateSolution.ResumeLayout(false);
@@ -739,5 +781,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblUpperBorder;
         private System.Windows.Forms.Label lblLowerBorder;
+        private System.Windows.Forms.Panel pnlProjectType;
+        private MetroFramework.Controls.MetroRadioButton radioButtonWebApi;
+        private  MetroFramework.Controls.MetroRadioButton radioButtonWeb;
     }
 }

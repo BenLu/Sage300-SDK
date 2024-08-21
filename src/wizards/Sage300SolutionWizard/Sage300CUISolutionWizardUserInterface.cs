@@ -125,7 +125,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 
             var namespaceForProject = _companyName + "." + _applicationId + ".";
 
-            var projects = new string[] { "Web", "BusinessRepository", "Interfaces", "Models", "Resources", "Services" };
+            var projects = new string[] { "Web", "BusinessRepository", "Interfaces", "Models", "Services", "Resources"};
 
             var parameters = "$companyname$" + "=" + _companyName + "|$applicationid$=" + _applicationId +
                                 "|$companynamespace$=" + _namespace +

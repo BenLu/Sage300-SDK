@@ -25,6 +25,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties;
 using MetroFramework.Forms;
+using Microsoft.ServiceHub.Resources;
+using VSLangProj;
 
 namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 {
@@ -65,6 +67,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 			public const string SingleSpace = " ";
 
             /// <summary> The names of all of the panels </summary>
+            public const string PanelProjectType = "pnlProjectType";
             public const string PanelGenerateSolution = "pnlGenerateSolution";
             public const string PanelInfo = "pnlInfo";
             public const string PanelKendo = "pnlKendo";
@@ -103,6 +106,9 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 
             btnBack.Text = Resources.Back;
             btnNext.Text = Resources.Next;
+
+            radioButtonWeb.Text = Resources.ProjectWeb;
+            radioButtonWebApi.Text = Resources.ProjectWebApi;
 
             // Main Step
             lblCompanyName.Text = Resources.CompanyName;
@@ -162,15 +168,12 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
             _wizardSteps.Clear();
 
             // Init Panels
+            InitPanel(pnlProjectType);
             InitPanel(pnlInfo);
             InitPanel(pnlKendo);
             InitPanel(pnlResourceFiles);
             InitPanel(pnlGenerateSolution);
-
-            AddStep(Resources.StepTitleInfo, Resources.StepDescriptionInfo, pnlInfo);
-            AddStep(Resources.StepTitleKendo, Resources.StepDescriptionKendo, pnlKendo);
-            AddStep(Resources.StepTitleResourceFiles, Resources.StepDescriptionResourceFiles, pnlResourceFiles);
-            AddStep(Resources.StepTitleGenerate, Resources.StepDescriptionGenerate, pnlGenerateSolution);
+            AddStep(Resources.StepTitleInfo, Resources.StepProjectType, pnlProjectType);
 
             // Display first step
             NextStep();
@@ -223,6 +226,22 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
                     btnBack.Enabled = true;
 
                     ShowStep(false);
+
+                    if (IsCurrentPanel(Constants.PanelProjectType))
+                    {
+                        _wizardSteps.Clear();
+                        AddStep(Resources.StepTitleInfo, Resources.StepDescriptionInfo, pnlProjectType);
+                        AddStep(Resources.StepTitleInfo, Resources.StepDescriptionInfo, pnlInfo);
+                        if (radioButtonWeb.Checked)
+                        {
+                            AddStep(Resources.StepTitleKendo, Resources.StepDescriptionKendo, pnlKendo);
+                            AddStep(Resources.StepTitleResourceFiles, Resources.StepDescriptionResourceFiles,
+                                pnlResourceFiles);
+                        }
+
+                        AddStep(Resources.StepTitleGenerate, Resources.StepDescriptionGenerate, pnlGenerateSolution);
+                        _currentWizardStep = 0;
+                    }
                 }
 
                 _currentWizardStep++;
