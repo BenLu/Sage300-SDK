@@ -42,6 +42,12 @@ using System.Xml;
 
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 {
+    enum WizardType
+    {
+        WEB,
+        WEBAPI
+    }
+
     /// <summary> UI for Code Generation Wizard </summary>
     public partial class Generation : MetroForm
     {
@@ -61,6 +67,18 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         #endregion
 
         #region Private Variables
+
+        private WizardType _wizardType;
+        /// <summary>
+        /// width of the form
+        /// </summary>
+        private const int FORM_WIDTH = 1037;
+
+        /// <summary>
+        /// height of the form
+        /// </summary>
+        private const int FORM_HEIGHT = 685;
+
 
         /// <summary> Process Generation logic </summary>
         private ProcessGeneration _generation;
@@ -233,8 +251,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 			/// <summary> Panel Name for pnlGenerate </summary>
 			public const string PanelGenerateCode = "pnlGenerateCode";
 
-			/// <summary> Single space string </summary>
-			public const string SingleSpace = " ";
+            /// <summary> Panel Name for pnlGenerate </summary>
+            public const string PanelWebApiCredential = "pnlWebApiCredential";
+
+            /// <summary> Panel Name for pnlGenerate </summary>
+            public const string PanelWebApiEntity = "pnlWebApiEntity";
+
+            /// <summary> Single space string </summary>
+            public const string SingleSpace = " ";
 
             /// <summary> Resx file extension </summary>
             public const string ResxExtension = "resx";
@@ -380,8 +404,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         public Generation()
         {
             InitializeComponent();
-            Localize();
+            Size = new Size(FORM_WIDTH, FORM_HEIGHT);
             CreatePalette(splitDesigner.Panel1);
+        }
+
+        public void InitWebGeneration()
+        {
+            _wizardType = WizardType.WEB;
+            LocalizeWeb();
             InitEvents();
             InitInfo();
             //ProcessingSetup(true);
@@ -390,15 +420,52 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             cboRepositoryType.Focus();
         }
 
-        #endregion
+        public void InitWebApiGeneration()
+        {
+            _wizardType = WizardType.WEBAPI;
+            LocalizeWebApi();
+            InitEvents();
 
-        #region Public Methods
+            // Default
+            btnBack.Enabled = false;
 
-        /// <summary> Are the prerequisites valid for executing the wizard </summary>
-        /// <param name="solution">Solution </param>
-        /// <remarks>Solution must be a Sage 300 solution with known projects</remarks>
-        /// <returns>True if valid otherwise false</returns>
-        public bool ValidPrerequisites(Solution solution)
+            // Init wizard steps
+            _wizardSteps.Clear();
+
+            // Init Panels
+            // Only hide the code type step on initial load
+            if (_currentWizardStep == -1)
+            {
+                InitPanel(pnlWebApiCredential);
+            }
+
+            InitPanel(pnlWebApiEntity);
+
+            // Add steps
+            AddStep(Resources.StepTitleCodeType, Resources.StepDescriptionCodeType, pnlWebApiCredential);
+            AddStep(Resources.StepTitleEntities, Resources.StepDescriptionEntities, pnlWebApiEntity);
+            InitPanel(pnlGeneratedCode);
+            AddStep(Resources.StepTitleGeneratedCode, Resources.StepDescriptionGeneratedCode, pnlGeneratedCode);
+
+            // Display first step on initial load
+            if (_currentWizardStep == -1)
+            {
+                NextStep();
+            }
+
+        }
+
+    
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary> Are the prerequisites valid for executing the wizard </summary>
+    /// <param name="solution">Solution </param>
+    /// <remarks>Solution must be a Sage 300 solution with known projects</remarks>
+    /// <returns>True if valid otherwise false</returns>
+    public bool ValidPrerequisites(Solution solution)
         {
             // Validate solution
             if (!ValidSolution(solution))
@@ -476,8 +543,22 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 }
             }
 
+            // Code Type Step
+            if (IsCurrentPanel(Constants.PanelWebApiCredential))
+            {
+                try
+                {
+                    valid = ValidWebApiCredentialStep();
+                }
+                catch
+                {
+                    // Wizard is not compatible with installed Sage 300 libraries
+                    valid = Resources.InvalidVersion;
+                }
+            }
+
             // Entities Step
-			if (IsCurrentPanel(Constants.PanelEntities))
+            if (IsCurrentPanel(Constants.PanelEntities))
 			{
 					valid = ValidEntitiesStep();
             }
@@ -545,6 +626,47 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 {
                     sessionValid = Resources.InvalidSettingCredentials;
                 }
+            }
+
+            return sessionValid;
+        }
+
+        /// <summary> Valid WebApi Credential Step</summary>
+        /// <returns>string.Empty if valid otherwise message to display</returns>
+        private string ValidWebApiCredentialStep()
+        {
+            // Session - for code types that need to open a session to authenticate credentials
+            // If code type doesn't need to authenticate, this is automatically OK
+            var sessionValid = string.Empty;
+
+            // User ID
+            if (string.IsNullOrEmpty(txtWebApiUser.Text.Trim()))
+            {
+                return string.Format(Resources.InvalidSettingRequiredField, Resources.User.Replace(":", ""));
+            }
+
+            // Version
+            if (string.IsNullOrEmpty(txtWebApiVersion.Text.Trim()))
+            {
+                return string.Format(Resources.InvalidSettingRequiredField, Resources.Version.Replace(":", ""));
+            }
+
+            // Company
+            if (string.IsNullOrEmpty(txtWebApiCompany.Text.Trim()))
+            {
+                return string.Format(Resources.InvalidSettingRequiredField, Resources.Company.Replace(":", ""));
+            }
+
+            try
+            {
+                // Init session to see if credentials are valid
+                var session = new Session();
+                session.InitEx2(null, string.Empty, "WX", "WX1000", "72A", 1);
+                session.Open(txtUser.Text.Trim(), txtWebApiPassword.Text.Trim(), txtWebApiCompany.Text.Trim(), DateTime.UtcNow, 0);
+            }
+            catch
+            {
+                sessionValid = Resources.InvalidSettingCredentials;
             }
 
             return sessionValid;
@@ -846,7 +968,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
 
         /// <summary> Localize </summary>
-        private void Localize()
+        private void LocalizeWeb()
         {
             // Set the application title
             Text = Resources.CodeGenerationWizard;
@@ -966,6 +1088,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             txtVersion.Text = GlobalConstants.AccpacDotNetVersion;
         }
+
+        /// <summary> Localize </summary>
+        private void LocalizeWebApi()
+        {
+        }
+
         /// <summary> Determine if the Solution is valid </summary>
         /// <param name="solution">Solution </param>
         /// <returns>True if valid otherwise false</returns>
@@ -1302,6 +1430,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _generation = new ProcessGeneration();
             _generation.ProcessingEvent += ProcessingEvent;
             _generation.StatusEvent += StatusEvent;
+
+            if (_wizardType == WizardType.WEBAPI)
+                return;
+
 
             // Entity Step Events
             _addEntityMenuItem.Click += AddEntityMenuItemOnClick;
@@ -4414,10 +4546,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             {
                 // Proceed to next wizard step or start generation if last step
                 if (!_currentWizardStep.Equals(-1) &&
-					IsCurrentPanel(Constants.PanelGenerateCode))
+					(IsCurrentPanel(Constants.PanelGenerateCode) || IsCurrentPanel(Constants.PanelWebApiEntity)))
                 {
                     // Build settings
-                    var settings = BuildSettings();
+                    var settings = _wizardType == WizardType.WEB? BuildWebSettings():BuildWebApiSettings();
                     // Setup display before processing
                     _gridInfo.Clear();
                     _processingInProgress = true;
@@ -4452,8 +4584,16 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     // If Step is UI generation, enabled buttons
                     if (IsCurrentPanel(Constants.PanelUIGeneration))
                     {
-                        // Load entities if not already loaded
-                        LoadEntities();
+                        if (_wizardType == WizardType.WEB)
+                        {
+                            // Load entities if not already loaded
+                            LoadEntities();
+                        }
+                        else
+                        {
+                            // todo
+                            
+                        }
                     }
 
                     // if Step is Screens, expand tree control
@@ -4465,39 +4605,48 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     // Create XML if Step is Generate
                     if (IsCurrentPanel(Constants.PanelGenerateCode))
                     {
+                        if (_wizardType == WizardType.WEB)
+                        {
 #if (SKIP_MANUAL_ENTER_ENTITIES)
                         _xmlEntities = XDocument.Load(@"C:\$$$\GL0021.xml");
                         ParseXml(@"C:\$$$\GL0021.xml");
 #else
 
-                        _xmlEntities = BuildXDocument();
-                        _xmlLayout = BuildUIXDocument();
+                            _xmlEntities = BuildXDocument();
+                            _xmlLayout = BuildUIXDocument();
 #endif
 
-                        txtEntitiesToGenerate.Text = _xmlEntities.ToString();
-                        txtLayoutToGenerate.Text = _xmlLayout != null ? _xmlLayout.ToString() : string.Empty;
+                            txtEntitiesToGenerate.Text = _xmlEntities.ToString();
+                            txtLayoutToGenerate.Text = _xmlLayout != null ? _xmlLayout.ToString() : string.Empty;
 
-                        // for header-detail type, mark each entity in the header-detail tree
-                        if (repositoryType.Equals(RepositoryType.HeaderDetail))
-                        {
-                            // find the header node
-                            _headerNode = FindHeaderNode(_xmlEntities);
-                            
-                            var headerDetailEntities = _headerNode.DescendantsAndSelf().Where(e => e.Name == ProcessGeneration.Constants.PropertyEntity);
-
-                            // mark entity in _entities 
-                            foreach (var entity in _entities)
+                            // for header-detail type, mark each entity in the header-detail tree
+                            if (repositoryType.Equals(RepositoryType.HeaderDetail))
                             {
-                                // ReSharper disable once PossibleMultipleEnumeration
-                                entity.IsPartofHeaderDetailComposition = true; // @JT to research if this is needed --> headerDetailEntities.Any(p => p.Attribute(ProcessGeneration.Constants.PropertyViewId).Value.Equals(entity.Properties[BusinessView.Constants.ViewId]));
+                                // find the header node
+                                _headerNode = FindHeaderNode(_xmlEntities);
+
+                                var headerDetailEntities = _headerNode.DescendantsAndSelf()
+                                    .Where(e => e.Name == ProcessGeneration.Constants.PropertyEntity);
+
+                                // mark entity in _entities 
+                                foreach (var entity in _entities)
+                                {
+                                    // ReSharper disable once PossibleMultipleEnumeration
+                                    entity.IsPartofHeaderDetailComposition =
+                                        true; // @JT to research if this is needed --> headerDetailEntities.Any(p => p.Attribute(ProcessGeneration.Constants.PropertyViewId).Value.Equals(entity.Properties[BusinessView.Constants.ViewId]));
+                                }
                             }
+                        }
+                        else
+                        {
+                            //todo
                         }
                     }
 
                     ShowStep(true);
 
                     // Update text of Next button?
-                    if (IsCurrentPanel(Constants.PanelGenerateCode))
+                    if (IsCurrentPanel(Constants.PanelGenerateCode) || IsCurrentPanel(Constants.PanelWebApiEntity))
                     {
                         btnNext.Text = Resources.Generate;
                     }
@@ -5027,7 +5176,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
         /// <summary> Build settings for background worker </summary>
         /// <returns>Settings</returns>
-        private Settings BuildSettings()
+        private Settings BuildWebSettings()
         {
             var repositoryType = GetRepositoryType();
 
@@ -5062,6 +5211,15 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 includeFrench = _includeFrench,
                 EntitiesContainerName = _entitiesContainerName,
                 HeaderNode = _headerNode
+            };
+        }
+
+        /// <summary> Build settings for background worker </summary>
+        /// <returns>Settings</returns>
+        private Settings BuildWebApiSettings()
+        {
+            return new Settings
+            {
             };
         }
 
@@ -6105,5 +6263,76 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 controlInfo.FinderDisplayField = (string)cboFinderDisplay.SelectedValue;
             }
         }
+
+        private void txtViewID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtWebApiViewId_Leave(object sender, EventArgs e)
+        {
+                var errorCondition = false;
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(txtWebApiViewId.Text))
+                    {
+                        // Locals
+                        var session = new Session();
+
+                        session.InitEx2(null, string.Empty, "WX", "WX1000", "72A", 1);
+                        session.Open(txtWebApiUser.Text, txtWebApiPassword.Text, txtWebApiCompany.Text, DateTime.UtcNow, 0);
+
+                        // Attempt to open a view
+                        var dbLink = session.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly);
+                        var view = dbLink.OpenView(txtWebApiViewId.Text);
+
+                        try
+                        {
+                        }
+                        catch
+                        {
+                            // Seems like not all views have an instance protocol (i.e., AS0020)
+                        }
+
+
+                        txtWebApiModelName.Text = ProcessGeneration.MakeItSingular(BusinessViewHelper.Replace(view.Description));
+
+                        // Clean up
+                        try
+                        {
+                            view.Dispose();
+                            dbLink.Dispose();
+                            session.Dispose();
+                        }
+                        catch
+                        {
+                            // Swallow error, if any        
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    // Error received attempting to get view
+                    DisplayMessage((ex.InnerException == null) ? ex.Message : ex.InnerException.Message, MessageBoxIcon.Error);
+                    txtWebApiModelName.Text = string.Empty;
+                    txtWebApiResourceName.Text = string.Empty;
+                    errorCondition = true;
+                }
+
+                // Send back to control?
+                if (!errorCondition)
+                {
+                    return;
+                }
+
+                // Clear field and send back to control
+                txtWebApiViewId.Text = string.Empty;
+                txtWebApiViewId.Focus();
+            }
+
+        }
     }
-}
+

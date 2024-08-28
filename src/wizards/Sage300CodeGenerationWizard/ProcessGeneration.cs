@@ -1114,7 +1114,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// </summary>
         /// <param name="name">Name to make singular</param>
         /// <returns>Singular name or entered name if not plural</returns>
-        private static string MakeItSingular(string name)
+        public static string MakeItSingular(string name)
         {
             // Default to entered value
             var retVal = name;

@@ -37,6 +37,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             public const string ModelName = "ModelName";
             public const string ModuleId = "ModuleId";
             public const string EntityName = "EntityName";
+            public const string ResourceName = "ResourceName";
             public const string ReportIni = "ReportIni";
             public const string ReportKey = "ReportKey";
             public const string ProgramId = "ProgramId";

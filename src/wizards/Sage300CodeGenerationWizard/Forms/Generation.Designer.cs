@@ -52,42 +52,33 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.lblStepDescription = new MetroFramework.Controls.MetroLabel();
             this.lblStepTitle = new MetroFramework.Controls.MetroLabel();
             this.splitSteps = new System.Windows.Forms.SplitContainer();
-            this.pnlUIGeneration = new System.Windows.Forms.Panel();
-            this.splitDesigner = new System.Windows.Forms.SplitContainer();
-            this.treeUIEntities = new System.Windows.Forms.TreeView();
-            this.grpContainers = new System.Windows.Forms.GroupBox();
-            this.tabUI = new System.Windows.Forms.TabControl();
-            this.tabPageInfo = new System.Windows.Forms.TabPage();
-            this.txtPropWidget = new System.Windows.Forms.TextBox();
-            this.lblPropType = new System.Windows.Forms.Label();
-            this.txtPropText = new System.Windows.Forms.TextBox();
-            this.lblPropText = new System.Windows.Forms.Label();
-            this.tabPageFinder = new System.Windows.Forms.TabPage();
-            this.pnlFinder = new System.Windows.Forms.Panel();
-            this.btnFinderPropFile = new System.Windows.Forms.Button();
-            this.txtFinderPropFile = new System.Windows.Forms.TextBox();
-            this.lblFinderPropFile = new System.Windows.Forms.Label();
-            this.lblFinderDisplay = new System.Windows.Forms.Label();
-            this.lblFinderProp = new System.Windows.Forms.Label();
-            this.cboFinderProp = new System.Windows.Forms.ComboBox();
-            this.cboFinderDisplay = new System.Windows.Forms.ComboBox();
-            this.tbrProperties = new System.Windows.Forms.ToolStrip();
-            this.btnTab = new System.Windows.Forms.ToolStripButton();
-            this.btnAddTabPage = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnGrid = new System.Windows.Forms.ToolStripButton();
-            this.btnButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDeleteControl = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.pnlCodeType = new System.Windows.Forms.Panel();
-            this.lblCodeTypeFilesHelp = new MetroFramework.Controls.MetroLabel();
-            this.lblUnknownCodeTypeFilesHelp = new MetroFramework.Controls.MetroLabel();
-            this.lblCodeTypeDescriptionHelp = new MetroFramework.Controls.MetroLabel();
-            this.grpCredentials = new System.Windows.Forms.GroupBox();
-            this.lblModule = new MetroFramework.Controls.MetroLabel();
-            this.cboModule = new MetroFramework.Controls.MetroComboBox();
-            this.pnlGeneratedCode = new System.Windows.Forms.Panel();
+            this.pnlWebApiEntity = new System.Windows.Forms.Panel();
+            this.chkWebApiAllowProcess = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowDelete = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowPut = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowPatch = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowCreate = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowGet = new MetroFramework.Controls.MetroCheckBox();
+            this.txtWebapiViewKeyType = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebapiViewKeyType = new MetroFramework.Controls.MetroLabel();
+            this.txtWebApiViewProtocolType = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebApiViewProtocolType = new MetroFramework.Controls.MetroLabel();
+            this.txtWebApiResourceName = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebApiResourceName = new MetroFramework.Controls.MetroLabel();
+            this.txtWebApiModelName = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebApiModelName = new MetroFramework.Controls.MetroLabel();
+            this.txtWebApiViewId = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebApiViewId = new MetroFramework.Controls.MetroLabel();
+            this.pnlWebApiCredential = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtWebApiUser = new MetroFramework.Controls.MetroTextBox();
+            this.txtWebApiCompany = new MetroFramework.Controls.MetroTextBox();
+            this.txtWebApiPassword = new MetroFramework.Controls.MetroTextBox();
+            this.txtWebApiVersion = new MetroFramework.Controls.MetroTextBox();
+            this.lblWebApiCompany = new MetroFramework.Controls.MetroLabel();
+            this.lblWebApiVersion = new MetroFramework.Controls.MetroLabel();
+            this.lblWebApiPassword = new MetroFramework.Controls.MetroLabel();
+            this.lblWebApiUser = new MetroFramework.Controls.MetroLabel();
             this.pnlEntities = new System.Windows.Forms.Panel();
             this.splitEntities = new System.Windows.Forms.SplitContainer();
             this.pnlEntityTree = new System.Windows.Forms.Panel();
@@ -127,6 +118,42 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.pnlComposition = new System.Windows.Forms.Panel();
             this.grdEntityCompositions = new System.Windows.Forms.DataGridView();
+            this.pnlUIGeneration = new System.Windows.Forms.Panel();
+            this.splitDesigner = new System.Windows.Forms.SplitContainer();
+            this.treeUIEntities = new System.Windows.Forms.TreeView();
+            this.grpContainers = new System.Windows.Forms.GroupBox();
+            this.tabUI = new System.Windows.Forms.TabControl();
+            this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.txtPropWidget = new System.Windows.Forms.TextBox();
+            this.lblPropType = new System.Windows.Forms.Label();
+            this.txtPropText = new System.Windows.Forms.TextBox();
+            this.lblPropText = new System.Windows.Forms.Label();
+            this.tabPageFinder = new System.Windows.Forms.TabPage();
+            this.pnlFinder = new System.Windows.Forms.Panel();
+            this.btnFinderPropFile = new System.Windows.Forms.Button();
+            this.txtFinderPropFile = new System.Windows.Forms.TextBox();
+            this.lblFinderPropFile = new System.Windows.Forms.Label();
+            this.lblFinderDisplay = new System.Windows.Forms.Label();
+            this.lblFinderProp = new System.Windows.Forms.Label();
+            this.cboFinderProp = new System.Windows.Forms.ComboBox();
+            this.cboFinderDisplay = new System.Windows.Forms.ComboBox();
+            this.tbrProperties = new System.Windows.Forms.ToolStrip();
+            this.btnTab = new System.Windows.Forms.ToolStripButton();
+            this.btnAddTabPage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnGrid = new System.Windows.Forms.ToolStripButton();
+            this.btnButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnDeleteControl = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.pnlGeneratedCode = new System.Windows.Forms.Panel();
+            this.pnlCodeType = new System.Windows.Forms.Panel();
+            this.lblCodeTypeFilesHelp = new MetroFramework.Controls.MetroLabel();
+            this.lblUnknownCodeTypeFilesHelp = new MetroFramework.Controls.MetroLabel();
+            this.lblCodeTypeDescriptionHelp = new MetroFramework.Controls.MetroLabel();
+            this.grpCredentials = new System.Windows.Forms.GroupBox();
+            this.lblModule = new MetroFramework.Controls.MetroLabel();
+            this.cboModule = new MetroFramework.Controls.MetroComboBox();
             this.pnlGenerateCode = new System.Windows.Forms.Panel();
             this.txtLayoutToGenerate = new MetroFramework.Controls.MetroTextBox();
             this.txtEntitiesToGenerate = new MetroFramework.Controls.MetroTextBox();
@@ -139,6 +166,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnNext = new MetroFramework.Controls.MetroButton();
             this.btnBack = new MetroFramework.Controls.MetroButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.grdResourceInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitBase)).BeginInit();
             this.splitBase.Panel1.SuspendLayout();
@@ -149,19 +177,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.splitSteps.Panel1.SuspendLayout();
             this.splitSteps.Panel2.SuspendLayout();
             this.splitSteps.SuspendLayout();
-            this.pnlUIGeneration.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).BeginInit();
-            this.splitDesigner.Panel2.SuspendLayout();
-            this.splitDesigner.SuspendLayout();
-            this.grpContainers.SuspendLayout();
-            this.tabUI.SuspendLayout();
-            this.tabPageInfo.SuspendLayout();
-            this.tabPageFinder.SuspendLayout();
-            this.pnlFinder.SuspendLayout();
-            this.tbrProperties.SuspendLayout();
-            this.pnlCodeType.SuspendLayout();
-            this.grpCredentials.SuspendLayout();
-            this.pnlGeneratedCode.SuspendLayout();
+            this.pnlWebApiEntity.SuspendLayout();
+            this.pnlWebApiCredential.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.pnlEntities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitEntities)).BeginInit();
             this.splitEntities.Panel1.SuspendLayout();
@@ -180,6 +198,19 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.SuspendLayout();
             this.pnlComposition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEntityCompositions)).BeginInit();
+            this.pnlUIGeneration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).BeginInit();
+            this.splitDesigner.Panel2.SuspendLayout();
+            this.splitDesigner.SuspendLayout();
+            this.grpContainers.SuspendLayout();
+            this.tabUI.SuspendLayout();
+            this.tabPageInfo.SuspendLayout();
+            this.tabPageFinder.SuspendLayout();
+            this.pnlFinder.SuspendLayout();
+            this.tbrProperties.SuspendLayout();
+            this.pnlGeneratedCode.SuspendLayout();
+            this.pnlCodeType.SuspendLayout();
+            this.grpCredentials.SuspendLayout();
             this.pnlGenerateCode.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
@@ -435,6 +466,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtViewID.UseSelectable = true;
             this.txtViewID.WaterMarkColor = System.Drawing.Color.Maroon;
             this.txtViewID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtViewID.Click += new System.EventHandler(this.txtViewID_Click);
             this.txtViewID.Leave += new System.EventHandler(this.txtViewID_Leave);
             // 
             // grdResourceInfo
@@ -445,7 +477,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdResourceInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdResourceInfo.Location = new System.Drawing.Point(0, 0);
             this.grdResourceInfo.Name = "grdResourceInfo";
-            this.grdResourceInfo.Size = new System.Drawing.Size(497, 50);
+            this.grdResourceInfo.Size = new System.Drawing.Size(84, 376);
             this.grdResourceInfo.TabIndex = 43;
             this.grdResourceInfo.TabStop = false;
             // 
@@ -474,17 +506,17 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             this.splitBase.Panel2.BackColor = System.Drawing.Color.White;
             this.splitBase.Panel2.Controls.Add(this.splitSteps);
-            this.splitBase.Size = new System.Drawing.Size(997, 605);
-            this.splitBase.SplitterDistance = 88;
+            this.splitBase.Size = new System.Drawing.Size(3820, 632);
+            this.splitBase.SplitterDistance = 91;
             this.splitBase.TabIndex = 9;
             // 
             // lblUpperBorder
             // 
             this.lblUpperBorder.BackColor = System.Drawing.Color.Gainsboro;
             this.lblUpperBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblUpperBorder.Location = new System.Drawing.Point(0, 87);
+            this.lblUpperBorder.Location = new System.Drawing.Point(0, 90);
             this.lblUpperBorder.Name = "lblUpperBorder";
-            this.lblUpperBorder.Size = new System.Drawing.Size(997, 1);
+            this.lblUpperBorder.Size = new System.Drawing.Size(3820, 1);
             this.lblUpperBorder.TabIndex = 53;
             // 
             // pictureBox1
@@ -536,409 +568,556 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             // splitSteps.Panel1
             // 
-            this.splitSteps.Panel1.Controls.Add(this.pnlUIGeneration);
-            this.splitSteps.Panel1.Controls.Add(this.pnlCodeType);
-            this.splitSteps.Panel1.Controls.Add(this.pnlGeneratedCode);
+            this.splitSteps.Panel1.Controls.Add(this.pnlWebApiEntity);
+            this.splitSteps.Panel1.Controls.Add(this.pnlWebApiCredential);
             this.splitSteps.Panel1.Controls.Add(this.pnlEntities);
+            this.splitSteps.Panel1.Controls.Add(this.pnlUIGeneration);
+            this.splitSteps.Panel1.Controls.Add(this.pnlGeneratedCode);
+            this.splitSteps.Panel1.Controls.Add(this.pnlCodeType);
             this.splitSteps.Panel1.Controls.Add(this.pnlGenerateCode);
             this.splitSteps.Panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             // 
             // splitSteps.Panel2
             // 
             this.splitSteps.Panel2.Controls.Add(this.pnlButtons);
-            this.splitSteps.Size = new System.Drawing.Size(997, 513);
+            this.splitSteps.Size = new System.Drawing.Size(3820, 537);
             this.splitSteps.SplitterDistance = 430;
             this.splitSteps.TabIndex = 52;
             // 
-            // pnlUIGeneration
-            // 
-            this.pnlUIGeneration.Controls.Add(this.splitDesigner);
-            this.pnlUIGeneration.Location = new System.Drawing.Point(17, 20);
-            this.pnlUIGeneration.Name = "pnlUIGeneration";
-            this.pnlUIGeneration.Size = new System.Drawing.Size(901, 378);
-            this.pnlUIGeneration.TabIndex = 52;
-            // 
-            // splitDesigner
-            // 
-            this.splitDesigner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitDesigner.Location = new System.Drawing.Point(0, 0);
-            this.splitDesigner.Name = "splitDesigner";
-            // 
-            // splitDesigner.Panel1
-            // 
-            this.splitDesigner.Panel1.AllowDrop = true;
-            this.splitDesigner.Panel1.BackColor = System.Drawing.Color.White;
-            this.splitDesigner.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            // 
-            // splitDesigner.Panel2
-            // 
-            this.splitDesigner.Panel2.Controls.Add(this.treeUIEntities);
-            this.splitDesigner.Panel2.Controls.Add(this.grpContainers);
-            this.splitDesigner.Size = new System.Drawing.Size(901, 378);
-            this.splitDesigner.SplitterDistance = 626;
-            this.splitDesigner.TabIndex = 2;
-            // 
-            // treeUIEntities
-            // 
-            this.treeUIEntities.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeUIEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeUIEntities.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeUIEntities.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.treeUIEntities.Location = new System.Drawing.Point(0, 181);
-            this.treeUIEntities.Name = "treeUIEntities";
-            this.treeUIEntities.Size = new System.Drawing.Size(271, 197);
-            this.treeUIEntities.TabIndex = 4;
-            this.treeUIEntities.TabStop = false;
-            // 
-            // grpContainers
-            // 
-            this.grpContainers.BackColor = System.Drawing.Color.White;
-            this.grpContainers.Controls.Add(this.tabUI);
-            this.grpContainers.Controls.Add(this.tbrProperties);
-            this.grpContainers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpContainers.Location = new System.Drawing.Point(0, 0);
-            this.grpContainers.Name = "grpContainers";
-            this.grpContainers.Size = new System.Drawing.Size(271, 181);
-            this.grpContainers.TabIndex = 3;
-            this.grpContainers.TabStop = false;
-            this.grpContainers.Text = "Toolbox";
-            // 
-            // tabUI
-            // 
-            this.tabUI.Controls.Add(this.tabPageInfo);
-            this.tabUI.Controls.Add(this.tabPageFinder);
-            this.tabUI.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabUI.Location = new System.Drawing.Point(3, 60);
-            this.tabUI.Name = "tabUI";
-            this.tabUI.SelectedIndex = 0;
-            this.tabUI.Size = new System.Drawing.Size(265, 118);
-            this.tabUI.TabIndex = 20;
-            // 
-            // tabPageInfo
-            // 
-            this.tabPageInfo.Controls.Add(this.txtPropWidget);
-            this.tabPageInfo.Controls.Add(this.lblPropType);
-            this.tabPageInfo.Controls.Add(this.txtPropText);
-            this.tabPageInfo.Controls.Add(this.lblPropText);
-            this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInfo.Name = "tabPageInfo";
-            this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInfo.Size = new System.Drawing.Size(257, 92);
-            this.tabPageInfo.TabIndex = 0;
-            this.tabPageInfo.Text = "Info";
-            this.tabPageInfo.UseVisualStyleBackColor = true;
-            // 
-            // txtPropWidget
-            // 
-            this.txtPropWidget.Location = new System.Drawing.Point(41, 16);
-            this.txtPropWidget.Name = "txtPropWidget";
-            this.txtPropWidget.Size = new System.Drawing.Size(174, 22);
-            this.txtPropWidget.TabIndex = 23;
-            // 
-            // lblPropType
-            // 
-            this.lblPropType.AutoSize = true;
-            this.lblPropType.Location = new System.Drawing.Point(5, 19);
-            this.lblPropType.Name = "lblPropType";
-            this.lblPropType.Size = new System.Drawing.Size(33, 13);
-            this.lblPropType.TabIndex = 22;
-            this.lblPropType.Text = "Type:";
-            // 
-            // txtPropText
-            // 
-            this.txtPropText.Location = new System.Drawing.Point(41, 44);
-            this.txtPropText.Name = "txtPropText";
-            this.txtPropText.Size = new System.Drawing.Size(174, 22);
-            this.txtPropText.TabIndex = 17;
-            this.txtPropText.TextChanged += new System.EventHandler(this.txtPropText_TextChanged);
-            // 
-            // lblPropText
-            // 
-            this.lblPropText.AutoSize = true;
-            this.lblPropText.Location = new System.Drawing.Point(5, 47);
-            this.lblPropText.Name = "lblPropText";
-            this.lblPropText.Size = new System.Drawing.Size(30, 13);
-            this.lblPropText.TabIndex = 21;
-            this.lblPropText.Text = "Text:";
-            // 
-            // tabPageFinder
-            // 
-            this.tabPageFinder.Controls.Add(this.pnlFinder);
-            this.tabPageFinder.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFinder.Name = "tabPageFinder";
-            this.tabPageFinder.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFinder.Size = new System.Drawing.Size(257, 92);
-            this.tabPageFinder.TabIndex = 1;
-            this.tabPageFinder.Text = "Finder";
-            this.tabPageFinder.UseVisualStyleBackColor = true;
-            // 
-            // pnlFinder
-            // 
-            this.pnlFinder.Controls.Add(this.btnFinderPropFile);
-            this.pnlFinder.Controls.Add(this.txtFinderPropFile);
-            this.pnlFinder.Controls.Add(this.lblFinderPropFile);
-            this.pnlFinder.Controls.Add(this.lblFinderDisplay);
-            this.pnlFinder.Controls.Add(this.lblFinderProp);
-            this.pnlFinder.Controls.Add(this.cboFinderProp);
-            this.pnlFinder.Controls.Add(this.cboFinderDisplay);
-            this.pnlFinder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFinder.Location = new System.Drawing.Point(3, 3);
-            this.pnlFinder.Name = "pnlFinder";
-            this.pnlFinder.Size = new System.Drawing.Size(251, 86);
-            this.pnlFinder.TabIndex = 0;
-            // 
-            // btnFinderPropFile
-            // 
-            this.btnFinderPropFile.Location = new System.Drawing.Point(218, 6);
-            this.btnFinderPropFile.Name = "btnFinderPropFile";
-            this.btnFinderPropFile.Size = new System.Drawing.Size(29, 22);
-            this.btnFinderPropFile.TabIndex = 24;
-            this.btnFinderPropFile.Text = "...";
-            this.btnFinderPropFile.UseVisualStyleBackColor = true;
-            this.btnFinderPropFile.Click += new System.EventHandler(this.btnFinderPropFile_Click);
-            // 
-            // txtFinderPropFile
-            // 
-            this.txtFinderPropFile.Location = new System.Drawing.Point(56, 6);
-            this.txtFinderPropFile.Name = "txtFinderPropFile";
-            this.txtFinderPropFile.Size = new System.Drawing.Size(156, 22);
-            this.txtFinderPropFile.TabIndex = 23;
-            // 
-            // lblFinderPropFile
-            // 
-            this.lblFinderPropFile.AutoSize = true;
-            this.lblFinderPropFile.Location = new System.Drawing.Point(22, 9);
-            this.lblFinderPropFile.Name = "lblFinderPropFile";
-            this.lblFinderPropFile.Size = new System.Drawing.Size(28, 13);
-            this.lblFinderPropFile.TabIndex = 22;
-            this.lblFinderPropFile.Text = "File:";
-            // 
-            // lblFinderDisplay
-            // 
-            this.lblFinderDisplay.AutoSize = true;
-            this.lblFinderDisplay.Location = new System.Drawing.Point(5, 64);
-            this.lblFinderDisplay.Name = "lblFinderDisplay";
-            this.lblFinderDisplay.Size = new System.Drawing.Size(47, 13);
-            this.lblFinderDisplay.TabIndex = 27;
-            this.lblFinderDisplay.Text = "Display:";
-            // 
-            // lblFinderProp
-            // 
-            this.lblFinderProp.AutoSize = true;
-            this.lblFinderProp.Location = new System.Drawing.Point(7, 37);
-            this.lblFinderProp.Name = "lblFinderProp";
-            this.lblFinderProp.Size = new System.Drawing.Size(45, 13);
-            this.lblFinderProp.TabIndex = 25;
-            this.lblFinderProp.Text = "Config:";
-            // 
-            // cboFinderProp
-            // 
-            this.cboFinderProp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFinderProp.FormattingEnabled = true;
-            this.cboFinderProp.Location = new System.Drawing.Point(56, 34);
-            this.cboFinderProp.Name = "cboFinderProp";
-            this.cboFinderProp.Size = new System.Drawing.Size(189, 21);
-            this.cboFinderProp.TabIndex = 26;
-            this.cboFinderProp.SelectedIndexChanged += new System.EventHandler(this.cboFinderProp_SelectedIndexChanged);
-            // 
-            // cboFinderDisplay
-            // 
-            this.cboFinderDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFinderDisplay.FormattingEnabled = true;
-            this.cboFinderDisplay.Location = new System.Drawing.Point(56, 61);
-            this.cboFinderDisplay.Name = "cboFinderDisplay";
-            this.cboFinderDisplay.Size = new System.Drawing.Size(186, 21);
-            this.cboFinderDisplay.TabIndex = 28;
-            this.cboFinderDisplay.SelectionChangeCommitted += new System.EventHandler(this.cboFinderDisplay_SelectionChangeCommitted);
-            // 
-            // tbrProperties
-            // 
-            this.tbrProperties.ImageScalingSize = new System.Drawing.Size(25, 25);
-            this.tbrProperties.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnTab,
-            this.btnAddTabPage,
-            this.toolStripSeparator2,
-            this.btnGrid,
-            this.btnButton,
-            this.toolStripSeparator1,
-            this.btnDeleteControl,
-            this.toolStripSeparator3});
-            this.tbrProperties.Location = new System.Drawing.Point(3, 18);
-            this.tbrProperties.Name = "tbrProperties";
-            this.tbrProperties.Size = new System.Drawing.Size(265, 32);
-            this.tbrProperties.TabIndex = 19;
-            this.tbrProperties.Text = "toolStrip1";
-            // 
-            // btnTab
-            // 
-            this.btnTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTab.Image = ((System.Drawing.Image)(resources.GetObject("btnTab.Image")));
-            this.btnTab.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnTab.Name = "btnTab";
-            this.btnTab.Size = new System.Drawing.Size(29, 29);
-            this.btnTab.Tag = "Tab";
-            this.btnTab.ToolTipText = "Add Tab Control";
-            // 
-            // btnAddTabPage
-            // 
-            this.btnAddTabPage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAddTabPage.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTabPage.Image")));
-            this.btnAddTabPage.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddTabPage.Name = "btnAddTabPage";
-            this.btnAddTabPage.Size = new System.Drawing.Size(29, 29);
-            this.btnAddTabPage.ToolTipText = "Add Tab Page";
-            this.btnAddTabPage.Click += new System.EventHandler(this.btnAddTabPage_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // btnGrid
-            // 
-            this.btnGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnGrid.Image")));
-            this.btnGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnGrid.Name = "btnGrid";
-            this.btnGrid.Size = new System.Drawing.Size(29, 29);
-            this.btnGrid.Tag = "Grid";
-            this.btnGrid.ToolTipText = "Add Grid Control";
-            // 
-            // btnButton
-            // 
-            this.btnButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnButton.Image = ((System.Drawing.Image)(resources.GetObject("btnButton.Image")));
-            this.btnButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnButton.Name = "btnButton";
-            this.btnButton.Size = new System.Drawing.Size(29, 29);
-            this.btnButton.Tag = "Button";
-            this.btnButton.ToolTipText = "Add Button Control";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
-            // 
-            // btnDeleteControl
-            // 
-            this.btnDeleteControl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDeleteControl.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteControl.Image")));
-            this.btnDeleteControl.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteControl.Name = "btnDeleteControl";
-            this.btnDeleteControl.Size = new System.Drawing.Size(29, 29);
-            this.btnDeleteControl.ToolTipText = "Delete Control";
-            this.btnDeleteControl.Click += new System.EventHandler(this.btnDeleteControl_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
-            // 
-            // pnlCodeType
-            // 
-            this.pnlCodeType.Controls.Add(this.lblCodeTypeFilesHelp);
-            this.pnlCodeType.Controls.Add(this.lblUnknownCodeTypeFilesHelp);
-            this.pnlCodeType.Controls.Add(this.lblCodeTypeDescriptionHelp);
-            this.pnlCodeType.Controls.Add(this.lblRepositoryType);
-            this.pnlCodeType.Controls.Add(this.cboRepositoryType);
-            this.pnlCodeType.Controls.Add(this.grpCredentials);
-            this.pnlCodeType.Controls.Add(this.lblModule);
-            this.pnlCodeType.Controls.Add(this.cboModule);
-            this.pnlCodeType.Location = new System.Drawing.Point(951, 25);
-            this.pnlCodeType.Name = "pnlCodeType";
-            this.pnlCodeType.Size = new System.Drawing.Size(719, 55);
-            this.pnlCodeType.TabIndex = 44;
-            // 
-            // lblCodeTypeFilesHelp
-            // 
-            this.lblCodeTypeFilesHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblCodeTypeFilesHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCodeTypeFilesHelp.Location = new System.Drawing.Point(266, 128);
-            this.lblCodeTypeFilesHelp.Name = "lblCodeTypeFilesHelp";
-            this.lblCodeTypeFilesHelp.Size = new System.Drawing.Size(677, 61);
-            this.lblCodeTypeFilesHelp.TabIndex = 4;
-            this.lblCodeTypeFilesHelp.Text = resources.GetString("lblCodeTypeFilesHelp.Text");
-            this.lblCodeTypeFilesHelp.WrapToLine = true;
-            // 
-            // lblUnknownCodeTypeFilesHelp
-            // 
-            this.lblUnknownCodeTypeFilesHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblUnknownCodeTypeFilesHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblUnknownCodeTypeFilesHelp.Location = new System.Drawing.Point(266, 74);
-            this.lblUnknownCodeTypeFilesHelp.Name = "lblUnknownCodeTypeFilesHelp";
-            this.lblUnknownCodeTypeFilesHelp.Size = new System.Drawing.Size(677, 46);
-            this.lblUnknownCodeTypeFilesHelp.TabIndex = 3;
-            this.lblUnknownCodeTypeFilesHelp.Text = "All Code Types will, at a minimum, generate a Model file, a Model Fields file, a " +
-    "Model Mapper file and Enumeration files (based upon Presentation Lists in the Bu" +
-    "siness View). ";
-            this.lblUnknownCodeTypeFilesHelp.WrapToLine = true;
-            // 
-            // lblCodeTypeDescriptionHelp
-            // 
-            this.lblCodeTypeDescriptionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblCodeTypeDescriptionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCodeTypeDescriptionHelp.Location = new System.Drawing.Point(266, 26);
-            this.lblCodeTypeDescriptionHelp.Name = "lblCodeTypeDescriptionHelp";
-            this.lblCodeTypeDescriptionHelp.Size = new System.Drawing.Size(692, 45);
-            this.lblCodeTypeDescriptionHelp.TabIndex = 2;
-            this.lblCodeTypeDescriptionHelp.Text = "A Code Type is based upon the Repository Type that will be used for the Business " +
-    "View or Report.";
-            this.lblCodeTypeDescriptionHelp.WrapToLine = true;
-            // 
-            // grpCredentials
-            // 
-            this.grpCredentials.Controls.Add(this.txtUser);
-            this.grpCredentials.Controls.Add(this.txtCompany);
-            this.grpCredentials.Controls.Add(this.txtPassword);
-            this.grpCredentials.Controls.Add(this.txtVersion);
-            this.grpCredentials.Controls.Add(this.lblCompany);
-            this.grpCredentials.Controls.Add(this.lblVersion);
-            this.grpCredentials.Controls.Add(this.lblPassword);
-            this.grpCredentials.Controls.Add(this.lblUser);
-            this.grpCredentials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpCredentials.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.grpCredentials.Location = new System.Drawing.Point(15, 187);
-            this.grpCredentials.Name = "grpCredentials";
-            this.grpCredentials.Size = new System.Drawing.Size(389, 98);
-            this.grpCredentials.TabIndex = 2;
-            this.grpCredentials.TabStop = false;
-            this.grpCredentials.Text = "Application Credentials";
-            // 
-            // lblModule
-            // 
-            this.lblModule.AutoSize = true;
-            this.lblModule.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblModule.Location = new System.Drawing.Point(30, 301);
-            this.lblModule.Name = "lblModule";
-            this.lblModule.Size = new System.Drawing.Size(59, 19);
-            this.lblModule.TabIndex = 11;
-            this.lblModule.Text = "Module:";
-            // 
-            // cboModule
-            // 
-            this.cboModule.FormattingEnabled = true;
-            this.cboModule.ItemHeight = 23;
-            this.cboModule.Location = new System.Drawing.Point(97, 297);
-            this.cboModule.Name = "cboModule";
-            this.cboModule.Size = new System.Drawing.Size(56, 29);
-            this.cboModule.Style = MetroFramework.MetroColorStyle.Green;
-            this.cboModule.TabIndex = 19;
-            this.cboModule.UseSelectable = true;
-            // 
-            // pnlGeneratedCode
-            // 
-            this.pnlGeneratedCode.Controls.Add(this.grdResourceInfo);
-            this.pnlGeneratedCode.Location = new System.Drawing.Point(966, 348);
-            this.pnlGeneratedCode.Name = "pnlGeneratedCode";
-            this.pnlGeneratedCode.Size = new System.Drawing.Size(497, 50);
-            this.pnlGeneratedCode.TabIndex = 51;
+            // pnlWebApiEntity
+            // 
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowProcess);
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowDelete);
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowPut);
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowPatch);
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowCreate);
+            this.pnlWebApiEntity.Controls.Add(this.chkWebApiAllowGet);
+            this.pnlWebApiEntity.Controls.Add(this.txtWebapiViewKeyType);
+            this.pnlWebApiEntity.Controls.Add(this.lblWebapiViewKeyType);
+            this.pnlWebApiEntity.Controls.Add(this.txtWebApiViewProtocolType);
+            this.pnlWebApiEntity.Controls.Add(this.lblWebApiViewProtocolType);
+            this.pnlWebApiEntity.Controls.Add(this.txtWebApiResourceName);
+            this.pnlWebApiEntity.Controls.Add(this.lblWebApiResourceName);
+            this.pnlWebApiEntity.Controls.Add(this.txtWebApiModelName);
+            this.pnlWebApiEntity.Controls.Add(this.lblWebApiModelName);
+            this.pnlWebApiEntity.Controls.Add(this.txtWebApiViewId);
+            this.pnlWebApiEntity.Controls.Add(this.lblWebApiViewId);
+            this.pnlWebApiEntity.Location = new System.Drawing.Point(2375, 17);
+            this.pnlWebApiEntity.Name = "pnlWebApiEntity";
+            this.pnlWebApiEntity.Size = new System.Drawing.Size(697, 360);
+            this.pnlWebApiEntity.TabIndex = 46;
+            // 
+            // chkWebApiAllowProcess
+            // 
+            this.chkWebApiAllowProcess.AutoSize = true;
+            this.chkWebApiAllowProcess.Checked = true;
+            this.chkWebApiAllowProcess.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowProcess.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowProcess.Location = new System.Drawing.Point(153, 303);
+            this.chkWebApiAllowProcess.Name = "chkWebApiAllowProcess";
+            this.chkWebApiAllowProcess.Size = new System.Drawing.Size(108, 19);
+            this.chkWebApiAllowProcess.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowProcess.TabIndex = 28;
+            this.chkWebApiAllowProcess.Text = "Allow Process";
+            this.chkWebApiAllowProcess.UseSelectable = true;
+            // 
+            // chkWebApiAllowDelete
+            // 
+            this.chkWebApiAllowDelete.AutoSize = true;
+            this.chkWebApiAllowDelete.Checked = true;
+            this.chkWebApiAllowDelete.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowDelete.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowDelete.Location = new System.Drawing.Point(153, 269);
+            this.chkWebApiAllowDelete.Name = "chkWebApiAllowDelete";
+            this.chkWebApiAllowDelete.Size = new System.Drawing.Size(101, 19);
+            this.chkWebApiAllowDelete.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowDelete.TabIndex = 27;
+            this.chkWebApiAllowDelete.Text = "Allow Delete";
+            this.chkWebApiAllowDelete.UseSelectable = true;
+            // 
+            // chkWebApiAllowPut
+            // 
+            this.chkWebApiAllowPut.AutoSize = true;
+            this.chkWebApiAllowPut.Checked = true;
+            this.chkWebApiAllowPut.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowPut.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowPut.Location = new System.Drawing.Point(153, 237);
+            this.chkWebApiAllowPut.Name = "chkWebApiAllowPut";
+            this.chkWebApiAllowPut.Size = new System.Drawing.Size(83, 19);
+            this.chkWebApiAllowPut.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowPut.TabIndex = 26;
+            this.chkWebApiAllowPut.Text = "Allow Put";
+            this.chkWebApiAllowPut.UseSelectable = true;
+            // 
+            // chkWebApiAllowPatch
+            // 
+            this.chkWebApiAllowPatch.AutoSize = true;
+            this.chkWebApiAllowPatch.Checked = true;
+            this.chkWebApiAllowPatch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowPatch.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowPatch.Location = new System.Drawing.Point(24, 297);
+            this.chkWebApiAllowPatch.Name = "chkWebApiAllowPatch";
+            this.chkWebApiAllowPatch.Size = new System.Drawing.Size(96, 19);
+            this.chkWebApiAllowPatch.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowPatch.TabIndex = 25;
+            this.chkWebApiAllowPatch.Text = "Allow Patch";
+            this.chkWebApiAllowPatch.UseSelectable = true;
+            // 
+            // chkWebApiAllowCreate
+            // 
+            this.chkWebApiAllowCreate.AutoSize = true;
+            this.chkWebApiAllowCreate.Checked = true;
+            this.chkWebApiAllowCreate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowCreate.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowCreate.Location = new System.Drawing.Point(24, 266);
+            this.chkWebApiAllowCreate.Name = "chkWebApiAllowCreate";
+            this.chkWebApiAllowCreate.Size = new System.Drawing.Size(102, 19);
+            this.chkWebApiAllowCreate.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowCreate.TabIndex = 24;
+            this.chkWebApiAllowCreate.Text = "Allow Create";
+            this.chkWebApiAllowCreate.UseSelectable = true;
+            // 
+            // chkWebApiAllowGet
+            // 
+            this.chkWebApiAllowGet.AutoSize = true;
+            this.chkWebApiAllowGet.Checked = true;
+            this.chkWebApiAllowGet.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowGet.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowGet.Location = new System.Drawing.Point(24, 237);
+            this.chkWebApiAllowGet.Name = "chkWebApiAllowGet";
+            this.chkWebApiAllowGet.Size = new System.Drawing.Size(84, 19);
+            this.chkWebApiAllowGet.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowGet.TabIndex = 23;
+            this.chkWebApiAllowGet.Text = "Allow Get";
+            this.chkWebApiAllowGet.UseSelectable = true;
+            // 
+            // txtWebapiViewKeyType
+            // 
+            // 
+            // 
+            // 
+            this.txtWebapiViewKeyType.CustomButton.Image = null;
+            this.txtWebapiViewKeyType.CustomButton.Location = new System.Drawing.Point(185, 1);
+            this.txtWebapiViewKeyType.CustomButton.Name = "";
+            this.txtWebapiViewKeyType.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebapiViewKeyType.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebapiViewKeyType.CustomButton.TabIndex = 1;
+            this.txtWebapiViewKeyType.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebapiViewKeyType.CustomButton.UseSelectable = true;
+            this.txtWebapiViewKeyType.CustomButton.Visible = false;
+            this.txtWebapiViewKeyType.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebapiViewKeyType.Lines = new string[0];
+            this.txtWebapiViewKeyType.Location = new System.Drawing.Point(153, 186);
+            this.txtWebapiViewKeyType.MaxLength = 32767;
+            this.txtWebapiViewKeyType.Name = "txtWebapiViewKeyType";
+            this.txtWebapiViewKeyType.PasswordChar = '\0';
+            this.txtWebapiViewKeyType.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebapiViewKeyType.SelectedText = "";
+            this.txtWebapiViewKeyType.SelectionLength = 0;
+            this.txtWebapiViewKeyType.SelectionStart = 0;
+            this.txtWebapiViewKeyType.ShortcutsEnabled = true;
+            this.txtWebapiViewKeyType.Size = new System.Drawing.Size(209, 25);
+            this.txtWebapiViewKeyType.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebapiViewKeyType.TabIndex = 22;
+            this.txtWebapiViewKeyType.UseSelectable = true;
+            this.txtWebapiViewKeyType.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebapiViewKeyType.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblWebapiViewKeyType
+            // 
+            this.lblWebapiViewKeyType.AutoSize = true;
+            this.lblWebapiViewKeyType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebapiViewKeyType.Location = new System.Drawing.Point(19, 187);
+            this.lblWebapiViewKeyType.Name = "lblWebapiViewKeyType";
+            this.lblWebapiViewKeyType.Size = new System.Drawing.Size(99, 19);
+            this.lblWebapiViewKeyType.TabIndex = 21;
+            this.lblWebapiViewKeyType.Text = "View Key Type:";
+            // 
+            // txtWebApiViewProtocolType
+            // 
+            // 
+            // 
+            // 
+            this.txtWebApiViewProtocolType.CustomButton.Image = null;
+            this.txtWebApiViewProtocolType.CustomButton.Location = new System.Drawing.Point(185, 1);
+            this.txtWebApiViewProtocolType.CustomButton.Name = "";
+            this.txtWebApiViewProtocolType.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiViewProtocolType.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiViewProtocolType.CustomButton.TabIndex = 1;
+            this.txtWebApiViewProtocolType.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiViewProtocolType.CustomButton.UseSelectable = true;
+            this.txtWebApiViewProtocolType.CustomButton.Visible = false;
+            this.txtWebApiViewProtocolType.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiViewProtocolType.Lines = new string[0];
+            this.txtWebApiViewProtocolType.Location = new System.Drawing.Point(153, 155);
+            this.txtWebApiViewProtocolType.MaxLength = 32767;
+            this.txtWebApiViewProtocolType.Name = "txtWebApiViewProtocolType";
+            this.txtWebApiViewProtocolType.PasswordChar = '\0';
+            this.txtWebApiViewProtocolType.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiViewProtocolType.SelectedText = "";
+            this.txtWebApiViewProtocolType.SelectionLength = 0;
+            this.txtWebApiViewProtocolType.SelectionStart = 0;
+            this.txtWebApiViewProtocolType.ShortcutsEnabled = true;
+            this.txtWebApiViewProtocolType.Size = new System.Drawing.Size(209, 25);
+            this.txtWebApiViewProtocolType.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiViewProtocolType.TabIndex = 20;
+            this.txtWebApiViewProtocolType.UseSelectable = true;
+            this.txtWebApiViewProtocolType.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiViewProtocolType.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblWebApiViewProtocolType
+            // 
+            this.lblWebApiViewProtocolType.AutoSize = true;
+            this.lblWebApiViewProtocolType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiViewProtocolType.Location = new System.Drawing.Point(19, 155);
+            this.lblWebApiViewProtocolType.Name = "lblWebApiViewProtocolType";
+            this.lblWebApiViewProtocolType.Size = new System.Drawing.Size(128, 19);
+            this.lblWebApiViewProtocolType.TabIndex = 19;
+            this.lblWebApiViewProtocolType.Text = "View Protocol Type:";
+            // 
+            // txtWebApiResourceName
+            // 
+            // 
+            // 
+            // 
+            this.txtWebApiResourceName.CustomButton.Image = null;
+            this.txtWebApiResourceName.CustomButton.Location = new System.Drawing.Point(185, 1);
+            this.txtWebApiResourceName.CustomButton.Name = "";
+            this.txtWebApiResourceName.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiResourceName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiResourceName.CustomButton.TabIndex = 1;
+            this.txtWebApiResourceName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiResourceName.CustomButton.UseSelectable = true;
+            this.txtWebApiResourceName.CustomButton.Visible = false;
+            this.txtWebApiResourceName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiResourceName.Lines = new string[0];
+            this.txtWebApiResourceName.Location = new System.Drawing.Point(153, 119);
+            this.txtWebApiResourceName.MaxLength = 32767;
+            this.txtWebApiResourceName.Name = "txtWebApiResourceName";
+            this.txtWebApiResourceName.PasswordChar = '\0';
+            this.txtWebApiResourceName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiResourceName.SelectedText = "";
+            this.txtWebApiResourceName.SelectionLength = 0;
+            this.txtWebApiResourceName.SelectionStart = 0;
+            this.txtWebApiResourceName.ShortcutsEnabled = true;
+            this.txtWebApiResourceName.Size = new System.Drawing.Size(209, 25);
+            this.txtWebApiResourceName.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiResourceName.TabIndex = 18;
+            this.txtWebApiResourceName.UseSelectable = true;
+            this.txtWebApiResourceName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiResourceName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblWebApiResourceName
+            // 
+            this.lblWebApiResourceName.AutoSize = true;
+            this.lblWebApiResourceName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiResourceName.Location = new System.Drawing.Point(19, 119);
+            this.lblWebApiResourceName.Name = "lblWebApiResourceName";
+            this.lblWebApiResourceName.Size = new System.Drawing.Size(107, 19);
+            this.lblWebApiResourceName.TabIndex = 17;
+            this.lblWebApiResourceName.Text = "Resource Name:";
+            // 
+            // txtWebApiModelName
+            // 
+            // 
+            // 
+            // 
+            this.txtWebApiModelName.CustomButton.Image = null;
+            this.txtWebApiModelName.CustomButton.Location = new System.Drawing.Point(185, 1);
+            this.txtWebApiModelName.CustomButton.Name = "";
+            this.txtWebApiModelName.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiModelName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiModelName.CustomButton.TabIndex = 1;
+            this.txtWebApiModelName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiModelName.CustomButton.UseSelectable = true;
+            this.txtWebApiModelName.CustomButton.Visible = false;
+            this.txtWebApiModelName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiModelName.Lines = new string[0];
+            this.txtWebApiModelName.Location = new System.Drawing.Point(153, 78);
+            this.txtWebApiModelName.MaxLength = 32767;
+            this.txtWebApiModelName.Name = "txtWebApiModelName";
+            this.txtWebApiModelName.PasswordChar = '\0';
+            this.txtWebApiModelName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiModelName.SelectedText = "";
+            this.txtWebApiModelName.SelectionLength = 0;
+            this.txtWebApiModelName.SelectionStart = 0;
+            this.txtWebApiModelName.ShortcutsEnabled = true;
+            this.txtWebApiModelName.Size = new System.Drawing.Size(209, 25);
+            this.txtWebApiModelName.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiModelName.TabIndex = 16;
+            this.txtWebApiModelName.UseSelectable = true;
+            this.txtWebApiModelName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiModelName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblWebApiModelName
+            // 
+            this.lblWebApiModelName.AutoSize = true;
+            this.lblWebApiModelName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiModelName.Location = new System.Drawing.Point(19, 78);
+            this.lblWebApiModelName.Name = "lblWebApiModelName";
+            this.lblWebApiModelName.Size = new System.Drawing.Size(91, 19);
+            this.lblWebApiModelName.TabIndex = 15;
+            this.lblWebApiModelName.Text = "Model Name:";
+            // 
+            // txtWebApiViewId
+            // 
+            this.txtWebApiViewId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.txtWebApiViewId.CustomButton.Image = null;
+            this.txtWebApiViewId.CustomButton.Location = new System.Drawing.Point(165, 1);
+            this.txtWebApiViewId.CustomButton.Name = "";
+            this.txtWebApiViewId.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiViewId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiViewId.CustomButton.TabIndex = 1;
+            this.txtWebApiViewId.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiViewId.CustomButton.UseSelectable = true;
+            this.txtWebApiViewId.CustomButton.Visible = false;
+            this.txtWebApiViewId.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiViewId.Lines = new string[0];
+            this.txtWebApiViewId.Location = new System.Drawing.Point(153, 37);
+            this.txtWebApiViewId.MaxLength = 32767;
+            this.txtWebApiViewId.Name = "txtWebApiViewId";
+            this.txtWebApiViewId.PasswordChar = '\0';
+            this.txtWebApiViewId.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiViewId.SelectedText = "";
+            this.txtWebApiViewId.SelectionLength = 0;
+            this.txtWebApiViewId.SelectionStart = 0;
+            this.txtWebApiViewId.ShortcutsEnabled = true;
+            this.txtWebApiViewId.Size = new System.Drawing.Size(189, 25);
+            this.txtWebApiViewId.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiViewId.TabIndex = 5;
+            this.txtWebApiViewId.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiViewId.UseSelectable = true;
+            this.txtWebApiViewId.WaterMarkColor = System.Drawing.Color.Maroon;
+            this.txtWebApiViewId.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtWebApiViewId.Leave += new System.EventHandler(this.txtWebApiViewId_Leave);
+            // 
+            // lblWebApiViewId
+            // 
+            this.lblWebApiViewId.AutoSize = true;
+            this.lblWebApiViewId.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiViewId.Location = new System.Drawing.Point(19, 37);
+            this.lblWebApiViewId.Name = "lblWebApiViewId";
+            this.lblWebApiViewId.Size = new System.Drawing.Size(59, 19);
+            this.lblWebApiViewId.TabIndex = 4;
+            this.lblWebApiViewId.Text = "View ID:";
+            // 
+            // pnlWebApiCredential
+            // 
+            this.pnlWebApiCredential.Controls.Add(this.groupBox1);
+            this.pnlWebApiCredential.Location = new System.Drawing.Point(1900, 17);
+            this.pnlWebApiCredential.Name = "pnlWebApiCredential";
+            this.pnlWebApiCredential.Size = new System.Drawing.Size(469, 360);
+            this.pnlWebApiCredential.TabIndex = 45;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtWebApiUser);
+            this.groupBox1.Controls.Add(this.txtWebApiCompany);
+            this.groupBox1.Controls.Add(this.txtWebApiPassword);
+            this.groupBox1.Controls.Add(this.txtWebApiVersion);
+            this.groupBox1.Controls.Add(this.lblWebApiCompany);
+            this.groupBox1.Controls.Add(this.lblWebApiVersion);
+            this.groupBox1.Controls.Add(this.lblWebApiPassword);
+            this.groupBox1.Controls.Add(this.lblWebApiUser);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox1.Location = new System.Drawing.Point(30, 30);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(436, 98);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Application Credentials";
+            // 
+            // txtWebApiUser
+            // 
+            this.txtWebApiUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.txtWebApiUser.CustomButton.Image = null;
+            this.txtWebApiUser.CustomButton.Location = new System.Drawing.Point(91, 1);
+            this.txtWebApiUser.CustomButton.Name = "";
+            this.txtWebApiUser.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiUser.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiUser.CustomButton.TabIndex = 1;
+            this.txtWebApiUser.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiUser.CustomButton.UseSelectable = true;
+            this.txtWebApiUser.CustomButton.Visible = false;
+            this.txtWebApiUser.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiUser.Lines = new string[] {
+        "ADMIN"};
+            this.txtWebApiUser.Location = new System.Drawing.Point(84, 27);
+            this.txtWebApiUser.MaxLength = 32767;
+            this.txtWebApiUser.Name = "txtWebApiUser";
+            this.txtWebApiUser.PasswordChar = '\0';
+            this.txtWebApiUser.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiUser.SelectedText = "";
+            this.txtWebApiUser.SelectionLength = 0;
+            this.txtWebApiUser.SelectionStart = 0;
+            this.txtWebApiUser.ShortcutsEnabled = true;
+            this.txtWebApiUser.Size = new System.Drawing.Size(115, 25);
+            this.txtWebApiUser.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiUser.TabIndex = 4;
+            this.txtWebApiUser.Text = "ADMIN";
+            this.txtWebApiUser.UseSelectable = true;
+            this.txtWebApiUser.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtWebApiCompany
+            // 
+            this.txtWebApiCompany.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.txtWebApiCompany.CustomButton.Image = null;
+            this.txtWebApiCompany.CustomButton.Location = new System.Drawing.Point(59, 1);
+            this.txtWebApiCompany.CustomButton.Name = "";
+            this.txtWebApiCompany.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiCompany.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiCompany.CustomButton.TabIndex = 1;
+            this.txtWebApiCompany.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiCompany.CustomButton.UseSelectable = true;
+            this.txtWebApiCompany.CustomButton.Visible = false;
+            this.txtWebApiCompany.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiCompany.Lines = new string[] {
+        "SAMLTD"};
+            this.txtWebApiCompany.Location = new System.Drawing.Point(313, 57);
+            this.txtWebApiCompany.MaxLength = 32767;
+            this.txtWebApiCompany.Name = "txtWebApiCompany";
+            this.txtWebApiCompany.PasswordChar = '\0';
+            this.txtWebApiCompany.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiCompany.SelectedText = "";
+            this.txtWebApiCompany.SelectionLength = 0;
+            this.txtWebApiCompany.SelectionStart = 0;
+            this.txtWebApiCompany.ShortcutsEnabled = true;
+            this.txtWebApiCompany.Size = new System.Drawing.Size(83, 25);
+            this.txtWebApiCompany.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiCompany.TabIndex = 10;
+            this.txtWebApiCompany.Text = "SAMLTD";
+            this.txtWebApiCompany.UseSelectable = true;
+            this.txtWebApiCompany.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiCompany.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtWebApiPassword
+            // 
+            // 
+            // 
+            // 
+            this.txtWebApiPassword.CustomButton.Image = null;
+            this.txtWebApiPassword.CustomButton.Location = new System.Drawing.Point(91, 1);
+            this.txtWebApiPassword.CustomButton.Name = "";
+            this.txtWebApiPassword.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiPassword.CustomButton.TabIndex = 1;
+            this.txtWebApiPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiPassword.CustomButton.UseSelectable = true;
+            this.txtWebApiPassword.CustomButton.Visible = false;
+            this.txtWebApiPassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiPassword.Lines = new string[0];
+            this.txtWebApiPassword.Location = new System.Drawing.Point(84, 57);
+            this.txtWebApiPassword.MaxLength = 32767;
+            this.txtWebApiPassword.Name = "txtWebApiPassword";
+            this.txtWebApiPassword.PasswordChar = '*';
+            this.txtWebApiPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiPassword.SelectedText = "";
+            this.txtWebApiPassword.SelectionLength = 0;
+            this.txtWebApiPassword.SelectionStart = 0;
+            this.txtWebApiPassword.ShortcutsEnabled = true;
+            this.txtWebApiPassword.Size = new System.Drawing.Size(115, 25);
+            this.txtWebApiPassword.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiPassword.TabIndex = 6;
+            this.txtWebApiPassword.UseSelectable = true;
+            this.txtWebApiPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtWebApiVersion
+            // 
+            this.txtWebApiVersion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            // 
+            // 
+            // 
+            this.txtWebApiVersion.CustomButton.Image = null;
+            this.txtWebApiVersion.CustomButton.Location = new System.Drawing.Point(59, 1);
+            this.txtWebApiVersion.CustomButton.Name = "";
+            this.txtWebApiVersion.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtWebApiVersion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtWebApiVersion.CustomButton.TabIndex = 1;
+            this.txtWebApiVersion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtWebApiVersion.CustomButton.UseSelectable = true;
+            this.txtWebApiVersion.CustomButton.Visible = false;
+            this.txtWebApiVersion.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtWebApiVersion.Lines = new string[] {
+        "1.0"};
+            this.txtWebApiVersion.Location = new System.Drawing.Point(313, 28);
+            this.txtWebApiVersion.MaxLength = 32767;
+            this.txtWebApiVersion.Name = "txtWebApiVersion";
+            this.txtWebApiVersion.PasswordChar = '\0';
+            this.txtWebApiVersion.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtWebApiVersion.SelectedText = "";
+            this.txtWebApiVersion.SelectionLength = 0;
+            this.txtWebApiVersion.SelectionStart = 0;
+            this.txtWebApiVersion.ShortcutsEnabled = true;
+            this.txtWebApiVersion.Size = new System.Drawing.Size(83, 25);
+            this.txtWebApiVersion.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtWebApiVersion.TabIndex = 8;
+            this.txtWebApiVersion.Text = "1.0";
+            this.txtWebApiVersion.UseSelectable = true;
+            this.txtWebApiVersion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtWebApiVersion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblWebApiCompany
+            // 
+            this.lblWebApiCompany.AutoSize = true;
+            this.lblWebApiCompany.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiCompany.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblWebApiCompany.Location = new System.Drawing.Point(236, 58);
+            this.lblWebApiCompany.Name = "lblWebApiCompany";
+            this.lblWebApiCompany.Size = new System.Drawing.Size(71, 19);
+            this.lblWebApiCompany.TabIndex = 9;
+            this.lblWebApiCompany.Text = "Company:";
+            // 
+            // lblWebApiVersion
+            // 
+            this.lblWebApiVersion.AutoSize = true;
+            this.lblWebApiVersion.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiVersion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblWebApiVersion.Location = new System.Drawing.Point(225, 28);
+            this.lblWebApiVersion.Name = "lblWebApiVersion";
+            this.lblWebApiVersion.Size = new System.Drawing.Size(82, 19);
+            this.lblWebApiVersion.TabIndex = 7;
+            this.lblWebApiVersion.Text = "API Version:";
+            // 
+            // lblWebApiPassword
+            // 
+            this.lblWebApiPassword.AutoSize = true;
+            this.lblWebApiPassword.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblWebApiPassword.Location = new System.Drawing.Point(7, 58);
+            this.lblWebApiPassword.Name = "lblWebApiPassword";
+            this.lblWebApiPassword.Size = new System.Drawing.Size(70, 19);
+            this.lblWebApiPassword.TabIndex = 5;
+            this.lblWebApiPassword.Text = "Password:";
+            // 
+            // lblWebApiUser
+            // 
+            this.lblWebApiUser.AutoSize = true;
+            this.lblWebApiUser.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiUser.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblWebApiUser.Location = new System.Drawing.Point(37, 29);
+            this.lblWebApiUser.Name = "lblWebApiUser";
+            this.lblWebApiUser.Size = new System.Drawing.Size(40, 19);
+            this.lblWebApiUser.TabIndex = 3;
+            this.lblWebApiUser.Text = "User:";
             // 
             // pnlEntities
             // 
             this.pnlEntities.Controls.Add(this.splitEntities);
-            this.pnlEntities.Location = new System.Drawing.Point(951, 101);
+            this.pnlEntities.Location = new System.Drawing.Point(973, 13);
             this.pnlEntities.Name = "pnlEntities";
-            this.pnlEntities.Size = new System.Drawing.Size(623, 49);
+            this.pnlEntities.Size = new System.Drawing.Size(289, 390);
             this.pnlEntities.TabIndex = 45;
             // 
             // splitEntities
@@ -956,8 +1135,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // splitEntities.Panel2
             // 
             this.splitEntities.Panel2.Controls.Add(this.tabEntity);
-            this.splitEntities.Size = new System.Drawing.Size(623, 49);
-            this.splitEntities.SplitterDistance = 25;
+            this.splitEntities.Size = new System.Drawing.Size(289, 390);
+            this.splitEntities.SplitterDistance = 180;
             this.splitEntities.TabIndex = 20;
             // 
             // pnlEntityTree
@@ -967,7 +1146,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlEntityTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEntityTree.Location = new System.Drawing.Point(0, 0);
             this.pnlEntityTree.Name = "pnlEntityTree";
-            this.pnlEntityTree.Size = new System.Drawing.Size(623, 25);
+            this.pnlEntityTree.Size = new System.Drawing.Size(289, 180);
             this.pnlEntityTree.TabIndex = 0;
             // 
             // pnlEntityGrid
@@ -976,7 +1155,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlEntityGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEntityGrid.Location = new System.Drawing.Point(0, 26);
             this.pnlEntityGrid.Name = "pnlEntityGrid";
-            this.pnlEntityGrid.Size = new System.Drawing.Size(623, 0);
+            this.pnlEntityGrid.Size = new System.Drawing.Size(289, 154);
             this.pnlEntityGrid.TabIndex = 3;
             // 
             // treeEntities
@@ -986,7 +1165,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.treeEntities.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeEntities.Location = new System.Drawing.Point(0, 0);
             this.treeEntities.Name = "treeEntities";
-            this.treeEntities.Size = new System.Drawing.Size(623, 0);
+            this.treeEntities.Size = new System.Drawing.Size(289, 154);
             this.treeEntities.TabIndex = 0;
             this.treeEntities.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeEntities_NodeMouseClick);
             this.treeEntities.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeEntities_NodeMouseDoubleClick);
@@ -997,7 +1176,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlEntitiesLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEntitiesLabel.Location = new System.Drawing.Point(0, 0);
             this.pnlEntitiesLabel.Name = "pnlEntitiesLabel";
-            this.pnlEntitiesLabel.Size = new System.Drawing.Size(623, 26);
+            this.pnlEntitiesLabel.Size = new System.Drawing.Size(289, 26);
             this.pnlEntitiesLabel.TabIndex = 2;
             // 
             // lblEntities
@@ -1007,7 +1186,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.lblEntities.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblEntities.Location = new System.Drawing.Point(0, 0);
             this.lblEntities.Name = "lblEntities";
-            this.lblEntities.Size = new System.Drawing.Size(623, 26);
+            this.lblEntities.Size = new System.Drawing.Size(289, 26);
             this.lblEntities.TabIndex = 1;
             this.lblEntities.Text = "Right-Click on entities or entity to Add, Edit or Delete";
             // 
@@ -1021,8 +1200,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabEntity.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.tabEntity.Location = new System.Drawing.Point(0, 0);
             this.tabEntity.Name = "tabEntity";
-            this.tabEntity.SelectedIndex = 1;
-            this.tabEntity.Size = new System.Drawing.Size(623, 25);
+            this.tabEntity.SelectedIndex = 0;
+            this.tabEntity.Size = new System.Drawing.Size(289, 206);
             this.tabEntity.Style = MetroFramework.MetroColorStyle.Green;
             this.tabEntity.TabIndex = 1;
             this.tabEntity.UseSelectable = true;
@@ -1050,7 +1229,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(615, 0);
+            this.tabPage1.Size = new System.Drawing.Size(281, 164);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Entity";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1311,7 +1490,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage2.Location = new System.Drawing.Point(4, 38);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(615, 0);
+            this.tabPage2.Size = new System.Drawing.Size(713, 164);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1355,7 +1534,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkSequenceRevisionList.AutoSize = true;
             this.chkSequenceRevisionList.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.chkSequenceRevisionList.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkSequenceRevisionList.Location = new System.Drawing.Point(428, 65);
+            this.chkSequenceRevisionList.Location = new System.Drawing.Point(448, 65);
             this.chkSequenceRevisionList.Name = "chkSequenceRevisionList";
             this.chkSequenceRevisionList.Size = new System.Drawing.Size(162, 19);
             this.chkSequenceRevisionList.Style = MetroFramework.MetroColorStyle.Green;
@@ -1432,7 +1611,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage3.HorizontalScrollbarSize = 10;
             this.tabPage3.Location = new System.Drawing.Point(4, 38);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(615, 0);
+            this.tabPage3.Size = new System.Drawing.Size(713, 164);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Properties";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1447,7 +1626,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlColumns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlColumns.Location = new System.Drawing.Point(0, 0);
             this.pnlColumns.Name = "pnlColumns";
-            this.pnlColumns.Size = new System.Drawing.Size(615, 0);
+            this.pnlColumns.Size = new System.Drawing.Size(713, 164);
             this.pnlColumns.TabIndex = 19;
             // 
             // grdEntityFields
@@ -1458,7 +1637,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdEntityFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEntityFields.Location = new System.Drawing.Point(0, 27);
             this.grdEntityFields.Name = "grdEntityFields";
-            this.grdEntityFields.Size = new System.Drawing.Size(615, 0);
+            this.grdEntityFields.Size = new System.Drawing.Size(713, 137);
             this.grdEntityFields.TabIndex = 18;
             // 
             // tbrEntity
@@ -1470,7 +1649,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnDeleteRows});
             this.tbrEntity.Location = new System.Drawing.Point(0, 0);
             this.tbrEntity.Name = "tbrEntity";
-            this.tbrEntity.Size = new System.Drawing.Size(615, 27);
+            this.tbrEntity.Size = new System.Drawing.Size(713, 27);
             this.tbrEntity.TabIndex = 17;
             this.tbrEntity.Text = "toolStrip1";
             // 
@@ -1512,7 +1691,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.HorizontalScrollbarSize = 10;
             this.tabPage4.Location = new System.Drawing.Point(4, 38);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(615, 0);
+            this.tabPage4.Size = new System.Drawing.Size(713, 164);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Composition";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1526,7 +1705,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlComposition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlComposition.Location = new System.Drawing.Point(0, 0);
             this.pnlComposition.Name = "pnlComposition";
-            this.pnlComposition.Size = new System.Drawing.Size(615, 0);
+            this.pnlComposition.Size = new System.Drawing.Size(713, 164);
             this.pnlComposition.TabIndex = 0;
             // 
             // grdEntityCompositions
@@ -1537,18 +1716,401 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdEntityCompositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEntityCompositions.Location = new System.Drawing.Point(0, 0);
             this.grdEntityCompositions.Name = "grdEntityCompositions";
-            this.grdEntityCompositions.Size = new System.Drawing.Size(615, 0);
+            this.grdEntityCompositions.Size = new System.Drawing.Size(713, 164);
             this.grdEntityCompositions.TabIndex = 1;
             this.grdEntityCompositions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdEntityCompositions_CellFormatting);
+            // 
+            // pnlUIGeneration
+            // 
+            this.pnlUIGeneration.Controls.Add(this.splitDesigner);
+            this.pnlUIGeneration.Location = new System.Drawing.Point(1616, 13);
+            this.pnlUIGeneration.Name = "pnlUIGeneration";
+            this.pnlUIGeneration.Size = new System.Drawing.Size(241, 378);
+            this.pnlUIGeneration.TabIndex = 52;
+            // 
+            // splitDesigner
+            // 
+            this.splitDesigner.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitDesigner.Location = new System.Drawing.Point(0, 0);
+            this.splitDesigner.Name = "splitDesigner";
+            // 
+            // splitDesigner.Panel1
+            // 
+            this.splitDesigner.Panel1.AllowDrop = true;
+            this.splitDesigner.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitDesigner.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            // 
+            // splitDesigner.Panel2
+            // 
+            this.splitDesigner.Panel2.Controls.Add(this.treeUIEntities);
+            this.splitDesigner.Panel2.Controls.Add(this.grpContainers);
+            this.splitDesigner.Size = new System.Drawing.Size(241, 378);
+            this.splitDesigner.SplitterDistance = 167;
+            this.splitDesigner.TabIndex = 2;
+            // 
+            // treeUIEntities
+            // 
+            this.treeUIEntities.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeUIEntities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeUIEntities.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeUIEntities.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.treeUIEntities.Location = new System.Drawing.Point(0, 181);
+            this.treeUIEntities.Name = "treeUIEntities";
+            this.treeUIEntities.Size = new System.Drawing.Size(70, 197);
+            this.treeUIEntities.TabIndex = 4;
+            this.treeUIEntities.TabStop = false;
+            // 
+            // grpContainers
+            // 
+            this.grpContainers.BackColor = System.Drawing.Color.White;
+            this.grpContainers.Controls.Add(this.tabUI);
+            this.grpContainers.Controls.Add(this.tbrProperties);
+            this.grpContainers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpContainers.Location = new System.Drawing.Point(0, 0);
+            this.grpContainers.Name = "grpContainers";
+            this.grpContainers.Size = new System.Drawing.Size(70, 181);
+            this.grpContainers.TabIndex = 3;
+            this.grpContainers.TabStop = false;
+            this.grpContainers.Text = "Toolbox";
+            // 
+            // tabUI
+            // 
+            this.tabUI.Controls.Add(this.tabPageInfo);
+            this.tabUI.Controls.Add(this.tabPageFinder);
+            this.tabUI.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabUI.Location = new System.Drawing.Point(3, 60);
+            this.tabUI.Name = "tabUI";
+            this.tabUI.SelectedIndex = 0;
+            this.tabUI.Size = new System.Drawing.Size(64, 118);
+            this.tabUI.TabIndex = 20;
+            // 
+            // tabPageInfo
+            // 
+            this.tabPageInfo.Controls.Add(this.txtPropWidget);
+            this.tabPageInfo.Controls.Add(this.lblPropType);
+            this.tabPageInfo.Controls.Add(this.txtPropText);
+            this.tabPageInfo.Controls.Add(this.lblPropText);
+            this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInfo.Name = "tabPageInfo";
+            this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInfo.Size = new System.Drawing.Size(56, 92);
+            this.tabPageInfo.TabIndex = 0;
+            this.tabPageInfo.Text = "Info";
+            this.tabPageInfo.UseVisualStyleBackColor = true;
+            // 
+            // txtPropWidget
+            // 
+            this.txtPropWidget.Location = new System.Drawing.Point(41, 16);
+            this.txtPropWidget.Name = "txtPropWidget";
+            this.txtPropWidget.Size = new System.Drawing.Size(174, 22);
+            this.txtPropWidget.TabIndex = 23;
+            // 
+            // lblPropType
+            // 
+            this.lblPropType.AutoSize = true;
+            this.lblPropType.Location = new System.Drawing.Point(5, 19);
+            this.lblPropType.Name = "lblPropType";
+            this.lblPropType.Size = new System.Drawing.Size(33, 13);
+            this.lblPropType.TabIndex = 22;
+            this.lblPropType.Text = "Type:";
+            // 
+            // txtPropText
+            // 
+            this.txtPropText.Location = new System.Drawing.Point(41, 44);
+            this.txtPropText.Name = "txtPropText";
+            this.txtPropText.Size = new System.Drawing.Size(174, 22);
+            this.txtPropText.TabIndex = 17;
+            this.txtPropText.TextChanged += new System.EventHandler(this.txtPropText_TextChanged);
+            // 
+            // lblPropText
+            // 
+            this.lblPropText.AutoSize = true;
+            this.lblPropText.Location = new System.Drawing.Point(5, 47);
+            this.lblPropText.Name = "lblPropText";
+            this.lblPropText.Size = new System.Drawing.Size(30, 13);
+            this.lblPropText.TabIndex = 21;
+            this.lblPropText.Text = "Text:";
+            // 
+            // tabPageFinder
+            // 
+            this.tabPageFinder.Controls.Add(this.pnlFinder);
+            this.tabPageFinder.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFinder.Name = "tabPageFinder";
+            this.tabPageFinder.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFinder.Size = new System.Drawing.Size(56, 92);
+            this.tabPageFinder.TabIndex = 1;
+            this.tabPageFinder.Text = "Finder";
+            this.tabPageFinder.UseVisualStyleBackColor = true;
+            // 
+            // pnlFinder
+            // 
+            this.pnlFinder.Controls.Add(this.btnFinderPropFile);
+            this.pnlFinder.Controls.Add(this.txtFinderPropFile);
+            this.pnlFinder.Controls.Add(this.lblFinderPropFile);
+            this.pnlFinder.Controls.Add(this.lblFinderDisplay);
+            this.pnlFinder.Controls.Add(this.lblFinderProp);
+            this.pnlFinder.Controls.Add(this.cboFinderProp);
+            this.pnlFinder.Controls.Add(this.cboFinderDisplay);
+            this.pnlFinder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFinder.Location = new System.Drawing.Point(3, 3);
+            this.pnlFinder.Name = "pnlFinder";
+            this.pnlFinder.Size = new System.Drawing.Size(50, 86);
+            this.pnlFinder.TabIndex = 0;
+            // 
+            // btnFinderPropFile
+            // 
+            this.btnFinderPropFile.Location = new System.Drawing.Point(218, 6);
+            this.btnFinderPropFile.Name = "btnFinderPropFile";
+            this.btnFinderPropFile.Size = new System.Drawing.Size(29, 22);
+            this.btnFinderPropFile.TabIndex = 24;
+            this.btnFinderPropFile.Text = "...";
+            this.btnFinderPropFile.UseVisualStyleBackColor = true;
+            this.btnFinderPropFile.Click += new System.EventHandler(this.btnFinderPropFile_Click);
+            // 
+            // txtFinderPropFile
+            // 
+            this.txtFinderPropFile.Location = new System.Drawing.Point(56, 6);
+            this.txtFinderPropFile.Name = "txtFinderPropFile";
+            this.txtFinderPropFile.Size = new System.Drawing.Size(156, 22);
+            this.txtFinderPropFile.TabIndex = 23;
+            // 
+            // lblFinderPropFile
+            // 
+            this.lblFinderPropFile.AutoSize = true;
+            this.lblFinderPropFile.Location = new System.Drawing.Point(22, 9);
+            this.lblFinderPropFile.Name = "lblFinderPropFile";
+            this.lblFinderPropFile.Size = new System.Drawing.Size(28, 13);
+            this.lblFinderPropFile.TabIndex = 22;
+            this.lblFinderPropFile.Text = "File:";
+            // 
+            // lblFinderDisplay
+            // 
+            this.lblFinderDisplay.AutoSize = true;
+            this.lblFinderDisplay.Location = new System.Drawing.Point(5, 64);
+            this.lblFinderDisplay.Name = "lblFinderDisplay";
+            this.lblFinderDisplay.Size = new System.Drawing.Size(47, 13);
+            this.lblFinderDisplay.TabIndex = 27;
+            this.lblFinderDisplay.Text = "Display:";
+            // 
+            // lblFinderProp
+            // 
+            this.lblFinderProp.AutoSize = true;
+            this.lblFinderProp.Location = new System.Drawing.Point(7, 37);
+            this.lblFinderProp.Name = "lblFinderProp";
+            this.lblFinderProp.Size = new System.Drawing.Size(45, 13);
+            this.lblFinderProp.TabIndex = 25;
+            this.lblFinderProp.Text = "Config:";
+            // 
+            // cboFinderProp
+            // 
+            this.cboFinderProp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFinderProp.FormattingEnabled = true;
+            this.cboFinderProp.Location = new System.Drawing.Point(56, 34);
+            this.cboFinderProp.Name = "cboFinderProp";
+            this.cboFinderProp.Size = new System.Drawing.Size(189, 21);
+            this.cboFinderProp.TabIndex = 26;
+            this.cboFinderProp.SelectedIndexChanged += new System.EventHandler(this.cboFinderProp_SelectedIndexChanged);
+            // 
+            // cboFinderDisplay
+            // 
+            this.cboFinderDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFinderDisplay.FormattingEnabled = true;
+            this.cboFinderDisplay.Location = new System.Drawing.Point(56, 61);
+            this.cboFinderDisplay.Name = "cboFinderDisplay";
+            this.cboFinderDisplay.Size = new System.Drawing.Size(186, 21);
+            this.cboFinderDisplay.TabIndex = 28;
+            this.cboFinderDisplay.SelectionChangeCommitted += new System.EventHandler(this.cboFinderDisplay_SelectionChangeCommitted);
+            // 
+            // tbrProperties
+            // 
+            this.tbrProperties.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.tbrProperties.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnTab,
+            this.btnAddTabPage,
+            this.toolStripSeparator2,
+            this.btnGrid,
+            this.btnButton,
+            this.toolStripSeparator1,
+            this.btnDeleteControl,
+            this.toolStripSeparator3});
+            this.tbrProperties.Location = new System.Drawing.Point(3, 18);
+            this.tbrProperties.Name = "tbrProperties";
+            this.tbrProperties.Size = new System.Drawing.Size(64, 32);
+            this.tbrProperties.TabIndex = 19;
+            this.tbrProperties.Text = "toolStrip1";
+            // 
+            // btnTab
+            // 
+            this.btnTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTab.Image = ((System.Drawing.Image)(resources.GetObject("btnTab.Image")));
+            this.btnTab.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTab.Name = "btnTab";
+            this.btnTab.Size = new System.Drawing.Size(29, 29);
+            this.btnTab.Tag = "Tab";
+            this.btnTab.ToolTipText = "Add Tab Control";
+            // 
+            // btnAddTabPage
+            // 
+            this.btnAddTabPage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddTabPage.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTabPage.Image")));
+            this.btnAddTabPage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddTabPage.Name = "btnAddTabPage";
+            this.btnAddTabPage.Size = new System.Drawing.Size(29, 29);
+            this.btnAddTabPage.ToolTipText = "Add Tab Page";
+            this.btnAddTabPage.Click += new System.EventHandler(this.btnAddTabPage_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            // 
+            // btnGrid
+            // 
+            this.btnGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnGrid.Image")));
+            this.btnGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGrid.Name = "btnGrid";
+            this.btnGrid.Size = new System.Drawing.Size(29, 29);
+            this.btnGrid.Tag = "Grid";
+            this.btnGrid.ToolTipText = "Add Grid Control";
+            // 
+            // btnButton
+            // 
+            this.btnButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnButton.Image = ((System.Drawing.Image)(resources.GetObject("btnButton.Image")));
+            this.btnButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnButton.Name = "btnButton";
+            this.btnButton.Size = new System.Drawing.Size(29, 29);
+            this.btnButton.Tag = "Button";
+            this.btnButton.ToolTipText = "Add Button Control";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // btnDeleteControl
+            // 
+            this.btnDeleteControl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDeleteControl.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteControl.Image")));
+            this.btnDeleteControl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteControl.Name = "btnDeleteControl";
+            this.btnDeleteControl.Size = new System.Drawing.Size(29, 29);
+            this.btnDeleteControl.ToolTipText = "Delete Control";
+            this.btnDeleteControl.Click += new System.EventHandler(this.btnDeleteControl_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
+            // pnlGeneratedCode
+            // 
+            this.pnlGeneratedCode.Controls.Add(this.grdResourceInfo);
+            this.pnlGeneratedCode.Location = new System.Drawing.Point(1495, 15);
+            this.pnlGeneratedCode.Name = "pnlGeneratedCode";
+            this.pnlGeneratedCode.Size = new System.Drawing.Size(84, 376);
+            this.pnlGeneratedCode.TabIndex = 51;
+            // 
+            // pnlCodeType
+            // 
+            this.pnlCodeType.Controls.Add(this.lblCodeTypeFilesHelp);
+            this.pnlCodeType.Controls.Add(this.lblUnknownCodeTypeFilesHelp);
+            this.pnlCodeType.Controls.Add(this.lblCodeTypeDescriptionHelp);
+            this.pnlCodeType.Controls.Add(this.lblRepositoryType);
+            this.pnlCodeType.Controls.Add(this.cboRepositoryType);
+            this.pnlCodeType.Controls.Add(this.grpCredentials);
+            this.pnlCodeType.Controls.Add(this.lblModule);
+            this.pnlCodeType.Controls.Add(this.cboModule);
+            this.pnlCodeType.Location = new System.Drawing.Point(17, 17);
+            this.pnlCodeType.Name = "pnlCodeType";
+            this.pnlCodeType.Size = new System.Drawing.Size(950, 360);
+            this.pnlCodeType.TabIndex = 44;
+            // 
+            // lblCodeTypeFilesHelp
+            // 
+            this.lblCodeTypeFilesHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblCodeTypeFilesHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCodeTypeFilesHelp.Location = new System.Drawing.Point(266, 128);
+            this.lblCodeTypeFilesHelp.Name = "lblCodeTypeFilesHelp";
+            this.lblCodeTypeFilesHelp.Size = new System.Drawing.Size(677, 61);
+            this.lblCodeTypeFilesHelp.TabIndex = 4;
+            this.lblCodeTypeFilesHelp.Text = resources.GetString("lblCodeTypeFilesHelp.Text");
+            this.lblCodeTypeFilesHelp.WrapToLine = true;
+            // 
+            // lblUnknownCodeTypeFilesHelp
+            // 
+            this.lblUnknownCodeTypeFilesHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblUnknownCodeTypeFilesHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblUnknownCodeTypeFilesHelp.Location = new System.Drawing.Point(266, 74);
+            this.lblUnknownCodeTypeFilesHelp.Name = "lblUnknownCodeTypeFilesHelp";
+            this.lblUnknownCodeTypeFilesHelp.Size = new System.Drawing.Size(677, 46);
+            this.lblUnknownCodeTypeFilesHelp.TabIndex = 3;
+            this.lblUnknownCodeTypeFilesHelp.Text = "All Code Types will, at a minimum, generate a Model file, a Model Fields file, a " +
+    "Model Mapper file and Enumeration files (based upon Presentation Lists in the Bu" +
+    "siness View). ";
+            this.lblUnknownCodeTypeFilesHelp.WrapToLine = true;
+            // 
+            // lblCodeTypeDescriptionHelp
+            // 
+            this.lblCodeTypeDescriptionHelp.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblCodeTypeDescriptionHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCodeTypeDescriptionHelp.Location = new System.Drawing.Point(266, 26);
+            this.lblCodeTypeDescriptionHelp.Name = "lblCodeTypeDescriptionHelp";
+            this.lblCodeTypeDescriptionHelp.Size = new System.Drawing.Size(692, 45);
+            this.lblCodeTypeDescriptionHelp.TabIndex = 2;
+            this.lblCodeTypeDescriptionHelp.Text = "A Code Type is based upon the Repository Type that will be used for the Business " +
+    "View or Report.";
+            this.lblCodeTypeDescriptionHelp.WrapToLine = true;
+            // 
+            // grpCredentials
+            // 
+            this.grpCredentials.Controls.Add(this.txtUser);
+            this.grpCredentials.Controls.Add(this.txtCompany);
+            this.grpCredentials.Controls.Add(this.txtPassword);
+            this.grpCredentials.Controls.Add(this.txtVersion);
+            this.grpCredentials.Controls.Add(this.lblCompany);
+            this.grpCredentials.Controls.Add(this.lblVersion);
+            this.grpCredentials.Controls.Add(this.lblPassword);
+            this.grpCredentials.Controls.Add(this.lblUser);
+            this.grpCredentials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpCredentials.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grpCredentials.Location = new System.Drawing.Point(15, 187);
+            this.grpCredentials.Name = "grpCredentials";
+            this.grpCredentials.Size = new System.Drawing.Size(389, 98);
+            this.grpCredentials.TabIndex = 2;
+            this.grpCredentials.TabStop = false;
+            this.grpCredentials.Text = "Application Credentials";
+            // 
+            // lblModule
+            // 
+            this.lblModule.AutoSize = true;
+            this.lblModule.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblModule.Location = new System.Drawing.Point(30, 301);
+            this.lblModule.Name = "lblModule";
+            this.lblModule.Size = new System.Drawing.Size(59, 19);
+            this.lblModule.TabIndex = 11;
+            this.lblModule.Text = "Module:";
+            // 
+            // cboModule
+            // 
+            this.cboModule.FormattingEnabled = true;
+            this.cboModule.ItemHeight = 23;
+            this.cboModule.Location = new System.Drawing.Point(97, 297);
+            this.cboModule.Name = "cboModule";
+            this.cboModule.Size = new System.Drawing.Size(56, 29);
+            this.cboModule.Style = MetroFramework.MetroColorStyle.Green;
+            this.cboModule.TabIndex = 19;
+            this.cboModule.UseSelectable = true;
             // 
             // pnlGenerateCode
             // 
             this.pnlGenerateCode.Controls.Add(this.txtLayoutToGenerate);
             this.pnlGenerateCode.Controls.Add(this.txtEntitiesToGenerate);
             this.pnlGenerateCode.Controls.Add(this.lblGenerateHelp);
-            this.pnlGenerateCode.Location = new System.Drawing.Point(972, 236);
+            this.pnlGenerateCode.Location = new System.Drawing.Point(1308, 7);
             this.pnlGenerateCode.Name = "pnlGenerateCode";
-            this.pnlGenerateCode.Size = new System.Drawing.Size(468, 64);
+            this.pnlGenerateCode.Size = new System.Drawing.Size(133, 384);
             this.pnlGenerateCode.TabIndex = 50;
             // 
             // txtLayoutToGenerate
@@ -1558,7 +2120,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             // 
             this.txtLayoutToGenerate.CustomButton.Image = null;
-            this.txtLayoutToGenerate.CustomButton.Location = new System.Drawing.Point(304, 2);
+            this.txtLayoutToGenerate.CustomButton.Location = new System.Drawing.Point(-31, 2);
             this.txtLayoutToGenerate.CustomButton.Name = "";
             this.txtLayoutToGenerate.CustomButton.Size = new System.Drawing.Size(161, 161);
             this.txtLayoutToGenerate.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1568,7 +2130,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtLayoutToGenerate.CustomButton.Visible = false;
             this.txtLayoutToGenerate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtLayoutToGenerate.Lines = new string[0];
-            this.txtLayoutToGenerate.Location = new System.Drawing.Point(0, -102);
+            this.txtLayoutToGenerate.Location = new System.Drawing.Point(0, 218);
             this.txtLayoutToGenerate.MaxLength = 32767;
             this.txtLayoutToGenerate.Multiline = true;
             this.txtLayoutToGenerate.Name = "txtLayoutToGenerate";
@@ -1579,7 +2141,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtLayoutToGenerate.SelectionLength = 0;
             this.txtLayoutToGenerate.SelectionStart = 0;
             this.txtLayoutToGenerate.ShortcutsEnabled = true;
-            this.txtLayoutToGenerate.Size = new System.Drawing.Size(468, 166);
+            this.txtLayoutToGenerate.Size = new System.Drawing.Size(133, 166);
             this.txtLayoutToGenerate.TabIndex = 3;
             this.txtLayoutToGenerate.UseSelectable = true;
             this.txtLayoutToGenerate.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1592,9 +2154,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             // 
             this.txtEntitiesToGenerate.CustomButton.Image = null;
-            this.txtEntitiesToGenerate.CustomButton.Location = new System.Drawing.Point(442, 2);
+            this.txtEntitiesToGenerate.CustomButton.Location = new System.Drawing.Point(-213, 2);
             this.txtEntitiesToGenerate.CustomButton.Name = "";
-            this.txtEntitiesToGenerate.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtEntitiesToGenerate.CustomButton.Size = new System.Drawing.Size(343, 343);
             this.txtEntitiesToGenerate.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEntitiesToGenerate.CustomButton.TabIndex = 1;
             this.txtEntitiesToGenerate.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1613,7 +2175,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtEntitiesToGenerate.SelectionLength = 0;
             this.txtEntitiesToGenerate.SelectionStart = 0;
             this.txtEntitiesToGenerate.ShortcutsEnabled = true;
-            this.txtEntitiesToGenerate.Size = new System.Drawing.Size(468, 28);
+            this.txtEntitiesToGenerate.Size = new System.Drawing.Size(133, 348);
             this.txtEntitiesToGenerate.TabIndex = 2;
             this.txtEntitiesToGenerate.UseSelectable = true;
             this.txtEntitiesToGenerate.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1626,7 +2188,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.lblGenerateHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblGenerateHelp.Location = new System.Drawing.Point(0, 0);
             this.lblGenerateHelp.Name = "lblGenerateHelp";
-            this.lblGenerateHelp.Size = new System.Drawing.Size(468, 36);
+            this.lblGenerateHelp.Size = new System.Drawing.Size(133, 36);
             this.lblGenerateHelp.TabIndex = 0;
             this.lblGenerateHelp.Text = "The entities will be generated or referenced based upon the following content:";
             // 
@@ -1641,7 +2203,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlButtons.Location = new System.Drawing.Point(0, 0);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(997, 79);
+            this.pnlButtons.Size = new System.Drawing.Size(3820, 103);
             this.pnlButtons.TabIndex = 2;
             // 
             // btnCancel
@@ -1666,7 +2228,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.lblLowerBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblLowerBorder.Location = new System.Drawing.Point(0, 0);
             this.lblLowerBorder.Name = "lblLowerBorder";
-            this.lblLowerBorder.Size = new System.Drawing.Size(997, 1);
+            this.lblLowerBorder.Size = new System.Drawing.Size(3820, 1);
             this.lblLowerBorder.TabIndex = 52;
             // 
             // lblProcessingFile
@@ -1724,12 +2286,16 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnBack.UseSelectable = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // htmlToolTip1
+            // 
+            this.htmlToolTip1.OwnerDraw = true;
+            // 
             // Generation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1037, 685);
+            this.ClientSize = new System.Drawing.Size(3860, 712);
             this.Controls.Add(this.splitBase);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton = true;
@@ -1754,25 +2320,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.splitSteps.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitSteps)).EndInit();
             this.splitSteps.ResumeLayout(false);
-            this.pnlUIGeneration.ResumeLayout(false);
-            this.splitDesigner.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).EndInit();
-            this.splitDesigner.ResumeLayout(false);
-            this.grpContainers.ResumeLayout(false);
-            this.grpContainers.PerformLayout();
-            this.tabUI.ResumeLayout(false);
-            this.tabPageInfo.ResumeLayout(false);
-            this.tabPageInfo.PerformLayout();
-            this.tabPageFinder.ResumeLayout(false);
-            this.pnlFinder.ResumeLayout(false);
-            this.pnlFinder.PerformLayout();
-            this.tbrProperties.ResumeLayout(false);
-            this.tbrProperties.PerformLayout();
-            this.pnlCodeType.ResumeLayout(false);
-            this.pnlCodeType.PerformLayout();
-            this.grpCredentials.ResumeLayout(false);
-            this.grpCredentials.PerformLayout();
-            this.pnlGeneratedCode.ResumeLayout(false);
+            this.pnlWebApiEntity.ResumeLayout(false);
+            this.pnlWebApiEntity.PerformLayout();
+            this.pnlWebApiCredential.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.pnlEntities.ResumeLayout(false);
             this.splitEntities.Panel1.ResumeLayout(false);
             this.splitEntities.Panel2.ResumeLayout(false);
@@ -1795,6 +2347,25 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.ResumeLayout(false);
             this.pnlComposition.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEntityCompositions)).EndInit();
+            this.pnlUIGeneration.ResumeLayout(false);
+            this.splitDesigner.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).EndInit();
+            this.splitDesigner.ResumeLayout(false);
+            this.grpContainers.ResumeLayout(false);
+            this.grpContainers.PerformLayout();
+            this.tabUI.ResumeLayout(false);
+            this.tabPageInfo.ResumeLayout(false);
+            this.tabPageInfo.PerformLayout();
+            this.tabPageFinder.ResumeLayout(false);
+            this.pnlFinder.ResumeLayout(false);
+            this.pnlFinder.PerformLayout();
+            this.tbrProperties.ResumeLayout(false);
+            this.tbrProperties.PerformLayout();
+            this.pnlGeneratedCode.ResumeLayout(false);
+            this.pnlCodeType.ResumeLayout(false);
+            this.pnlCodeType.PerformLayout();
+            this.grpCredentials.ResumeLayout(false);
+            this.grpCredentials.PerformLayout();
             this.pnlGenerateCode.ResumeLayout(false);
             this.pnlButtons.ResumeLayout(false);
             this.pnlButtons.PerformLayout();
@@ -1911,6 +2482,34 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         private System.Windows.Forms.TabPage tabPageFinder;
         private System.Windows.Forms.Panel pnlFinder;
         private MetroFramework.Controls.MetroCheckBox chkGenerateGridModel;
+        private MetroFramework.Drawing.Html.HtmlToolTip htmlToolTip1;
+        private System.Windows.Forms.Panel pnlWebApiCredential;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private MetroFramework.Controls.MetroTextBox txtWebApiUser;
+        private MetroFramework.Controls.MetroTextBox txtWebApiCompany;
+        private MetroFramework.Controls.MetroTextBox txtWebApiPassword;
+        private MetroFramework.Controls.MetroTextBox txtWebApiVersion;
+        private MetroFramework.Controls.MetroLabel lblWebApiCompany;
+        private MetroFramework.Controls.MetroLabel lblWebApiVersion;
+        private MetroFramework.Controls.MetroLabel lblWebApiPassword;
+        private MetroFramework.Controls.MetroLabel lblWebApiUser;
+        private System.Windows.Forms.Panel pnlWebApiEntity;
+        private MetroFramework.Controls.MetroTextBox txtWebApiModelName;
+        private MetroFramework.Controls.MetroLabel lblWebApiModelName;
+        private MetroFramework.Controls.MetroTextBox txtWebApiViewId;
+        private MetroFramework.Controls.MetroLabel lblWebApiViewId;
+        private MetroFramework.Controls.MetroTextBox txtWebapiViewKeyType;
+        private MetroFramework.Controls.MetroLabel lblWebapiViewKeyType;
+        private MetroFramework.Controls.MetroTextBox txtWebApiViewProtocolType;
+        private MetroFramework.Controls.MetroLabel lblWebApiViewProtocolType;
+        private MetroFramework.Controls.MetroTextBox txtWebApiResourceName;
+        private MetroFramework.Controls.MetroLabel lblWebApiResourceName;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowDelete;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowPut;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowPatch;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowCreate;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowGet;
+        private MetroFramework.Controls.MetroCheckBox chkWebApiAllowProcess;
     }
 }
 

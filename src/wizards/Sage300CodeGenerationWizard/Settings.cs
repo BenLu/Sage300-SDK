@@ -108,6 +108,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// Screen key field index
         /// </summary>
         public int screenKeyFieldIndex { get; set; }
+
+        /// <summary> Web API Controller Definitions </summary>
+        public ControllerSettings ControllerSettings { get; set; }
+
+        /// <summary> supported verbs </summary>
+        public string Verbs { get; set; }
+
+
         #endregion
     }
 
