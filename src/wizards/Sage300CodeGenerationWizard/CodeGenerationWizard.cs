@@ -21,6 +21,8 @@
 #region Imports
 using EnvDTE;
 using System.Windows.Forms;
+using Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties;
+
 #endregion
 
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
@@ -33,20 +35,24 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         {
             using (var form = new Generation())
             {
-                
                 // Only display wizard if solution is a valid Sage 300 solution with
                 // known Sage 300 projects
-                /*if (form.ValidPrerequisites(solution))
+                if (form.ValidPrerequisitesForWeb(solution))
                 {
                     form.InitWebGeneration();
                     // Display wizard modally
                     form.ShowDialog();
-                }*/
-                
-                form.InitWebApiGeneration();
-                // Display wizard modally
-                form.ShowDialog();
-                
+                }
+                else if (form.ValidPrerequisitesForWebApi(solution))
+                {
+                    form.InitWebApiGeneration();
+                    // Display wizard modally
+                    form.ShowDialog();
+                }
+                else
+                {
+                    form.DisplayMessage(Resources.InvalidSolution, MessageBoxIcon.Error);
+                }
             }
         }
     }

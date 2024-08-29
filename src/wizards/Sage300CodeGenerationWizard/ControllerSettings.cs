@@ -29,6 +29,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
     public class ControllerSettings
     {
         /// <summary>
+        /// Web API version
+        /// </summary>
+        public string ApiVersion { get; set; }
+
+         /// <summary>
         /// The name of of the view (e.g. ARCUS)
         /// </summary>
         public string ViewName { get; set; }

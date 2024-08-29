@@ -24,6 +24,7 @@ using Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties;
 using Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -32,14 +33,22 @@ using System.Text;
 using System.Windows.Forms;
 using View = ACCPAC.Advantage.View;
 using System.Xml;
-using System.Threading;
+using EnvDTE;
 using Newtonsoft.Json;
 using Jint.Runtime;
 using Newtonsoft.Json.Linq;
+using Thread = System.Threading.Thread;
+
 #endregion
 
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 {
+    public enum WizardType
+    {
+        WEB,
+        WEBAPI
+    }
+
     /// <summary> Process Generation Class (worker) </summary>
     class ProcessGeneration
     {
@@ -66,6 +75,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         {
             /// <summary> SettingsKey is used as a dictionary key for settings </summary>
             public const string SettingsKey = "settings";
+
+            /// <summary> WebApiKey is used as a dictionary key for projects </summary>
+            public const string WebApiKey = "WebApi";
+
+            /// <summary> WebApiModelsKey is used as a dictionary key for projects </summary>
+            public const string WebApiModelsKey = "WebApi.Models";
 
             /// <summary> BusinessRepositoryKey is used as a dictionary key for projects </summary>
             public const string BusinessRepositoryKey = "BusinessRepository";
@@ -338,9 +353,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // Anything?
         }
 
-        /// <summary> Start the generation process </summary>
+        /// <summary> Start the generation process for Web project </summary>
         /// <param name="settings">Settings for processing</param>
-        public void Process(Settings settings)
+        public void ProcessWeb(Settings settings)
         {
             try
             {
@@ -417,6 +432,96 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 // Catch here does nothing but return to UI
                 // User may have aborted wizard
             }
+        }
+
+        /// <summary>
+        /// Process Web Api project
+        /// </summary>
+        /// <param name="settings"></param>
+        public void ProcessWebApi(Settings settings)
+        {
+            // Locals
+            var session = new Session();
+            try
+            {
+                var view = new BusinessView();
+                GetBusinessView(view, settings.User, settings.Password, settings.Company, settings.Version,
+                    settings.ControllerSettings.ViewId, settings.ModuleId);
+
+                settings.ControllerSettings.KeyProperties = new List<string>();
+                settings.ControllerSettings.KeyType = ViewKeyType.Ordered;
+
+                var keys = view.Keys;
+                if (keys.Count > 0)
+                {
+                    var key = keys[0];
+                    for (var i = 0; i < key.Length; i++)
+                    {
+                        var propertyName = key + "Key";
+                        settings.ControllerSettings.KeyProperties.Add(propertyName);
+
+                        var field = view.Fields.First(f => f.Name == key);
+                        if (field.Type == BusinessDataType.Long
+                            || field.Type == BusinessDataType.Integer
+                            || field.Type == BusinessDataType.Decimal
+                            || field.Type == BusinessDataType.Short
+                            || field.Type == BusinessDataType.Double
+                            || (field.Type == BusinessDataType.String
+                                && field.Mask != null
+                                && field.Mask.Contains("D"))
+                           )
+                        {
+                            settings.ControllerSettings.KeyType =
+                                ViewKeyType.Sequenced; // assume sequenced key for numeric types
+                        }
+                    }
+                }
+
+                settings.Copyright = "!!!Copyright!!!";
+                settings.ControllerSettings.ModelName = "Terms";
+                settings.CompanyNamespace = "!!!namespace!!!";
+                view.Properties[BusinessView.Constants.ResourceName] = "!!!resourcename!!!" ;
+                settings.Verbs = "!!!verbs!!!";
+                settings.ModuleId = "!!AP!!";
+                settings.Extension = "!!extension!!";
+                settings.ControllerSettings.Details = new List<ControllerSettings>();
+                var fileContent = TransformTemplateToText(view, settings, "Templates.WebApi.Controller");
+            }
+            catch
+            {
+                // Seems like not all views have an instance protocol (i.e., AS0020)
+            }
+
+
+
+
+            /*
+            var fullPath = Path.Combine(outputPath, subfolder);
+            if (!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+
+            // If the endpoint resource name overrided, use the overrided resource name as the file name
+            var fullFileName = "";
+            if (classNameExtender == "Controller" && settings.ResourceNameOverride != null)
+                fullFileName = Path.Combine(fullPath, settings.ResourceNameOverride + classNameExtender + ".cs");
+            else
+                fullFileName = Path.Combine(fullPath, view.Properties[plural ? BusinessView.ResourceName : BusinessView.ModelName] + classNameExtender + ".cs");
+
+            if (File.Exists(fullFileName))
+            {
+                using (var file = new StreamWriter(Path.Combine(OutputPath, "DuplicateModelProblems.txt"), true))
+                {
+                    file.WriteLine(fullFileName + " is duplicated: " + view.Properties[BusinessView.ResourceName] + " in " + subfolder);
+                }
+            }
+            else
+            {
+                File.WriteAllText(fullFileName, fileContent);
+            }
+            */
+
         }
 
         /// <summary> Get business view </summary>

@@ -116,6 +116,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         public string Verbs { get; set; }
 
 
+        /// <summary>
+        /// wizard type
+        /// </summary>
+        public WizardType WizardType { get; set; }
         #endregion
     }
 

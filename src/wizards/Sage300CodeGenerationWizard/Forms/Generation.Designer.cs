@@ -167,6 +167,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnBack = new MetroFramework.Controls.MetroButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
+            this.lblWebApiModule = new MetroFramework.Controls.MetroLabel();
+            this.cboWebApiModule = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdResourceInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitBase)).BeginInit();
             this.splitBase.Panel1.SuspendLayout();
@@ -875,7 +877,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiViewId.CustomButton.UseSelectable = true;
             this.txtWebApiViewId.CustomButton.Visible = false;
             this.txtWebApiViewId.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiViewId.Lines = new string[0];
+            this.txtWebApiViewId.Lines = new string[] {
+        "AP0012"};
             this.txtWebApiViewId.Location = new System.Drawing.Point(153, 37);
             this.txtWebApiViewId.MaxLength = 32767;
             this.txtWebApiViewId.Name = "txtWebApiViewId";
@@ -888,6 +891,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiViewId.Size = new System.Drawing.Size(189, 25);
             this.txtWebApiViewId.Style = MetroFramework.MetroColorStyle.Green;
             this.txtWebApiViewId.TabIndex = 5;
+            this.txtWebApiViewId.Text = "AP0012";
             this.txtWebApiViewId.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtWebApiViewId.UseSelectable = true;
             this.txtWebApiViewId.WaterMarkColor = System.Drawing.Color.Maroon;
@@ -906,6 +910,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             // pnlWebApiCredential
             // 
+            this.pnlWebApiCredential.Controls.Add(this.lblWebApiModule);
+            this.pnlWebApiCredential.Controls.Add(this.cboWebApiModule);
             this.pnlWebApiCredential.Controls.Add(this.groupBox1);
             this.pnlWebApiCredential.Location = new System.Drawing.Point(1900, 17);
             this.pnlWebApiCredential.Name = "pnlWebApiCredential";
@@ -1016,7 +1022,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiPassword.CustomButton.UseSelectable = true;
             this.txtWebApiPassword.CustomButton.Visible = false;
             this.txtWebApiPassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiPassword.Lines = new string[0];
+            this.txtWebApiPassword.Lines = new string[] {
+        "Sage12345!"};
             this.txtWebApiPassword.Location = new System.Drawing.Point(84, 57);
             this.txtWebApiPassword.MaxLength = 32767;
             this.txtWebApiPassword.Name = "txtWebApiPassword";
@@ -1029,6 +1036,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiPassword.Size = new System.Drawing.Size(115, 25);
             this.txtWebApiPassword.Style = MetroFramework.MetroColorStyle.Green;
             this.txtWebApiPassword.TabIndex = 6;
+            this.txtWebApiPassword.Text = "Sage12345!";
             this.txtWebApiPassword.UseSelectable = true;
             this.txtWebApiPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtWebApiPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -1490,7 +1498,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage2.Location = new System.Drawing.Point(4, 38);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(713, 164);
+            this.tabPage2.Size = new System.Drawing.Size(281, 164);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Options";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1611,7 +1619,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage3.HorizontalScrollbarSize = 10;
             this.tabPage3.Location = new System.Drawing.Point(4, 38);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(713, 164);
+            this.tabPage3.Size = new System.Drawing.Size(281, 164);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Properties";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1626,7 +1634,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlColumns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlColumns.Location = new System.Drawing.Point(0, 0);
             this.pnlColumns.Name = "pnlColumns";
-            this.pnlColumns.Size = new System.Drawing.Size(713, 164);
+            this.pnlColumns.Size = new System.Drawing.Size(281, 164);
             this.pnlColumns.TabIndex = 19;
             // 
             // grdEntityFields
@@ -1637,7 +1645,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdEntityFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEntityFields.Location = new System.Drawing.Point(0, 27);
             this.grdEntityFields.Name = "grdEntityFields";
-            this.grdEntityFields.Size = new System.Drawing.Size(713, 137);
+            this.grdEntityFields.Size = new System.Drawing.Size(281, 137);
             this.grdEntityFields.TabIndex = 18;
             // 
             // tbrEntity
@@ -1649,7 +1657,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnDeleteRows});
             this.tbrEntity.Location = new System.Drawing.Point(0, 0);
             this.tbrEntity.Name = "tbrEntity";
-            this.tbrEntity.Size = new System.Drawing.Size(713, 27);
+            this.tbrEntity.Size = new System.Drawing.Size(281, 27);
             this.tbrEntity.TabIndex = 17;
             this.tbrEntity.Text = "toolStrip1";
             // 
@@ -1691,7 +1699,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.HorizontalScrollbarSize = 10;
             this.tabPage4.Location = new System.Drawing.Point(4, 38);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(713, 164);
+            this.tabPage4.Size = new System.Drawing.Size(281, 164);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Composition";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1705,7 +1713,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlComposition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlComposition.Location = new System.Drawing.Point(0, 0);
             this.pnlComposition.Name = "pnlComposition";
-            this.pnlComposition.Size = new System.Drawing.Size(713, 164);
+            this.pnlComposition.Size = new System.Drawing.Size(281, 164);
             this.pnlComposition.TabIndex = 0;
             // 
             // grdEntityCompositions
@@ -1716,7 +1724,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdEntityCompositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEntityCompositions.Location = new System.Drawing.Point(0, 0);
             this.grdEntityCompositions.Name = "grdEntityCompositions";
-            this.grdEntityCompositions.Size = new System.Drawing.Size(713, 164);
+            this.grdEntityCompositions.Size = new System.Drawing.Size(281, 164);
             this.grdEntityCompositions.TabIndex = 1;
             this.grdEntityCompositions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdEntityCompositions_CellFormatting);
             // 
@@ -2290,6 +2298,27 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             this.htmlToolTip1.OwnerDraw = true;
             // 
+            // lblWebApiModule
+            // 
+            this.lblWebApiModule.AutoSize = true;
+            this.lblWebApiModule.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblWebApiModule.Location = new System.Drawing.Point(37, 155);
+            this.lblWebApiModule.Name = "lblWebApiModule";
+            this.lblWebApiModule.Size = new System.Drawing.Size(59, 19);
+            this.lblWebApiModule.TabIndex = 20;
+            this.lblWebApiModule.Text = "Module:";
+            // 
+            // cboWebApiModule
+            // 
+            this.cboWebApiModule.FormattingEnabled = true;
+            this.cboWebApiModule.ItemHeight = 23;
+            this.cboWebApiModule.Location = new System.Drawing.Point(104, 151);
+            this.cboWebApiModule.Name = "cboWebApiModule";
+            this.cboWebApiModule.Size = new System.Drawing.Size(56, 29);
+            this.cboWebApiModule.Style = MetroFramework.MetroColorStyle.Green;
+            this.cboWebApiModule.TabIndex = 21;
+            this.cboWebApiModule.UseSelectable = true;
+            // 
             // Generation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2323,6 +2352,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlWebApiEntity.ResumeLayout(false);
             this.pnlWebApiEntity.PerformLayout();
             this.pnlWebApiCredential.ResumeLayout(false);
+            this.pnlWebApiCredential.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pnlEntities.ResumeLayout(false);
@@ -2510,6 +2540,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         private MetroFramework.Controls.MetroCheckBox chkWebApiAllowCreate;
         private MetroFramework.Controls.MetroCheckBox chkWebApiAllowGet;
         private MetroFramework.Controls.MetroCheckBox chkWebApiAllowProcess;
+        private MetroFramework.Controls.MetroLabel lblWebApiModule;
+        private MetroFramework.Controls.MetroComboBox cboWebApiModule;
     }
 }
 

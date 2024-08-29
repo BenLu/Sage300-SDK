@@ -42,12 +42,6 @@ using System.Xml;
 
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 {
-    enum WizardType
-    {
-        WEB,
-        WEBAPI
-    }
-
     /// <summary> UI for Code Generation Wizard </summary>
     public partial class Generation : MetroForm
     {
@@ -465,27 +459,46 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
     /// <param name="solution">Solution </param>
     /// <remarks>Solution must be a Sage 300 solution with known projects</remarks>
     /// <returns>True if valid otherwise false</returns>
-    public bool ValidPrerequisites(Solution solution)
+    public bool ValidPrerequisitesForWeb(Solution solution)
         {
             // Validate solution
             if (!ValidSolution(solution))
             {
-                DisplayMessage(Resources.InvalidSolution, MessageBoxIcon.Error);
                 return false;
             }
 
             // Validate projects
-            if (!ValidProjects(solution))
+            if (!ValidWebProjects(solution))
             {
-                DisplayMessage(Resources.InvalidProjects, MessageBoxIcon.Error);
                 return false;
             }
 
             // Build modules dropdowns for validations
-            BuildModules();
+            BuildModulesForWeb();
 
             return true;
         }
+
+    /// <summary> Are the prerequisites valid for executing the wizard </summary>
+    /// <param name="solution">Solution </param>
+    /// <remarks>Solution must be a Sage 300 solution with known projects</remarks>
+    /// <returns>True if valid otherwise false</returns>
+    public bool ValidPrerequisitesForWebApi(Solution solution)
+    {
+        // Validate solution
+        if (!ValidSolution(solution))
+        {
+            return false;
+        }
+
+        // Validate projects
+        if (!ValidWebApiProjects(solution))
+        {
+            return false;
+        }
+
+        return true;
+    }
 
         #endregion
 
@@ -543,7 +556,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 }
             }
 
-            // Code Type Step
+            // Web Api credential
             if (IsCurrentPanel(Constants.PanelWebApiCredential))
             {
                 try
@@ -552,11 +565,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 }
                 catch
                 {
-                    // Wizard is not compatible with installed Sage 300 libraries
                     valid = Resources.InvalidVersion;
                 }
             }
-
+            
             // Entities Step
             if (IsCurrentPanel(Constants.PanelEntities))
 			{
@@ -631,11 +643,48 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             return sessionValid;
         }
 
-        /// <summary> Valid WebApi Credential Step</summary>
-        /// <returns>string.Empty if valid otherwise message to display</returns>
-        private string ValidWebApiCredentialStep()
+        /// <summary>
+        /// Validate the entity entries on the web api entity step
+        /// </summary>
+        /// <returns></returns>
+        private string ValidWebApiEntityStep()
         {
-            // Session - for code types that need to open a session to authenticate credentials
+            // If code type doesn't need to authenticate, this is automatically OK
+            var sessionValid = string.Empty;
+
+            // User ID
+            if (string.IsNullOrEmpty(txtWebApiViewId.Text.Trim()))
+            {
+                return string.Format(Resources.InvalidSettingRequiredField, Resources.ViewId.Replace(":", ""));
+            }
+
+            try
+            {
+                // Init session to see if credentials are valid
+                var session = new Session();
+                session.InitEx2(null, string.Empty, "WX", "WX1000", "72A", 1);
+                session.Open(txtUser.Text.Trim(), txtWebApiPassword.Text.Trim(), txtWebApiCompany.Text.Trim(), DateTime.UtcNow, 0);
+                var dbLink = session.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly);
+                var view = dbLink.OpenView(txtWebApiViewId.Text);
+                
+                view.Dispose();
+                dbLink.Dispose();
+                session.Dispose();
+
+            }
+            catch
+            {
+                sessionValid = Resources.InvalidSettingCredentials;
+            }
+
+            return sessionValid;
+        }
+    
+
+    /// <summary> Valid WebApi Credential Step</summary>
+    /// <returns>string.Empty if valid otherwise message to display</returns>
+    private string ValidWebApiCredentialStep()
+        {
             // If code type doesn't need to authenticate, this is automatically OK
             var sessionValid = string.Empty;
 
@@ -655,6 +704,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             if (string.IsNullOrEmpty(txtWebApiCompany.Text.Trim()))
             {
                 return string.Format(Resources.InvalidSettingRequiredField, Resources.Company.Replace(":", ""));
+            }
+
+            // Module 
+            if (string.IsNullOrEmpty(cboWebApiModule.Text.Trim()))
+            {
+                return string.Format(Resources.InvalidSettingRequiredField, Resources.Module.Replace(":", ""));
             }
 
             try
@@ -1106,10 +1161,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <summary> Determine if Projects in Solution are valid </summary>
         /// <param name="solution">Solution </param>
         /// <returns>True if valid otherwise false</returns>
-        private bool ValidProjects(_Solution solution)
+        private bool ValidWebProjects(_Solution solution)
         {
             try
             {
+                _projects.Clear();
+
                 // Locals
                 //var solutionFolder = Path.GetDirectoryName(solution.FullName);
                 var projects = GetProjects(solution);
@@ -1217,6 +1274,93 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     _projects.ContainsKey(ProcessGeneration.Constants.ResourcesKey) &&
                     _projects.ContainsKey(ProcessGeneration.Constants.ServicesKey) &&
                     _projects.ContainsKey(ProcessGeneration.Constants.WebKey));
+        }
+
+        /// <summary> Determine if Projects in Solution are valid </summary>
+        /// <param name="solution">Solution </param>
+        /// <returns>True if valid otherwise false</returns>
+        private bool ValidWebApiProjects(_Solution solution)
+        {
+            try
+            {
+                _projects.Clear();
+
+                // Clear first
+                cboWebApiModule.Items.Clear();
+
+                // Add empty item at top of list
+                cboWebApiModule.Items.Add(string.Empty);
+
+                // Locals
+                //var solutionFolder = Path.GetDirectoryName(solution.FullName);
+                var projects = GetProjects(solution);
+
+                // Iterate solution to get projects for analysis and usage
+                foreach (var project in projects)
+                {
+                    var projectName = Path.GetFileNameWithoutExtension(project.FullName);
+                    if (string.IsNullOrEmpty(projectName))
+                    {
+                        continue;
+                    }
+
+                    var segments = projectName.Split('.');
+                    var key = segments[segments.Length - 1];
+                    var module = string.Empty;
+
+                    // Grab the company namespace from the Business Repository project
+                    if (key.Equals(ProcessGeneration.Constants.WebApiKey))
+                    {
+                        module = segments[segments.Length - 2];
+                        _companyNamespace = projectName.Substring(0,
+                            projectName.IndexOf(module + "." + key, StringComparison.InvariantCulture) - 1);
+
+                        // We will use the copyright from this project for all generated files
+                        _copyright = GetCopyright(project);
+
+                    }
+                    else if (key.Equals(ProcessGeneration.Constants.ModelsKey) && segments[segments.Length - 2].Equals(ProcessGeneration.Constants.WebApiKey))
+                    {
+                        key = ProcessGeneration.Constants.WebApiModelsKey;
+                        module = segments[segments.Length - 3];
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    if (!cboWebApiModule.Items.Contains(module))
+                    {
+                        cboWebApiModule.Items.Add(module);
+                    }
+
+                    var projectInfo = new ProjectInfo
+                    {
+                        ProjectFolder = Path.GetDirectoryName(project.FullName),
+                        ProjectName = projectName,
+                        Project = project
+                    };
+
+                    // Add to list of projects by type and module
+                    if (_projects.ContainsKey(key))
+                    {
+                        _projects[key].Add(module, projectInfo);
+                    }
+                    else
+                    {
+                        _projects.Add(key, new Dictionary<string, ProjectInfo> { { module, projectInfo } });
+                    }
+                }
+
+            }
+            catch
+            {
+                // No action as will be reviewed by caller                    
+            }
+
+            // Must have all projects to be valid
+            return (_projects.ContainsKey(ProcessGeneration.Constants.WebApiKey) &&
+                    _projects.ContainsKey(ProcessGeneration.Constants.WebApiModelsKey));
         }
 
         /// <summary>
@@ -4548,6 +4692,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 if (!_currentWizardStep.Equals(-1) &&
 					(IsCurrentPanel(Constants.PanelGenerateCode) || IsCurrentPanel(Constants.PanelWebApiEntity)))
                 {
+                    if (!ValidateStep())
+                    {
+                        return;
+                    }
+
                     // Build settings
                     var settings = _wizardType == WizardType.WEB? BuildWebSettings():BuildWebApiSettings();
                     // Setup display before processing
@@ -5169,7 +5318,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <param name="message">Message to display</param>
         /// <param name="icon">Icon to display</param>
         /// <param name="args">Message arguments, if any</param>
-        private void DisplayMessage(string message, MessageBoxIcon icon, params object[] args)
+        public void DisplayMessage(string message, MessageBoxIcon icon, params object[] args)
         {
             MessageBox.Show(string.Format(message, args), Text, MessageBoxButtons.OK, icon);
         }
@@ -5182,6 +5331,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             return new Settings
             {
+                WizardType = WizardType.WEB,
                 RepositoryType = repositoryType,
                 User = txtUser.Text.Trim(),
                 Password = txtPassword.Text.Trim(),
@@ -5218,8 +5368,19 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <returns>Settings</returns>
         private Settings BuildWebApiSettings()
         {
-            return new Settings
+            return new Settings()
             {
+                WizardType = WizardType.WEBAPI,
+                User = txtWebApiUser.Text.Trim(),
+                Password = txtWebApiPassword.Text.Trim(),
+                Company = txtWebApiCompany.Text.Trim(),
+                ModuleId = "XX",
+                Version = "72A",
+                ControllerSettings = new ControllerSettings 
+                {
+                    ApiVersion = txtWebApiVersion.Text.Trim(),
+                    ViewId = txtWebApiViewId.Text.Trim(),
+                }
             };
         }
 
@@ -5262,7 +5423,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         }
 
         /// <summary> Build Module Lists </summary>
-        private void BuildModules()
+        private void BuildModulesForWeb()
         {
             // Clear first
             cboModule.Items.Clear();
@@ -5283,7 +5444,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 // Default if only 1 module is discovered
                 cboModule.SelectedIndex = 1;
             }
-
         }
 
         /// <summary>
@@ -5346,8 +5506,16 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         private void wrkBackground_DoWork(object sender, DoWorkEventArgs e)
         {
             var settings = (Settings)e.Argument;
-            UpdateSettings(settings);
-            _generation.Process(settings);
+
+            if (_wizardType == WizardType.WEB)
+            {
+                UpdateSettings(settings);
+                _generation.ProcessWeb(settings);
+            }
+            else
+            {
+                _generation.ProcessWebApi(settings);
+            }
         }
 
         /// <summary> Background worker completed event </summary>
@@ -6294,7 +6462,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                         {
                             // Seems like not all views have an instance protocol (i.e., AS0020)
                         }
-
 
                         txtWebApiModelName.Text = ProcessGeneration.MakeItSingular(BusinessViewHelper.Replace(view.Description));
 
