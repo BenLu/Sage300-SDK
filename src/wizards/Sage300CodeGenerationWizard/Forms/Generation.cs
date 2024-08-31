@@ -38,6 +38,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Dynamic;
 using System.Xml;
+using System.Runtime;
+using System.Text;
+
 #endregion
 
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
@@ -226,6 +229,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <summary> Abort grid drop </summary>
         private bool _abortGridDrop = false;
 
+        /// <summary>
+        /// Controller settings
+        /// </summary>
+        private List<ControllerSettings> _controllerSettings;
         #endregion
 
         #region Private Constants
@@ -427,19 +434,25 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _wizardSteps.Clear();
 
             // Init Panels
-            // Only hide the code type step on initial load
             if (_currentWizardStep == -1)
             {
                 InitPanel(pnlWebApiCredential);
             }
 
-            InitPanel(pnlWebApiEntity);
+            InitPanel(pnlEntities);
+            InitPanel(pnlGeneratedCode);
 
             // Add steps
             AddStep(Resources.StepTitleCodeType, Resources.StepDescriptionCodeType, pnlWebApiCredential);
-            AddStep(Resources.StepTitleEntities, Resources.StepDescriptionEntities, pnlWebApiEntity);
-            InitPanel(pnlGeneratedCode);
+            AddStep(Resources.StepTitleEntities, Resources.StepDescriptionEntities, pnlEntities);
             AddStep(Resources.StepTitleGeneratedCode, Resources.StepDescriptionGeneratedCode, pnlGeneratedCode);
+
+
+            SetupEntitiesTree();
+
+            InitEntityFields(RepositoryType.HeaderDetail);
+            InitEntityCompositions(RepositoryType.HeaderDetail);
+
 
             // Display first step on initial load
             if (_currentWizardStep == -1)
@@ -671,6 +684,15 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 dbLink.Dispose();
                 session.Dispose();
 
+                _entities.Clear();
+                _entities.Add(new BusinessView
+                {
+                    Properties =
+                    {
+                        [BusinessView.Constants.ViewId] = txtWebApiViewId.Text,
+                        [BusinessView.Constants.ModuleId] = cboWebApiModule.Text
+                    }
+                });
             }
             catch
             {
@@ -1575,9 +1597,13 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _generation.ProcessingEvent += ProcessingEvent;
             _generation.StatusEvent += StatusEvent;
 
-            if (_wizardType == WizardType.WEBAPI)
-                return;
+            // Check box for all compositions
+            _allCompositions = new CheckBox
+            {
+                Checked = true
+            };
 
+            _allCompositions.CheckedChanged += AllCompositionsCheckedChanged;
 
             // Entity Step Events
             _addEntityMenuItem.Click += AddEntityMenuItemOnClick;
@@ -1586,6 +1612,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _deleteEntitiesMenuItem.Click += DeleteEntitiesMenuItemOnClick;
             _editContainerName.Click += EditContainerNameMenuItemOnClick;
 
+            if (_wizardType == WizardType.WEBAPI)
+                return;
+
             // Context Events
             _dropDownMenuItem.Click += LayoutMenuItemOnClick;
             _radioButtonsMenuItem.Click += LayoutMenuItemOnClick;
@@ -1593,13 +1622,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _textboxMenuItem.Click += LayoutMenuItemOnClick;
             _finderMenuItem.Click += LayoutMenuItemOnClick;
 
-            // Check box for all compositions
-            _allCompositions = new CheckBox
-            {
-                Checked = true
-            };
-            _allCompositions.CheckedChanged += AllCompositionsCheckedChanged;
-
+          
             // Default to Flat Repository
             cboRepositoryType.SelectedIndex = Convert.ToInt32(RepositoryType.Flat);
 
@@ -2106,6 +2129,59 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             businessView.Options[BusinessView.Constants.GenerateClientFiles] = chkGenerateClientFiles.Checked;
             businessView.Options[BusinessView.Constants.GenerateIfAlreadyExists] = chkGenerateIfExist.Checked;
             businessView.Options[BusinessView.Constants.GenerateEnumsInSingleFile] = true; // Checkbox has been removed
+
+            var verbs = new StringBuilder();
+
+            if (chkWebApiAllowCreate.Checked)
+            {
+                verbs.Append("AllowCreate = true");
+            }
+            
+            if (chkWebApiAllowDelete.Checked)
+            {
+                if (verbs.Length > 0)
+                    verbs.Append(",");
+
+                verbs.Append("AllowDelete = true");
+            }
+
+            if (chkWebApiAllowPatch.Checked)
+            {
+                if (verbs.Length > 0)
+                    verbs.Append(",");
+
+                verbs.Append("AllowPatch = true");
+            }
+
+            if (chkWebApiAllowGet.Checked)
+            {
+                if (verbs.Length > 0)
+                    verbs.Append(",");
+
+                verbs.Append("AllowGet = true");
+            }
+
+            if (chkWebApiAllowProcess.Checked)
+            {
+                if (verbs.Length > 0)
+                    verbs.Append(",");
+
+                verbs.Append("AllowProcess = true");
+            }
+
+            if (chkWebApiAllowPut.Checked)
+            {
+                if (verbs.Length > 0)
+                    verbs.Append(",");
+
+                verbs.Append("AllowPut = true");
+            }
+
+            businessView.Properties[BusinessView.Constants.ResourceName] = "!!!ResourceName!!!";
+            businessView.Properties[BusinessView.Constants.Extension] = "!!!Extension!!!";
+            businessView.Properties[BusinessView.Constants.Verbs] = verbs.ToString();
+            businessView.Properties[BusinessView.Constants.PropertyName] = "!!!PropertyName!!!";
+
 
             businessView.Fields = _entityFields.ToList();
 
@@ -4690,7 +4766,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             {
                 // Proceed to next wizard step or start generation if last step
                 if (!_currentWizardStep.Equals(-1) &&
-					(IsCurrentPanel(Constants.PanelGenerateCode) || IsCurrentPanel(Constants.PanelWebApiEntity)))
+					(IsCurrentPanel(Constants.PanelGenerateCode) || (IsCurrentPanel(Constants.PanelEntities) && _wizardType == WizardType.WEBAPI)))
                 {
                     if (!ValidateStep())
                     {
@@ -4786,16 +4862,13 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                                 }
                             }
                         }
-                        else
-                        {
-                            //todo
-                        }
+                        
                     }
 
                     ShowStep(true);
 
                     // Update text of Next button?
-                    if (IsCurrentPanel(Constants.PanelGenerateCode) || IsCurrentPanel(Constants.PanelWebApiEntity))
+                    if (IsCurrentPanel(Constants.PanelGenerateCode) || (IsCurrentPanel(Constants.PanelEntities) && _wizardType == WizardType.WEBAPI))
                     {
                         btnNext.Text = Resources.Generate;
                     }
@@ -4936,6 +5009,80 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             }
 
             return xDocument;
+        }
+
+        /// <summary>
+        /// Recursively build the settings
+        /// </summary>
+        /// <param name="treeNode"></param>
+        /// <param name="entitySettings"></param>
+        private void BuildSettingFromTreeNodes(TreeNode treeNode, List<ControllerSettings> entitySettings)
+        {
+            // Iterate the tree nodes  
+            foreach (TreeNode entityTreeNode in treeNode.Nodes)
+            {
+                var entitySetting = new ControllerSettings();
+
+                // Get business view from tag so can iterate fields and options
+                var businessView = (BusinessView)entityTreeNode.Tag;
+
+                entitySetting.BusinessView = businessView;
+                entitySetting.KeyProperties = new List<string>();
+                entitySetting.KeyType = ViewKeyType.Ordered;
+
+                if (businessView.PrimaryKeyFields.Count > 0)
+                {
+                    foreach (var key in businessView.PrimaryKeyFields)
+                    {
+                        var propertyName = key + "Key";
+                        entitySetting.KeyProperties.Add(propertyName);
+
+                        var field = businessView.Fields.First(f => f.ServerFieldName == key);
+                        if (field.Type == BusinessDataType.Long
+                            || field.Type == BusinessDataType.Integer
+                            || field.Type == BusinessDataType.Decimal
+                            || field.Type == BusinessDataType.Short
+                            || field.Type == BusinessDataType.Double
+                            || (field.Type == BusinessDataType.String
+                                && field.Mask != null
+                                && field.Mask.Contains("D"))
+                           )
+                        {
+                            entitySetting.KeyProperties.Add(propertyName);
+                            entitySetting.KeyType = ViewKeyType.Sequenced; 
+                        }
+                    }
+                }
+
+                entitySetting.Details = new List<ControllerSettings>();
+
+                // If this node has nodes (children), do them recusively
+                if (entityTreeNode.Nodes.Count != 0)
+                {
+                    // Recursion
+                    BuildSettingFromTreeNodes(entityTreeNode, entitySetting.Details);
+                }
+
+                // Done with this element so add it to the parent (entered) element
+                entitySettings.Add(entitySetting);
+            }
+        }
+
+        /// <summary> Build entity controller settings tree </summary>
+        private List<ControllerSettings> BuildEntityControllerSettings()
+        {
+            var controllerSettings = new List<ControllerSettings>();
+
+            foreach (TreeNode treeNode in treeEntities.Nodes)
+            {
+                var setting = new ControllerSettings();
+
+                BuildSettingFromTreeNodes(treeNode, controllerSettings);
+
+                controllerSettings.Add(setting);
+            }
+
+            return controllerSettings;
         }
         /// <summary> Back Navigation </summary>
         /// <remarks>Back wizard step</remarks>
@@ -5368,19 +5515,15 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <returns>Settings</returns>
         private Settings BuildWebApiSettings()
         {
+            _controllerSettings = BuildEntityControllerSettings();
             return new Settings()
             {
                 WizardType = WizardType.WEBAPI,
                 User = txtWebApiUser.Text.Trim(),
                 Password = txtWebApiPassword.Text.Trim(),
                 Company = txtWebApiCompany.Text.Trim(),
-                ModuleId = "XX",
                 Version = "72A",
-                ControllerSettings = new ControllerSettings 
-                {
-                    ApiVersion = txtWebApiVersion.Text.Trim(),
-                    ViewId = txtWebApiViewId.Text.Trim(),
-                }
+                ControllerSettings = _controllerSettings
             };
         }
 
@@ -5820,9 +5963,18 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     // Get business view from clicked node
                     var node = _modeType == ModeTypeEnum.Add ? _clickedEntityTreeNode.LastNode : _clickedEntityTreeNode;
                     var businessView = (BusinessView)node.Tag;
-
-                    ProcessGeneration.GetBusinessView(businessView, txtUser.Text.Trim(), txtPassword.Text.Trim(),
-                        txtCompany.Text.Trim(), txtVersion.Text.Trim(), txtViewID.Text, cboModule.Text);
+                    if (_wizardType == WizardType.WEB)
+                    {
+                        // Get business view (web)
+                        ProcessGeneration.GetBusinessView(businessView, txtUser.Text.Trim(), txtPassword.Text.Trim(),
+                            txtCompany.Text.Trim(), txtVersion.Text.Trim(), txtViewID.Text, cboModule.Text);
+                    }
+                    else
+                    {
+                        // Get business view (web API)
+                        ProcessGeneration.GetBusinessView(businessView, txtWebApiUser.Text.Trim(), txtWebApiPassword.Text.Trim(),
+                            txtWebApiCompany.Text.Trim(), "72A", txtViewID.Text, cboWebApiModule.Text);
+                    }
 
                     // Assign to entity and model fields
                     txtEntityName.Text = businessView.Properties[BusinessView.Constants.EntityName];

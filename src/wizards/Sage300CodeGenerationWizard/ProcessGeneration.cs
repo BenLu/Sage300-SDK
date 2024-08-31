@@ -444,83 +444,23 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             var session = new Session();
             try
             {
-                var view = new BusinessView();
-                GetBusinessView(view, settings.User, settings.Password, settings.Company, settings.Version,
-                    settings.ControllerSettings.ViewId, settings.ModuleId);
-
-                settings.ControllerSettings.KeyProperties = new List<string>();
-                settings.ControllerSettings.KeyType = ViewKeyType.Ordered;
-
-                var keys = view.Keys;
-                if (keys.Count > 0)
-                {
-                    var key = keys[0];
-                    for (var i = 0; i < key.Length; i++)
-                    {
-                        var propertyName = key + "Key";
-                        settings.ControllerSettings.KeyProperties.Add(propertyName);
-
-                        var field = view.Fields.First(f => f.Name == key);
-                        if (field.Type == BusinessDataType.Long
-                            || field.Type == BusinessDataType.Integer
-                            || field.Type == BusinessDataType.Decimal
-                            || field.Type == BusinessDataType.Short
-                            || field.Type == BusinessDataType.Double
-                            || (field.Type == BusinessDataType.String
-                                && field.Mask != null
-                                && field.Mask.Contains("D"))
-                           )
-                        {
-                            settings.ControllerSettings.KeyType =
-                                ViewKeyType.Sequenced; // assume sequenced key for numeric types
-                        }
-                    }
-                }
-
+                
                 settings.Copyright = "!!!Copyright!!!";
-                settings.ControllerSettings.ModelName = "Terms";
-                settings.CompanyNamespace = "!!!namespace!!!";
-                view.Properties[BusinessView.Constants.ResourceName] = "!!!resourcename!!!" ;
-                settings.Verbs = "!!!verbs!!!";
                 settings.ModuleId = "!!AP!!";
-                settings.Extension = "!!extension!!";
-                settings.ControllerSettings.Details = new List<ControllerSettings>();
-                var fileContent = TransformTemplateToText(view, settings, "Templates.WebApi.Controller");
+                settings.CompanyNamespace = "!!!namespace!!!";
+                foreach (var view in settings.ControllerSettings)
+                {
+
+                    CreateClass(view.BusinessView, view.BusinessView.Text + "Controller.cs",
+                        WebApiTransformTemplateToText(settings, settings.ControllerSettings[0],
+                            "Templates.WebApi.Controller"),
+                        Constants.WebApiKey, Constants.WebApiKey);
+                }
             }
             catch
             {
                 // Seems like not all views have an instance protocol (i.e., AS0020)
             }
-
-
-
-
-            /*
-            var fullPath = Path.Combine(outputPath, subfolder);
-            if (!Directory.Exists(fullPath))
-            {
-                Directory.CreateDirectory(fullPath);
-            }
-
-            // If the endpoint resource name overrided, use the overrided resource name as the file name
-            var fullFileName = "";
-            if (classNameExtender == "Controller" && settings.ResourceNameOverride != null)
-                fullFileName = Path.Combine(fullPath, settings.ResourceNameOverride + classNameExtender + ".cs");
-            else
-                fullFileName = Path.Combine(fullPath, view.Properties[plural ? BusinessView.ResourceName : BusinessView.ModelName] + classNameExtender + ".cs");
-
-            if (File.Exists(fullFileName))
-            {
-                using (var file = new StreamWriter(Path.Combine(OutputPath, "DuplicateModelProblems.txt"), true))
-                {
-                    file.WriteLine(fullFileName + " is duplicated: " + view.Properties[BusinessView.ResourceName] + " in " + subfolder);
-                }
-            }
-            else
-            {
-                File.WriteAllText(fullFileName, fileContent);
-            }
-            */
 
         }
 
@@ -571,6 +511,16 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             businessView.Properties[BusinessView.Constants.ModelName] = description;
             businessView.Properties[BusinessView.Constants.EntityName] = description;
+
+            businessView.PrimaryKeyFields = new List<string>();
+            if (view.Keys.Count > 0)
+            {
+                var key = view.Keys[0];
+                for (int i=0; i < key.FieldCount; i++)
+                {
+                    businessView.PrimaryKeyFields.Add(key.Field(i).Name);
+                }
+            }
 
 #if ENABLE_TK_244885
             businessView.Properties[BusinessView.Constants.CustomCommonResxName] = PrivateConstants.CustomCommonResx;
@@ -1521,6 +1471,30 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             {
                 templateClassInstance.Session["element"] = element;
             }
+
+            templateClassInstance.Initialize();
+
+            return templateClassInstance.TransformText();
+        }
+
+        private static string WebApiTransformTemplateToText(Settings settings, ControllerSettings view, string templateClassName)
+        {
+            // instantiate a template class
+            var type = Type.GetType("Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard." + templateClassName);
+
+            // Protection from incorrect class name
+            if (type == null)
+            {
+                return string.Empty;
+            }
+
+            dynamic templateClassInstance = Activator.CreateInstance(type);
+
+            templateClassInstance.Session = new Dictionary<string, object>();
+
+            templateClassInstance.Session["settings"] = settings;
+            templateClassInstance.Session["view"] = view;
+
 
             templateClassInstance.Initialize();
 

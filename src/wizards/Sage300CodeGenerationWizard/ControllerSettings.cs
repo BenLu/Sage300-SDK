@@ -48,6 +48,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// </summary>
         public string ViewId { get; set; }
 
+        public BusinessView BusinessView { get; set; }
+
         /// <summary>
         /// The view type
         /// </summary>
@@ -75,6 +77,15 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         public string ModelName { get; set; }
 
         public List<ControllerSettings> Details { get; set; }
+
         public List<string> ReferencedAppModules { get; set; }
+
+        /// <summary> supported verbs </summary>
+        public string Verbs { get; set; }
+
+        /// <summary> supported verbs </summary>
+        public string Extension { get; set; }
+
+
     }
 }

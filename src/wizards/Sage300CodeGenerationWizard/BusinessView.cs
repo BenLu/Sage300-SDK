@@ -52,6 +52,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             public const string GenerateEnumsInSingleFile = "GenerateEnumsInSingleFile";
             public const string WorkflowKindId = "WorkflowKindId";
             public const string ForGrid = "ForGrid";
+            public const string Verbs = "Verbs";
+            public const string PropertyName = "PropertyName";
+            public const string Extension = "Extension";
 #if ENABLE_TK_244885
             public const string CustomCommonResxName = "CustomCommonResxName";
 #endif
@@ -90,6 +93,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                         select item.Name).ToList();
             }
         }
+
+        /// <summary> The primary key fields </summary>
+        public List<string> PrimaryKeyFields { get; set; }
 
         /// <summary> Text for tree display </summary>
         public string Text { get; set; }

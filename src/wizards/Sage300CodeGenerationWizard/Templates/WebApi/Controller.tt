@@ -20,18 +20,17 @@
 <#@ template language="C#" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard" #>
-<#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.BusinessView" name="view" #>
 <#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Settings" name="settings" #>
+<#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.ControllerSettings" name="view" #>
 <#
     // Locals
     var moduleId = settings.ModuleId;
-    var modelName = view.Properties[BusinessView.Constants.ModelName];
     var copyright = settings.Copyright;
-    var extension = settings.Extension;
     var companyNamespace = settings.CompanyNamespace;
-    var resourceName = view.Properties[BusinessView.Constants.ResourceName];
-    var controllerSettings = settings.ControllerSettings;
-	var RestrictedViewResourceControllerValue = settings.Verbs;
+    var extension = view.BusinessView.Properties[BusinessView.Constants.Extension];
+    var modelName = view.BusinessView.Properties[BusinessView.Constants.ModelName];
+    var resourceName = view.BusinessView.Properties[BusinessView.Constants.ResourceName];
+	var RestrictedViewResourceControllerValue = view.BusinessView.Properties[BusinessView.Constants.Verbs];
 #>
 // <#=copyright#>
 
@@ -73,7 +72,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         {
             builder.EntitySet<<#=modelName#>>("<#=resourceName#>");
 <#
-    foreach (var detail in controllerSettings.Details)
+    foreach (var detail in view.Details)
     {
 #>
             builder.ComplexType<<#=detail.ModelName#>>();
@@ -89,10 +88,10 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         protected override IViewResourceEntity GetViewEntityHierarchy()
         {
 <#
-    DefineEntities(controllerSettings, "");
-    DefineRelationships(controllerSettings, "");
+    DefineEntities(view, "");
+    DefineRelationships(view, "");
 #>
-            return <#=controllerSettings.ModelName#>Entity;
+            return <#=modelName#>Entity;
         }
     }
 }
@@ -100,19 +99,19 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
 <#+
     public void DefineEntities(ControllerSettings current, string Prefix)
     {
-	    var keyType = (current.KeyProperties.Count == 0) ? "" : current.KeyType == ViewKeyType.Sequenced ? "ViewKeyType.Sequenced" : "ViewKeyType.Ordered";
+        var keyType = (current.KeyProperties.Count == 0) ? "" : current.KeyType == ViewKeyType.Sequenced ? "ViewKeyType.Sequenced" : "ViewKeyType.Ordered";
         var keySegments = "";
         foreach (var keyProperty in current.KeyProperties)
         {
             keySegments += string.Format(@", (m => m.{0})", keyProperty);
         }
-
+		var viewModelName = current.BusinessView.Properties[BusinessView.Constants.ModelName];
 #>
-        var <#=Prefix#><#=current.ModelName#>Entity = ViewResourceEntity<<#=current.ModelName#>>.Create(<#=keyType#><#=keySegments#>);
+            var <#=Prefix#><#=viewModelName#>Entity = ViewResourceEntity<<#=viewModelName#>>.Create(<#=keyType#><#=keySegments#>);
 <#+
         foreach (var detailSettings in current.Details)
         {
-            DefineEntities(detailSettings, Prefix + current.ModelName + "_");
+            DefineEntities(detailSettings, Prefix + viewModelName + "_");
         }
     }
 #>
@@ -121,10 +120,14 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
     {
         foreach (var detailSettings in current.Details)
         {
+			var headerViewModelName = current.BusinessView.Properties[BusinessView.Constants.ModelName];
+			var detailsViewModelName = detailSettings.BusinessView.Properties[BusinessView.Constants.ModelName];
+			var detailsViewPropertyName = detailSettings.BusinessView.Properties[BusinessView.Constants.PropertyName];
+
 #>
-            <#=Prefix#><#=current.ModelName#>Entity.AddDetail(<#=Prefix#><#=current.ModelName#>_<#=detailSettings.ModelName#>Entity, (m => m.<#=detailSettings.PropertyName#>));
+            <#=Prefix#><#=headerViewModelName#>Entity.AddDetail(<#=Prefix#><#=headerViewModelName#>_<#=detailsViewModelName#>Entity, (m => m.<#=detailsViewPropertyName#>));
 <#+
-            DefineRelationships(detailSettings, Prefix + current.ModelName + "_");
+            DefineRelationships(detailSettings, Prefix + headerViewModelName + "_");
         }
     }
 #>
