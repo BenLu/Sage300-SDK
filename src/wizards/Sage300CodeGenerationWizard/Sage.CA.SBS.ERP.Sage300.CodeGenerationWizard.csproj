@@ -178,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\WebApi\ModelGenerated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGenerated.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\ResXManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Templates\Common\Class\ModelCommonEnums.cs">
@@ -662,6 +667,10 @@
     <Content Include="Images\sage_300_logo.png" />
     <Content Include="Images\tab.png" />
     <Content Include="Resources\sage300-logo-sq.png" />
+    <Content Include="Templates\WebApi\ModelGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelGenerated.cs</LastGenOutput>
+    </Content>
     <None Include="Templates\WebApi\Controller.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Controller.cs</LastGenOutput>

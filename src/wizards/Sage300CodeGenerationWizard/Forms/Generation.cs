@@ -2111,8 +2111,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             ReconcileEnumerationDataBetweenEnumsAndFields(businessView);
 #endif
             // Get valued from controls and add to object
-            businessView.Properties[BusinessView.Constants.ModuleId] = cboModule.Text;
-            businessView.Properties[BusinessView.Constants.ViewId] = txtViewID.Text;
             businessView.Properties[BusinessView.Constants.ReportIni] = txtReportIniFile.Text;
             businessView.Properties[BusinessView.Constants.ReportKey] = cboReportKeys.Text;
             businessView.Properties[BusinessView.Constants.ProgramId] = txtReportProgramId.Text;
@@ -5523,7 +5521,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 Password = txtWebApiPassword.Text.Trim(),
                 Company = txtWebApiCompany.Text.Trim(),
                 Version = "72A",
-                ControllerSettings = _controllerSettings
+                ModuleId = cboWebApiModule.Text.Trim(),
+                CompanyNamespace = _companyNamespace,
+                Copyright = _copyright,
+                ControllerSettings = _controllerSettings,
+                Projects = _projects,
+                PromptIfExists = false,
             };
         }
 

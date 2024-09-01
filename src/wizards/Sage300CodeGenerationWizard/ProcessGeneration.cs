@@ -79,8 +79,18 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             /// <summary> WebApiKey is used as a dictionary key for projects </summary>
             public const string WebApiKey = "WebApi";
 
+            /// <summary> subfolder for WebApiController </summary>
+            public const string SubfolderWebApiControllerKey = "Controllers";
+
             /// <summary> WebApiModelsKey is used as a dictionary key for projects </summary>
             public const string WebApiModelsKey = "WebApi.Models";
+
+            /// <summary> subfolder for WebApi.Models</summary>
+            public const string SubfolderWebApiModelsCustomKey = "Custom";
+
+
+            /// <summary> subfolder for WebApi.Models</summary>
+            public const string SubfolderWebApiModelsGeneratedKey = "Generated";
 
             /// <summary> BusinessRepositoryKey is used as a dictionary key for projects </summary>
             public const string BusinessRepositoryKey = "BusinessRepository";
@@ -156,6 +166,16 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             /// <summary> SubFolderNameFields is used as a subfolder name </summary>
             public const string SubFolderNameFields = "Fields";
+
+            /// <summary> SubFolderWebApiControllers is used as a subfolder name </summary>
+            public const string SubFolderWebApiControllers = "Controllers";
+
+            /// <summary> SubFolderWebApiModelsCustom is used as a subfolder name </summary>
+            public const string SubFolderWebApiModelsCustom = "Custom";
+
+            /// <summary> SubFolderWebApiModelsGenerated is used as a subfolder name </summary>
+            public const string SubFolderWebApiModelsGenerated = "Generated";
+
 
             /// <summary> SubFolderNameEnums is used as a subfolder name </summary>
             public const string SubFolderNameEnums = "Enums";
@@ -444,17 +464,17 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             var session = new Session();
             try
             {
-                
-                settings.Copyright = "!!!Copyright!!!";
-                settings.ModuleId = "!!AP!!";
-                settings.CompanyNamespace = "!!!namespace!!!";
+                _settings = settings;
+
+                BuildWebApiSubfolders();
+
                 foreach (var view in settings.ControllerSettings)
                 {
 
                     CreateClass(view.BusinessView, view.BusinessView.Text + "Controller.cs",
                         WebApiTransformTemplateToText(settings, settings.ControllerSettings[0],
                             "Templates.WebApi.Controller"),
-                        Constants.WebApiKey, Constants.WebApiKey);
+                        Constants.WebApiKey, Constants.SubfolderWebApiControllerKey);
                 }
             }
             catch
@@ -1135,6 +1155,33 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     {Constants.SubFolderWebSqlKey, BusinessViewHelper.ConcatStrings(new []{project.Value.ProjectFolder, string.Empty})},
                     {Constants.SubFolderWebScriptsKey, BusinessViewHelper.ConcatStrings(new []{path, Constants.SubFolderNameScripts, entityName})},
                     {Constants.SubFolderWebFinderDefKey, BusinessViewHelper.ConcatStrings(new []{path, Constants.SubFolderNameScripts})}
+                };
+                project.Value.Subfolders = subfolders;
+            }
+        }
+
+        /// <summary> Build subfolders for later use by SaveFile routine </summary>
+        private void BuildWebApiSubfolders()
+        {
+            // Iterate Models
+            var projects = _settings.Projects[Constants.WebApiModelsKey];
+            foreach (var project in projects)
+            {
+                var subfolders = new Dictionary<string, string>
+                {
+                    {Constants.SubfolderWebApiModelsCustomKey, GetSubfolderName(Constants.SubFolderWebApiModelsCustom)},
+                    {Constants.SubfolderWebApiModelsGeneratedKey, GetSubfolderName(Constants.SubFolderWebApiModelsGenerated)},
+                };
+                project.Value.Subfolders = subfolders;
+            }
+
+            // Iterate BusinessRepository
+            projects = _settings.Projects[Constants.WebApiKey];
+            foreach (var project in projects)
+            {
+                var subfolders = new Dictionary<string, string>
+                {
+                    {Constants.SubfolderWebApiControllerKey, GetSubfolderName(Constants.SubFolderWebApiControllers)},
                 };
                 project.Value.Subfolders = subfolders;
             }
