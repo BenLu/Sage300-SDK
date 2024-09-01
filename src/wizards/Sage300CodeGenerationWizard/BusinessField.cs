@@ -21,6 +21,8 @@
 #region Namespaces
 #endregion
 
+using ACCPAC.Advantage;
+
 namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 {
     /// <summary> BusinessField class to hold properties for a field </summary>
@@ -98,6 +100,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <summary> Mask is the fields PresentationMask for the ViewField attribute</summary>
         public string Mask { get; set; }
 
+        public ViewFieldType ViewFieldType { get; set; }
 
 #if ENABLE_TK_244885
         /// <summary>IsCommon is true if field has been marked as being common (or shared) </summary>

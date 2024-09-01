@@ -468,14 +468,23 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
                 BuildWebApiSubfolders();
 
-                foreach (var view in settings.ControllerSettings)
+                foreach (var controllerSettings in settings.ControllerSettings)
                 {
 
-                    CreateClass(view.BusinessView, view.BusinessView.Text + "Controller.cs",
-                        WebApiTransformTemplateToText(settings, settings.ControllerSettings[0],
+                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + "Controller.cs",
+                        WebApiTransformTemplateToText(settings, controllerSettings,
                             "Templates.WebApi.Controller"),
                         Constants.WebApiKey, Constants.SubfolderWebApiControllerKey);
+
+
+                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + "Generated.cs",
+                        WebApiTransformTemplateToText(settings, controllerSettings,
+                            "Templates.WebApi.ModelGenerated"),
+                        Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsGeneratedKey);
+
                 }
+
+
             }
             catch
             {
@@ -1428,7 +1437,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     MinValue = field.MinValue,
                     MaxValue = field.MaxValue,
                     EntityFieldType = Convert.ToInt32(field.Type),
-                    Mask = field.PresentationMask
+                    Mask = field.PresentationMask,
+                    ViewFieldType = field.Type
                 };
 
                 // No longer necessary (TK-253029)
@@ -1524,7 +1534,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             return templateClassInstance.TransformText();
         }
 
-        private static string WebApiTransformTemplateToText(Settings settings, ControllerSettings view, string templateClassName)
+        private static string WebApiTransformTemplateToText(Settings settings, ControllerSettings controllerSettings, string templateClassName)
         {
             // instantiate a template class
             var type = Type.GetType("Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard." + templateClassName);
@@ -1540,7 +1550,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             templateClassInstance.Session = new Dictionary<string, object>();
 
             templateClassInstance.Session["settings"] = settings;
-            templateClassInstance.Session["view"] = view;
+            templateClassInstance.Session["controllerSettings"] = controllerSettings;
 
 
             templateClassInstance.Initialize();

@@ -21,16 +21,16 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard" #>
 <#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Settings" name="settings" #>
-<#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.ControllerSettings" name="view" #>
+<#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.ControllerSettings" name="controllerSettings" #>
 <#
     // Locals
     var moduleId = settings.ModuleId;
     var copyright = settings.Copyright;
     var companyNamespace = settings.CompanyNamespace;
-    var extension = view.BusinessView.Properties[BusinessView.Constants.Extension];
-    var modelName = view.BusinessView.Properties[BusinessView.Constants.ModelName];
-    var resourceName = view.BusinessView.Properties[BusinessView.Constants.ResourceName];
-	var RestrictedViewResourceControllerValue = view.BusinessView.Properties[BusinessView.Constants.Verbs];
+    var extension = controllerSettings.BusinessView.Properties[BusinessView.Constants.Extension];
+    var modelName = controllerSettings.BusinessView.Properties[BusinessView.Constants.ModelName];
+    var resourceName = controllerSettings.BusinessView.Properties[BusinessView.Constants.ResourceName];
+	var RestrictedViewResourceControllerValue = controllerSettings.BusinessView.Properties[BusinessView.Constants.Verbs];
 #>
 // <#=copyright#>
 
@@ -72,7 +72,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         {
             builder.EntitySet<<#=modelName#>>("<#=resourceName#>");
 <#
-    foreach (var detail in view.Details)
+    foreach (var detail in controllerSettings.Details)
     {
 #>
             builder.ComplexType<<#=detail.ModelName#>>();
@@ -88,8 +88,8 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         protected override IViewResourceEntity GetViewEntityHierarchy()
         {
 <#
-    DefineEntities(view, "");
-    DefineRelationships(view, "");
+    DefineEntities(controllerSettings, "");
+    DefineRelationships(controllerSettings, "");
 #>
             return <#=modelName#>Entity;
         }

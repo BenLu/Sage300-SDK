@@ -5073,11 +5073,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             foreach (TreeNode treeNode in treeEntities.Nodes)
             {
-                var setting = new ControllerSettings();
-
                 BuildSettingFromTreeNodes(treeNode, controllerSettings);
-
-                controllerSettings.Add(setting);
             }
 
             return controllerSettings;
