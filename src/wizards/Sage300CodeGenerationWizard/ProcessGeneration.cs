@@ -482,6 +482,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                             "Templates.WebApi.ModelGenerated"),
                         Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsGeneratedKey);
 
+                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + ".cs",
+                        WebApiTransformTemplateToText(settings, controllerSettings,
+                            "Templates.WebApi.ModelCustom"),
+                        Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsCustomKey);
+
+
                 }
 
 

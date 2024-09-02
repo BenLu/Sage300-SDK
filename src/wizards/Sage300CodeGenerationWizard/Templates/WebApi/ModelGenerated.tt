@@ -28,9 +28,9 @@
     var moduleId = settings.ModuleId;
     var copyright = settings.Copyright;
     var companyNamespace = settings.CompanyNamespace;
-    var extension = controllerSettings.BusinessView.Properties[BusinessView.Constants.Extension];
-    var modelName = controllerSettings.BusinessView.Properties[BusinessView.Constants.ModelName];
 	var view = controllerSettings.BusinessView;
+    var extension = view.Properties[BusinessView.Constants.Extension];
+    var modelName = view.Properties[BusinessView.Constants.ModelName];
 #>
 // <#=copyright#>
 
@@ -66,7 +66,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Models<#=extension#>
     /// </summary>
 <#
     {
-     var annotation = string.Format("[ViewModel(ViewName = \"{0}\", ViewId = \"{1}\")]", view.Properties[BusinessView.Constants.ProgramId], view.Properties[BusinessView.Constants.ViewId]);    
+     var annotation = string.Format("[ViewModel(ViewName = \"{0}\", ViewId = \"{1}\")]", view.Properties[BusinessView.Constants.EntityName], view.Properties[BusinessView.Constants.ViewId]);    
 #>
     <#=annotation#>
 <#

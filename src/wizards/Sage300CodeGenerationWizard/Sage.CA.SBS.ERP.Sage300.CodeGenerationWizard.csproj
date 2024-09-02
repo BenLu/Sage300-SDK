@@ -178,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\WebApi\ModelCustom.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCustom.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\WebApi\ModelGenerated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -662,6 +667,10 @@
     <Content Include="Images\sage_300_logo.png" />
     <Content Include="Images\tab.png" />
     <Content Include="Resources\sage300-logo-sq.png" />
+    <None Include="Templates\WebApi\ModelCustom.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelCustom.cs</LastGenOutput>
+    </None>
     <None Include="Templates\WebApi\ModelGenerated.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ModelGenerated.cs</LastGenOutput>
