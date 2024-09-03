@@ -114,6 +114,13 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.pnlComposition = new System.Windows.Forms.Panel();
             this.grdEntityCompositions = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new MetroFramework.Controls.MetroTabPage();
+            this.chkWebApiAllowProcess = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowDelete = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowPut = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowPatch = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowCreate = new MetroFramework.Controls.MetroCheckBox();
+            this.chkWebApiAllowGet = new MetroFramework.Controls.MetroCheckBox();
             this.pnlUIGeneration = new System.Windows.Forms.Panel();
             this.splitDesigner = new System.Windows.Forms.SplitContainer();
             this.treeUIEntities = new System.Windows.Forms.TreeView();
@@ -163,13 +170,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.btnBack = new MetroFramework.Controls.MetroButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.htmlToolTip1 = new MetroFramework.Drawing.Html.HtmlToolTip();
-            this.tabPage5 = new MetroFramework.Controls.MetroTabPage();
-            this.chkWebApiAllowProcess = new MetroFramework.Controls.MetroCheckBox();
-            this.chkWebApiAllowDelete = new MetroFramework.Controls.MetroCheckBox();
-            this.chkWebApiAllowPut = new MetroFramework.Controls.MetroCheckBox();
-            this.chkWebApiAllowPatch = new MetroFramework.Controls.MetroCheckBox();
-            this.chkWebApiAllowCreate = new MetroFramework.Controls.MetroCheckBox();
-            this.chkWebApiAllowGet = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdResourceInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitBase)).BeginInit();
             this.splitBase.Panel1.SuspendLayout();
@@ -201,6 +201,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.SuspendLayout();
             this.pnlComposition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEntityCompositions)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.pnlUIGeneration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).BeginInit();
             this.splitDesigner.Panel2.SuspendLayout();
@@ -216,7 +217,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grpCredentials.SuspendLayout();
             this.pnlGenerateCode.SuspendLayout();
             this.pnlButtons.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCompany
@@ -1662,6 +1662,110 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.grdEntityCompositions.TabIndex = 1;
             this.grdEntityCompositions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdEntityCompositions_CellFormatting);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chkWebApiAllowProcess);
+            this.tabPage5.Controls.Add(this.chkWebApiAllowDelete);
+            this.tabPage5.Controls.Add(this.chkWebApiAllowPut);
+            this.tabPage5.Controls.Add(this.chkWebApiAllowPatch);
+            this.tabPage5.Controls.Add(this.chkWebApiAllowCreate);
+            this.tabPage5.Controls.Add(this.chkWebApiAllowGet);
+            this.tabPage5.HorizontalScrollbarBarColor = true;
+            this.tabPage5.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPage5.HorizontalScrollbarSize = 10;
+            this.tabPage5.Location = new System.Drawing.Point(4, 38);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(782, 164);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Verbs";
+            this.tabPage5.VerticalScrollbarBarColor = true;
+            this.tabPage5.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPage5.VerticalScrollbarSize = 10;
+            // 
+            // chkWebApiAllowProcess
+            // 
+            this.chkWebApiAllowProcess.AutoSize = true;
+            this.chkWebApiAllowProcess.Checked = true;
+            this.chkWebApiAllowProcess.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowProcess.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowProcess.Location = new System.Drawing.Point(418, 98);
+            this.chkWebApiAllowProcess.Name = "chkWebApiAllowProcess";
+            this.chkWebApiAllowProcess.Size = new System.Drawing.Size(108, 19);
+            this.chkWebApiAllowProcess.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowProcess.TabIndex = 34;
+            this.chkWebApiAllowProcess.Text = "Allow Process";
+            this.chkWebApiAllowProcess.UseSelectable = true;
+            // 
+            // chkWebApiAllowDelete
+            // 
+            this.chkWebApiAllowDelete.AutoSize = true;
+            this.chkWebApiAllowDelete.Checked = true;
+            this.chkWebApiAllowDelete.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowDelete.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowDelete.Location = new System.Drawing.Point(418, 64);
+            this.chkWebApiAllowDelete.Name = "chkWebApiAllowDelete";
+            this.chkWebApiAllowDelete.Size = new System.Drawing.Size(101, 19);
+            this.chkWebApiAllowDelete.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowDelete.TabIndex = 33;
+            this.chkWebApiAllowDelete.Text = "Allow Delete";
+            this.chkWebApiAllowDelete.UseSelectable = true;
+            // 
+            // chkWebApiAllowPut
+            // 
+            this.chkWebApiAllowPut.AutoSize = true;
+            this.chkWebApiAllowPut.Checked = true;
+            this.chkWebApiAllowPut.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowPut.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowPut.Location = new System.Drawing.Point(418, 32);
+            this.chkWebApiAllowPut.Name = "chkWebApiAllowPut";
+            this.chkWebApiAllowPut.Size = new System.Drawing.Size(83, 19);
+            this.chkWebApiAllowPut.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowPut.TabIndex = 32;
+            this.chkWebApiAllowPut.Text = "Allow Put";
+            this.chkWebApiAllowPut.UseSelectable = true;
+            // 
+            // chkWebApiAllowPatch
+            // 
+            this.chkWebApiAllowPatch.AutoSize = true;
+            this.chkWebApiAllowPatch.Checked = true;
+            this.chkWebApiAllowPatch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowPatch.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowPatch.Location = new System.Drawing.Point(289, 92);
+            this.chkWebApiAllowPatch.Name = "chkWebApiAllowPatch";
+            this.chkWebApiAllowPatch.Size = new System.Drawing.Size(96, 19);
+            this.chkWebApiAllowPatch.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowPatch.TabIndex = 31;
+            this.chkWebApiAllowPatch.Text = "Allow Patch";
+            this.chkWebApiAllowPatch.UseSelectable = true;
+            // 
+            // chkWebApiAllowCreate
+            // 
+            this.chkWebApiAllowCreate.AutoSize = true;
+            this.chkWebApiAllowCreate.Checked = true;
+            this.chkWebApiAllowCreate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowCreate.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowCreate.Location = new System.Drawing.Point(289, 61);
+            this.chkWebApiAllowCreate.Name = "chkWebApiAllowCreate";
+            this.chkWebApiAllowCreate.Size = new System.Drawing.Size(102, 19);
+            this.chkWebApiAllowCreate.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowCreate.TabIndex = 30;
+            this.chkWebApiAllowCreate.Text = "Allow Create";
+            this.chkWebApiAllowCreate.UseSelectable = true;
+            // 
+            // chkWebApiAllowGet
+            // 
+            this.chkWebApiAllowGet.AutoSize = true;
+            this.chkWebApiAllowGet.Checked = true;
+            this.chkWebApiAllowGet.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWebApiAllowGet.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWebApiAllowGet.Location = new System.Drawing.Point(289, 32);
+            this.chkWebApiAllowGet.Name = "chkWebApiAllowGet";
+            this.chkWebApiAllowGet.Size = new System.Drawing.Size(84, 19);
+            this.chkWebApiAllowGet.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkWebApiAllowGet.TabIndex = 29;
+            this.chkWebApiAllowGet.Text = "Allow Get";
+            this.chkWebApiAllowGet.UseSelectable = true;
+            // 
             // pnlUIGeneration
             // 
             this.pnlUIGeneration.Controls.Add(this.splitDesigner);
@@ -2232,110 +2336,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             this.htmlToolTip1.OwnerDraw = true;
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.chkWebApiAllowProcess);
-            this.tabPage5.Controls.Add(this.chkWebApiAllowDelete);
-            this.tabPage5.Controls.Add(this.chkWebApiAllowPut);
-            this.tabPage5.Controls.Add(this.chkWebApiAllowPatch);
-            this.tabPage5.Controls.Add(this.chkWebApiAllowCreate);
-            this.tabPage5.Controls.Add(this.chkWebApiAllowGet);
-            this.tabPage5.HorizontalScrollbarBarColor = true;
-            this.tabPage5.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabPage5.HorizontalScrollbarSize = 10;
-            this.tabPage5.Location = new System.Drawing.Point(4, 38);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(782, 164);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Verbs";
-            this.tabPage5.VerticalScrollbarBarColor = true;
-            this.tabPage5.VerticalScrollbarHighlightOnWheel = false;
-            this.tabPage5.VerticalScrollbarSize = 10;
-            // 
-            // chkWebApiAllowProcess
-            // 
-            this.chkWebApiAllowProcess.AutoSize = true;
-            this.chkWebApiAllowProcess.Checked = true;
-            this.chkWebApiAllowProcess.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowProcess.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowProcess.Location = new System.Drawing.Point(418, 98);
-            this.chkWebApiAllowProcess.Name = "chkWebApiAllowProcess";
-            this.chkWebApiAllowProcess.Size = new System.Drawing.Size(108, 19);
-            this.chkWebApiAllowProcess.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowProcess.TabIndex = 34;
-            this.chkWebApiAllowProcess.Text = "Allow Process";
-            this.chkWebApiAllowProcess.UseSelectable = true;
-            // 
-            // chkWebApiAllowDelete
-            // 
-            this.chkWebApiAllowDelete.AutoSize = true;
-            this.chkWebApiAllowDelete.Checked = true;
-            this.chkWebApiAllowDelete.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowDelete.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowDelete.Location = new System.Drawing.Point(418, 64);
-            this.chkWebApiAllowDelete.Name = "chkWebApiAllowDelete";
-            this.chkWebApiAllowDelete.Size = new System.Drawing.Size(101, 19);
-            this.chkWebApiAllowDelete.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowDelete.TabIndex = 33;
-            this.chkWebApiAllowDelete.Text = "Allow Delete";
-            this.chkWebApiAllowDelete.UseSelectable = true;
-            // 
-            // chkWebApiAllowPut
-            // 
-            this.chkWebApiAllowPut.AutoSize = true;
-            this.chkWebApiAllowPut.Checked = true;
-            this.chkWebApiAllowPut.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowPut.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowPut.Location = new System.Drawing.Point(418, 32);
-            this.chkWebApiAllowPut.Name = "chkWebApiAllowPut";
-            this.chkWebApiAllowPut.Size = new System.Drawing.Size(83, 19);
-            this.chkWebApiAllowPut.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowPut.TabIndex = 32;
-            this.chkWebApiAllowPut.Text = "Allow Put";
-            this.chkWebApiAllowPut.UseSelectable = true;
-            // 
-            // chkWebApiAllowPatch
-            // 
-            this.chkWebApiAllowPatch.AutoSize = true;
-            this.chkWebApiAllowPatch.Checked = true;
-            this.chkWebApiAllowPatch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowPatch.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowPatch.Location = new System.Drawing.Point(289, 92);
-            this.chkWebApiAllowPatch.Name = "chkWebApiAllowPatch";
-            this.chkWebApiAllowPatch.Size = new System.Drawing.Size(96, 19);
-            this.chkWebApiAllowPatch.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowPatch.TabIndex = 31;
-            this.chkWebApiAllowPatch.Text = "Allow Patch";
-            this.chkWebApiAllowPatch.UseSelectable = true;
-            // 
-            // chkWebApiAllowCreate
-            // 
-            this.chkWebApiAllowCreate.AutoSize = true;
-            this.chkWebApiAllowCreate.Checked = true;
-            this.chkWebApiAllowCreate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowCreate.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowCreate.Location = new System.Drawing.Point(289, 61);
-            this.chkWebApiAllowCreate.Name = "chkWebApiAllowCreate";
-            this.chkWebApiAllowCreate.Size = new System.Drawing.Size(102, 19);
-            this.chkWebApiAllowCreate.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowCreate.TabIndex = 30;
-            this.chkWebApiAllowCreate.Text = "Allow Create";
-            this.chkWebApiAllowCreate.UseSelectable = true;
-            // 
-            // chkWebApiAllowGet
-            // 
-            this.chkWebApiAllowGet.AutoSize = true;
-            this.chkWebApiAllowGet.Checked = true;
-            this.chkWebApiAllowGet.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWebApiAllowGet.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowGet.Location = new System.Drawing.Point(289, 32);
-            this.chkWebApiAllowGet.Name = "chkWebApiAllowGet";
-            this.chkWebApiAllowGet.Size = new System.Drawing.Size(84, 19);
-            this.chkWebApiAllowGet.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkWebApiAllowGet.TabIndex = 29;
-            this.chkWebApiAllowGet.Text = "Allow Get";
-            this.chkWebApiAllowGet.UseSelectable = true;
-            // 
             // Generation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2394,6 +2394,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabPage4.ResumeLayout(false);
             this.pnlComposition.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEntityCompositions)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.pnlUIGeneration.ResumeLayout(false);
             this.splitDesigner.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitDesigner)).EndInit();
@@ -2416,8 +2418,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.pnlGenerateCode.ResumeLayout(false);
             this.pnlButtons.ResumeLayout(false);
             this.pnlButtons.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }

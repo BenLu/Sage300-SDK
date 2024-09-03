@@ -79,8 +79,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             /// <summary> WebApiKey is used as a dictionary key for projects </summary>
             public const string WebApiKey = "WebApi";
 
-            /// <summary> subfolder for WebApiController </summary>
+            /// <summary> subfolder for WebApi Controller </summary>
             public const string SubfolderWebApiControllerKey = "Controllers";
+
+            /// <summary> subfolder for WebApi versioning </summary>
+            public const string SubfolderWebApiVersioningKey = "Versioning";
 
             /// <summary> WebApiModelsKey is used as a dictionary key for projects </summary>
             public const string WebApiModelsKey = "WebApi.Models";
@@ -169,6 +172,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             /// <summary> SubFolderWebApiControllers is used as a subfolder name </summary>
             public const string SubFolderWebApiControllers = "Controllers";
+
+            /// <summary> SubFolderWebApiVersioning is used as a subfolder name </summary>
+            public const string SubFolderWebApiVersioning = "Versioning";
 
             /// <summary> SubFolderWebApiModelsCustom is used as a subfolder name </summary>
             public const string SubFolderWebApiModelsCustom = "Custom";
@@ -488,6 +494,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                         Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsCustomKey);
 
 
+                    UpdateWebApiVersioning(controllerSettings.BusinessView, WebApiTransformTemplateToText(settings, controllerSettings,
+                            "Templates.WebApi.VersionController"));
+
                 }
 
 
@@ -628,6 +637,39 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 File.WriteAllText(modelFile, sb.ToString());
             }
         }
+
+        /// <summary>
+        /// Update the version file
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="versioning"></param>
+        private void UpdateWebApiVersioning(BusinessView entity, string versioning)
+        {
+            var module = entity.Properties[BusinessView.Constants.ModuleId];
+            var projectInfo = _settings.Projects[Constants.WebApiKey][module];
+
+            var subFolder = projectInfo.Subfolders[Constants.SubfolderWebApiVersioningKey];
+            var filePath = BusinessViewHelper.ConcatStrings(new[] { projectInfo.ProjectFolder, subFolder });
+            var fullFileName = BusinessViewHelper.ConcatStrings(new[] { filePath, module + "ControllerVersionMapGenerated.cs" });
+            if (File.Exists(fullFileName))
+            {
+                var fs = File.OpenText(fullFileName);
+                var sb = new StringBuilder();
+                string line;
+
+                while ((line = fs.ReadLine()) != null)
+                {
+                    sb.AppendLine(line);
+                    if (line.Trim().Equals("{"))
+                    {
+                        sb.Append(versioning);
+                    }
+                }
+                fs.Close();
+                File.WriteAllText(fullFileName, sb.ToString());
+            }
+        }
+
 
         /// <summary>
         /// Lower the string first char
@@ -1197,6 +1239,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 var subfolders = new Dictionary<string, string>
                 {
                     {Constants.SubfolderWebApiControllerKey, GetSubfolderName(Constants.SubFolderWebApiControllers)},
+                    {Constants.SubfolderWebApiVersioningKey, GetSubfolderName(Constants.SubFolderWebApiVersioning)},
                 };
                 project.Value.Subfolders = subfolders;
             }

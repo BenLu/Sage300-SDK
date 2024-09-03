@@ -5523,6 +5523,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 ControllerSettings = _controllerSettings,
                 Projects = _projects,
                 PromptIfExists = false,
+                WebApiVersion = txtWebApiVersion.Text.Trim(),
             };
         }
 

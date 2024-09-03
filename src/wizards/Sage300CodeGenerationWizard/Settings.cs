@@ -48,6 +48,12 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         public string Password { get; set; }
         /// <summary> Version for Business View </summary>
         public string Version { get; set; }
+
+        /// <summary>
+        /// webapi version
+        /// </summary>
+        public string WebApiVersion { get; set; }
+
         /// <summary> Company for Business View </summary>
         public string Company { get; set; }
         /// <summary> RepositoryType for Business View </summary>
