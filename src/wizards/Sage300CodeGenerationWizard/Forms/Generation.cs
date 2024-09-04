@@ -2224,7 +2224,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             businessView.Text = businessView.Properties[BusinessView.Constants.EntityName];
 
             node.Name = BuildEntityNodeName(businessView);
-            node.Text = BuildEntityText(businessView);
+            node.Text = _wizardType == WizardType.WEB ? BuildEntityText(businessView) : BuildWebApiEntityText(businessView);
             node.Tag = businessView;
 
             // Reset mode
@@ -2384,6 +2384,23 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             text += ProcessGeneration.Constants.PropertyIfExists + "=\"" + businessView.Options[BusinessView.Constants.GenerateIfAlreadyExists].ToString() + "\" ";
             text += ProcessGeneration.Constants.PropertySingleFile + "=\"" + businessView.Options[BusinessView.Constants.GenerateEnumsInSingleFile].ToString() + "\" ";
 
+            return text;
+        }
+
+        /// <summary>
+        /// Build entity text for web api
+        /// </summary>
+        /// <param name="businessView"></param>
+        /// <returns></returns>
+        private string BuildWebApiEntityText(BusinessView businessView)
+        {
+            var text = ProcessGeneration.Constants.PropertyEntity + "=\"" + businessView.Properties[BusinessView.Constants.EntityName] + "\" ";
+            text += ProcessGeneration.Constants.PropertyModule + "=\"" + businessView.Properties[BusinessView.Constants.ModuleId] + "\" ";
+            text += ProcessGeneration.Constants.PropertyViewId + "=\"" + businessView.Properties[BusinessView.Constants.ViewId] + "\" ";
+            text += ProcessGeneration.Constants.PropertyProgramId + "=\"" + businessView.Properties[BusinessView.Constants.ProgramId] + "\" ";
+            text += ProcessGeneration.Constants.PropertyProperties + "=\"" + businessView.Fields.Count.ToString() + "\" ";
+            text += ProcessGeneration.Constants.PropertyComps + "=\"" + businessView.Compositions.Where(x => x.Include).Count() + "\" ";
+            text += ProcessGeneration.Constants.PropertyIfExists + "=\"" + businessView.Options[BusinessView.Constants.GenerateIfAlreadyExists].ToString() + "\" ";
             return text;
         }
 
@@ -6124,7 +6141,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             {
                 // Show Edit, Delete menu for entity and Add only if code type is header detail
                 _contextMenu.MenuItems.Clear();
-                if (repositoryType.Equals(RepositoryType.HeaderDetail))
+                if (repositoryType.Equals(RepositoryType.HeaderDetail) || _wizardType == WizardType.WEBAPI)
                 {
                     _contextMenu.MenuItems.Add(_addEntityMenuItem);
                 }

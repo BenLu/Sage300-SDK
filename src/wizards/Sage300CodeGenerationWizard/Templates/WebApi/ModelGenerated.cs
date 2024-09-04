@@ -587,21 +587,21 @@ foreach (var oneEnum in view.Enums.Values)
             this.Write("        /// <summary>\r\n        /// Detail collection of ");
             
             #line 227 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.ModelName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.ModelName]));
             
             #line default
             #line hidden
             this.Write("\r\n        /// </summary>\r\n        public List<");
             
             #line 229 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.ModelName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.ModelName]));
             
             #line default
             #line hidden
             this.Write("> ");
             
             #line 229 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.PropertyName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.PropertyName]));
             
             #line default
             #line hidden
@@ -632,14 +632,14 @@ foreach (var oneEnum in view.Enums.Values)
             this.Write("            ");
             
             #line 246 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.PropertyName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.PropertyName]));
             
             #line default
             #line hidden
             this.Write(" = new List<");
             
             #line 246 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.ModelName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.ModelName]));
             
             #line default
             #line hidden

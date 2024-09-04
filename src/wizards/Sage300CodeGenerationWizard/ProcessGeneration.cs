@@ -460,6 +460,25 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             }
         }
 
+
+        private void GenerateWebApiModesForAllEntities(Settings settings, List<ControllerSettings> ControllerSettings)
+        {
+            foreach(var controllerSettings in ControllerSettings)
+            {
+                CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + "Generated.cs",
+                    WebApiTransformTemplateToText(settings, controllerSettings,
+                        "Templates.WebApi.ModelGenerated"),
+                    Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsGeneratedKey);
+
+                CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + ".cs",
+                    WebApiTransformTemplateToText(settings, controllerSettings,
+                        "Templates.WebApi.ModelCustom"),
+                    Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsCustomKey);
+
+                GenerateWebApiModesForAllEntities(settings, controllerSettings.Details);
+            }
+        }
+
         /// <summary>
         /// Process Web Api project
         /// </summary>
@@ -482,24 +501,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                             "Templates.WebApi.Controller"),
                         Constants.WebApiKey, Constants.SubfolderWebApiControllerKey);
 
-
-                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + "Generated.cs",
-                        WebApiTransformTemplateToText(settings, controllerSettings,
-                            "Templates.WebApi.ModelGenerated"),
-                        Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsGeneratedKey);
-
-                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + ".cs",
-                        WebApiTransformTemplateToText(settings, controllerSettings,
-                            "Templates.WebApi.ModelCustom"),
-                        Constants.WebApiModelsKey, Constants.SubfolderWebApiModelsCustomKey);
-
-
                     UpdateWebApiVersioning(controllerSettings.BusinessView, WebApiTransformTemplateToText(settings, controllerSettings,
-                            "Templates.WebApi.VersionController"));
-
+                        "Templates.WebApi.VersionController"));
                 }
 
-
+                GenerateWebApiModesForAllEntities(settings, settings.ControllerSettings);
             }
             catch
             {

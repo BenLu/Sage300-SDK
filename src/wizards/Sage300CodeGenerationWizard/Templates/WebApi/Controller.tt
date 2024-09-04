@@ -75,7 +75,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
     foreach (var detail in controllerSettings.Details)
     {
 #>
-            builder.ComplexType<<#=detail.ModelName#>>();
+            builder.ComplexType<<#=detail.BusinessView.Properties[BusinessView.Constants.ModelName]#>>();
 <#
     }
 #>

@@ -296,7 +296,7 @@ namespace ");
             this.Write("            builder.ComplexType<");
             
             #line 78 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\Controller.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(detail.ModelName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(detail.BusinessView.Properties[BusinessView.Constants.ModelName]));
             
             #line default
             #line hidden

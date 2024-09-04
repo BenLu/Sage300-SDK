@@ -224,9 +224,9 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Models<#=extension#>
                     {
 #>
         /// <summary>
-        /// Detail collection of <#=detail.ModelName#>
+        /// Detail collection of <#=detail.BusinessView.Properties[BusinessView.Constants.ModelName]#>
         /// </summary>
-        public List<<#=detail.ModelName#>> <#=detail.PropertyName#> { get; set; }
+        public List<<#=detail.BusinessView.Properties[BusinessView.Constants.ModelName]#>> <#=detail.BusinessView.Properties[BusinessView.Constants.PropertyName]#> { get; set; }
 
 <#
                     }
@@ -243,7 +243,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Models<#=extension#>
                     foreach (var detail in controllerSettings.Details)
                     {
 #>
-            <#=detail.PropertyName#> = new List<<#=detail.ModelName#>>();
+            <#=detail.BusinessView.Properties[BusinessView.Constants.PropertyName]#> = new List<<#=detail.BusinessView.Properties[BusinessView.Constants.ModelName]#>>();
 <#
                     }
                 }
