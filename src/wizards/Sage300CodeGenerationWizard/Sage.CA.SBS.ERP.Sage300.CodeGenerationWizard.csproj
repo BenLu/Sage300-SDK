@@ -449,6 +449,7 @@
     <Compile Include="ViewKeyType.cs" />
     <Compile Include="ViewProtocolType.cs" />
     <Compile Include="WizardStep.cs" />
+    <Compile Include="xxroto.cs" />
     <EmbeddedResource Include="Forms\ContainerName.resx">
       <DependentUpon>ContainerName.cs</DependentUpon>
     </EmbeddedResource>

@@ -508,6 +508,39 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
         }
 
+
+        /// <summary>
+        /// Get the program Id (i.e. ARCUS for AR0024)
+        /// </summary>
+        /// <param name="dbLink"></param>
+        /// <param name="viewId"></param>
+        /// <returns></returns>
+        private static string GetProgramId(DBLink dbLink, string viewId )
+        {
+            var rotoIdView = dbLink.OpenView(XXROTO.ROTOID);
+
+            rotoIdView.Fields.FieldByID(XXROTO.IDX_OPERATION).SetValue(XXROTO.OPERATION_GetRotoList, false);
+            rotoIdView.Fields.FieldByID(XXROTO.IDX_ROTOTYPE).SetValue(XXROTO.ROTOTYPE_View, false);
+            rotoIdView.Fields.FieldByID(XXROTO.IDX_PGMID).SetValue(viewId.Substring(0,2), false);
+            rotoIdView.Process();
+
+            var views = rotoIdView.Fields.FieldByID(XXROTO.IDX_OBJECTID).PresentationList;
+            var viewPaths = rotoIdView.Fields.FieldByID(XXROTO.IDX_OBJECTNAME).PresentationList;
+
+            var programId = string.Empty;
+            for (var i = 0; i < views.Count; i++)
+            {
+                if (views.PredefinedString(i).ToUpper().Trim() == viewId.ToUpper().Trim())
+                {
+                    programId = Path.GetFileNameWithoutExtension(viewPaths.PredefinedString(i).ToUpper()).Trim();
+                    break;
+                }
+            }
+            rotoIdView.Dispose();
+            return programId;
+        }
+
+
         /// <summary> Get business view </summary>
         /// <param name="businessView">Business View</param>
         /// <param name="user">User Name</param>
@@ -555,6 +588,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             businessView.Properties[BusinessView.Constants.ModelName] = description;
             businessView.Properties[BusinessView.Constants.EntityName] = description;
+            businessView.Properties[BusinessView.Constants.ResourceName] = BusinessViewHelper.Replace(view.Description);
+            businessView.Properties[BusinessView.Constants.PropertyName] = businessView.Properties[BusinessView.Constants.ResourceName];
+            businessView.Properties[BusinessView.Constants.ProgramId] = GetProgramId(dbLink, view.ViewID);
 
             businessView.PrimaryKeyFields = new List<string>();
             if (view.Keys.Count > 0)

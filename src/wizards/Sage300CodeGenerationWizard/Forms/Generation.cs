@@ -2113,7 +2113,13 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // Get valued from controls and add to object
             businessView.Properties[BusinessView.Constants.ReportIni] = txtReportIniFile.Text;
             businessView.Properties[BusinessView.Constants.ReportKey] = cboReportKeys.Text;
-            businessView.Properties[BusinessView.Constants.ProgramId] = txtReportProgramId.Text;
+
+            if (_wizardType != WizardType.WEBAPI)
+            {
+                // override the ProgramId for non-WebApi projects
+                businessView.Properties[BusinessView.Constants.ProgramId] = txtReportProgramId.Text;
+            }
+
             businessView.Properties[BusinessView.Constants.EntityName] = txtEntityName.Text;
             businessView.Properties[BusinessView.Constants.ModelName] = txtModelName.Text;
             businessView.Properties[BusinessView.Constants.ResxName] = txtResxName.Text;
@@ -2128,58 +2134,60 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             businessView.Options[BusinessView.Constants.GenerateIfAlreadyExists] = chkGenerateIfExist.Checked;
             businessView.Options[BusinessView.Constants.GenerateEnumsInSingleFile] = true; // Checkbox has been removed
 
-            var verbs = new StringBuilder();
-
-            if (chkWebApiAllowCreate.Checked)
+            if (_wizardType == WizardType.WEBAPI)
             {
-                verbs.Append("AllowCreate = true");
+                var verbs = new StringBuilder("[");
+
+                if (chkWebApiAllowCreate.Checked)
+                {
+                    verbs.Append("AllowCreate = true");
+                }
+
+                if (chkWebApiAllowDelete.Checked)
+                {
+                    if (verbs.Length > 0)
+                        verbs.Append(", ");
+
+                    verbs.Append("AllowDelete = true");
+                }
+
+                if (chkWebApiAllowPatch.Checked)
+                {
+                    if (verbs.Length > 0)
+                        verbs.Append(", ");
+
+                    verbs.Append("AllowPatch = true");
+                }
+
+                if (chkWebApiAllowGet.Checked)
+                {
+                    if (verbs.Length > 0)
+                        verbs.Append(", ");
+
+                    verbs.Append("AllowGet = true");
+                }
+
+                if (chkWebApiAllowProcess.Checked)
+                {
+                    if (verbs.Length > 0)
+                        verbs.Append(", ");
+
+                    verbs.Append("AllowProcess = true");
+                }
+
+                if (chkWebApiAllowPut.Checked)
+                {
+                    if (verbs.Length > 0)
+                        verbs.Append(", ");
+
+                    verbs.Append("AllowPut = true");
+                }
+
+                verbs.Append("]");
+                businessView.Properties[BusinessView.Constants.Verbs] = verbs.ToString();
+                businessView.Properties[BusinessView.Constants.Extension] = string.Empty;
+
             }
-            
-            if (chkWebApiAllowDelete.Checked)
-            {
-                if (verbs.Length > 0)
-                    verbs.Append(",");
-
-                verbs.Append("AllowDelete = true");
-            }
-
-            if (chkWebApiAllowPatch.Checked)
-            {
-                if (verbs.Length > 0)
-                    verbs.Append(",");
-
-                verbs.Append("AllowPatch = true");
-            }
-
-            if (chkWebApiAllowGet.Checked)
-            {
-                if (verbs.Length > 0)
-                    verbs.Append(",");
-
-                verbs.Append("AllowGet = true");
-            }
-
-            if (chkWebApiAllowProcess.Checked)
-            {
-                if (verbs.Length > 0)
-                    verbs.Append(",");
-
-                verbs.Append("AllowProcess = true");
-            }
-
-            if (chkWebApiAllowPut.Checked)
-            {
-                if (verbs.Length > 0)
-                    verbs.Append(",");
-
-                verbs.Append("AllowPut = true");
-            }
-
-            businessView.Properties[BusinessView.Constants.ResourceName] = "!!!ResourceName!!!";
-            businessView.Properties[BusinessView.Constants.Extension] = "!!!Extension!!!";
-            businessView.Properties[BusinessView.Constants.Verbs] = verbs.ToString();
-            businessView.Properties[BusinessView.Constants.PropertyName] = "!!!PropertyName!!!";
-
 
             businessView.Fields = _entityFields.ToList();
 

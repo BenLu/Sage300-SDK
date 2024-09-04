@@ -228,7 +228,7 @@ foreach (var oneEnum in view.Enums.Values)
             #line 67 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
 
     {
-     var annotation = string.Format("[ViewModel(ViewName = \"{0}\", ViewId = \"{1}\")]", view.Properties[BusinessView.Constants.EntityName], view.Properties[BusinessView.Constants.ViewId]);    
+     var annotation = string.Format("[ViewModel(ViewName = \"{0}\", ViewId = \"{1}\")]", view.Properties[BusinessView.Constants.ProgramId], view.Properties[BusinessView.Constants.ViewId]);    
 
             
             #line default
