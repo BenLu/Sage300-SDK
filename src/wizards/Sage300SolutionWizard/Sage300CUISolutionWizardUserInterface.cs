@@ -266,7 +266,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
 
             var parameters = "$companyname$" + "=" + _companyName + "|$applicationid$=" + _applicationId +
                                 "|$companynamespace$=" + _namespace +
-                                "|$sage300webApidir$=" + _sage300WebApifolder +
+                                "|$sage300webApifolder$=" + _sage300WebApifolder +
                                 "|$lowercaseapplicationid$=" + _lowercaseapplicationId +
                                 "|$copyright$=" + _copyright;
 

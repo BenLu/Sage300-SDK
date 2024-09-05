@@ -548,6 +548,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 lblReportProgramId.Visible = false;
                 txtReportProgramId.Visible = false;
             }
+            else
+            {
+                // remove verbs tab page
+                tabEntity.TabPages.Remove(tabPage5);
+            }
         }
 
         /// <summary>
@@ -2452,6 +2457,19 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             _clickedEntityTreeNode.Nodes.Add(treeNode);
 
             EntitySetup(treeNode, ModeTypeEnum.Add);
+
+            if (_wizardType == WizardType.WEBAPI)
+            {
+                // hide verbs tab if it is a detail view
+                if (treeNode.Parent.Parent != null)
+                {
+                    tabEntity.TabPages.Remove(tabPage5);
+                }
+                else
+                {
+                    tabEntity.TabPages.Add(tabPage5);
+                }
+            }
         }
 
         /// <summary> Edit Container Name</summary>
