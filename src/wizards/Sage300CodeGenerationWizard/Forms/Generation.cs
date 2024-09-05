@@ -451,7 +451,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             SetupEntitiesTree();
 
             InitEntityFields(RepositoryType.HeaderDetail);
-            InitEntityCompositions(RepositoryType.HeaderDetail);
 
 
             // Display first step on initial load
@@ -533,14 +532,30 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             // Disable entity controls
             EnableEntityControls(false);
+
+            if (_wizardType == WizardType.WEBAPI)
+            {
+                // hide tab pages and controls related to web projects
+                tabEntity.TabPages.Remove(tabPage2);
+                tabEntity.TabPages.Remove(tabPage4);
+
+                lblResxName.Visible = false;
+                txtResxName.Visible = false;
+                txtReportIniFile.Visible = false;
+                lblReportIniFile.Visible = false;
+                lblReportKeys.Visible = false;
+                cboReportKeys.Visible = false;
+                lblReportProgramId.Visible = false;
+                txtReportProgramId.Visible = false;
+            }
         }
 
-		/// <summary>
-		/// Wrapper method to check the current panel
-		/// </summary>
-		/// <param name="panelName">The panel name</param>
-		/// <returns>true : current panel | false : not current panel</returns>
-		private bool IsCurrentPanel(string panelName)
+        /// <summary>
+        /// Wrapper method to check the current panel
+        /// </summary>
+        /// <param name="panelName">The panel name</param>
+        /// <returns>true : current panel | false : not current panel</returns>
+        private bool IsCurrentPanel(string panelName)
 		{
 			return _wizardSteps[_currentWizardStep].Panel.Name.Equals(panelName);
 		}
@@ -5250,6 +5265,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         {
             panel.Visible = false;
             panel.Dock = DockStyle.None;
+
         }
 
         /// <summary> Initialize info and modify grid display </summary>

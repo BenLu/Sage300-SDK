@@ -1688,7 +1688,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowProcess.Checked = true;
             this.chkWebApiAllowProcess.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowProcess.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowProcess.Location = new System.Drawing.Point(418, 98);
+            this.chkWebApiAllowProcess.Location = new System.Drawing.Point(213, 86);
             this.chkWebApiAllowProcess.Name = "chkWebApiAllowProcess";
             this.chkWebApiAllowProcess.Size = new System.Drawing.Size(108, 19);
             this.chkWebApiAllowProcess.Style = MetroFramework.MetroColorStyle.Green;
@@ -1702,7 +1702,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowDelete.Checked = true;
             this.chkWebApiAllowDelete.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowDelete.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowDelete.Location = new System.Drawing.Point(418, 64);
+            this.chkWebApiAllowDelete.Location = new System.Drawing.Point(213, 56);
             this.chkWebApiAllowDelete.Name = "chkWebApiAllowDelete";
             this.chkWebApiAllowDelete.Size = new System.Drawing.Size(101, 19);
             this.chkWebApiAllowDelete.Style = MetroFramework.MetroColorStyle.Green;
@@ -1716,7 +1716,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowPut.Checked = true;
             this.chkWebApiAllowPut.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowPut.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowPut.Location = new System.Drawing.Point(418, 32);
+            this.chkWebApiAllowPut.Location = new System.Drawing.Point(213, 26);
             this.chkWebApiAllowPut.Name = "chkWebApiAllowPut";
             this.chkWebApiAllowPut.Size = new System.Drawing.Size(83, 19);
             this.chkWebApiAllowPut.Style = MetroFramework.MetroColorStyle.Green;
@@ -1730,7 +1730,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowPatch.Checked = true;
             this.chkWebApiAllowPatch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowPatch.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowPatch.Location = new System.Drawing.Point(289, 92);
+            this.chkWebApiAllowPatch.Location = new System.Drawing.Point(31, 86);
             this.chkWebApiAllowPatch.Name = "chkWebApiAllowPatch";
             this.chkWebApiAllowPatch.Size = new System.Drawing.Size(96, 19);
             this.chkWebApiAllowPatch.Style = MetroFramework.MetroColorStyle.Green;
@@ -1744,7 +1744,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowCreate.Checked = true;
             this.chkWebApiAllowCreate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowCreate.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowCreate.Location = new System.Drawing.Point(289, 61);
+            this.chkWebApiAllowCreate.Location = new System.Drawing.Point(31, 56);
             this.chkWebApiAllowCreate.Name = "chkWebApiAllowCreate";
             this.chkWebApiAllowCreate.Size = new System.Drawing.Size(102, 19);
             this.chkWebApiAllowCreate.Style = MetroFramework.MetroColorStyle.Green;
@@ -1758,7 +1758,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.chkWebApiAllowGet.Checked = true;
             this.chkWebApiAllowGet.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWebApiAllowGet.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWebApiAllowGet.Location = new System.Drawing.Point(289, 32);
+            this.chkWebApiAllowGet.Location = new System.Drawing.Point(31, 26);
             this.chkWebApiAllowGet.Name = "chkWebApiAllowGet";
             this.chkWebApiAllowGet.Size = new System.Drawing.Size(84, 19);
             this.chkWebApiAllowGet.Style = MetroFramework.MetroColorStyle.Green;
