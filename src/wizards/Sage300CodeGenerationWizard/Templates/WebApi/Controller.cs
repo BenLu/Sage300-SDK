@@ -163,8 +163,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Templates.WebApi
             
             #line default
             #line hidden
-            this.Write("\r\n\r\nusing System.Web.OData.Builder;\r\nusing Microsoft.Practices.Unity;\r\nusing Sage" +
-                    ".CA.SBS.ERP.Sage300.");
+            this.Write("\r\n\r\nusing System.Web.OData.Builder;\r\nusing Microsoft.Practices.Unity;\r\nusing ");
+            
+            #line 39 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\Controller.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(companyNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".");
             
             #line 39 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\Controller.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(moduleId));

@@ -2151,7 +2151,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             if (_wizardType == WizardType.WEBAPI)
             {
-                var verbs = new StringBuilder("[");
+                var verbs = new StringBuilder("[RestrictedViewResourceController(");
 
                 if (chkWebApiAllowCreate.Checked)
                 {
@@ -2198,7 +2198,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     verbs.Append("AllowPut = true");
                 }
 
-                verbs.Append("]");
+                verbs.Append(")]");
                 businessView.Properties[BusinessView.Constants.Verbs] = verbs.ToString();
                 businessView.Properties[BusinessView.Constants.Extension] = string.Empty;
 
@@ -5072,9 +5072,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 {
                     foreach (var key in businessView.PrimaryKeyFields)
                     {
-                        var propertyName = key + "Key";
-                        entitySetting.KeyProperties.Add(propertyName);
-
                         var field = businessView.Fields.First(f => f.ServerFieldName == key);
                         if (field.Type == BusinessDataType.Long
                             || field.Type == BusinessDataType.Integer
@@ -5086,9 +5083,10 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                                 && field.Mask.Contains("D"))
                            )
                         {
-                            entitySetting.KeyProperties.Add(propertyName);
                             entitySetting.KeyType = ViewKeyType.Sequenced; 
                         }
+
+                        entitySetting.KeyProperties.Add(field.Name);
                     }
                 }
 
