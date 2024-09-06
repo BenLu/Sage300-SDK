@@ -150,7 +150,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Templates.WebApi
     var companyNamespace = settings.CompanyNamespace;
     var extension = controllerSettings.BusinessView.Properties[BusinessView.Constants.Extension];
     var modelName = controllerSettings.BusinessView.Properties[BusinessView.Constants.ModelName];
-    var resourceName = controllerSettings.BusinessView.Properties[BusinessView.Constants.ResourceName];
+    var resourceName = moduleId + controllerSettings.BusinessView.Properties[BusinessView.Constants.ResourceName];
 	var RestrictedViewResourceControllerValue = controllerSettings.BusinessView.Properties[BusinessView.Constants.Verbs];
 
             

@@ -1,5 +1,5 @@
 ﻿// The MIT License (MIT) 
-// Copyright (c) 1994-2023 The Sage Group plc or its licensors.  All rights reserved.
+// Copyright (c) 1994-2024 The Sage Group plc or its licensors.  All rights reserved.
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of 
 // this software and associated documentation files (the "Software"), to deal in 
@@ -496,7 +496,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 foreach (var controllerSettings in settings.ControllerSettings)
                 {
 
-                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Text + "Controller.cs",
+                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Properties[BusinessView.Constants.ModuleId] + controllerSettings.BusinessView.Text + "Controller.cs",
                         WebApiTransformTemplateToText(settings, controllerSettings,
                             "Templates.WebApi.Controller"),
                         Constants.WebApiKey, Constants.SubfolderWebApiControllerKey);
