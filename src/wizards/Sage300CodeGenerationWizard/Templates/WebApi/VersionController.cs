@@ -36,7 +36,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Templates.WebApi
             #line hidden
             
             #line 2 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\VersionController.tt"
- /* Copyright (c) 1994-2019 The Sage Group plc or its licensors.  All rights reserved. */ 
+ /* Copyright (c) 1994-2024 The Sage Group plc or its licensors.  All rights reserved. */ 
             
             #line default
             #line hidden
