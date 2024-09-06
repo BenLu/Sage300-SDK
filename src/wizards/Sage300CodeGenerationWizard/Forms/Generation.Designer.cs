@@ -52,17 +52,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.lblStepDescription = new MetroFramework.Controls.MetroLabel();
             this.lblStepTitle = new MetroFramework.Controls.MetroLabel();
             this.splitSteps = new System.Windows.Forms.SplitContainer();
-            this.pnlWebApiEntity = new System.Windows.Forms.Panel();
-            this.txtWebapiViewKeyType = new MetroFramework.Controls.MetroTextBox();
-            this.lblWebapiViewKeyType = new MetroFramework.Controls.MetroLabel();
-            this.txtWebApiViewProtocolType = new MetroFramework.Controls.MetroTextBox();
-            this.lblWebApiViewProtocolType = new MetroFramework.Controls.MetroLabel();
-            this.txtWebApiResourceName = new MetroFramework.Controls.MetroTextBox();
-            this.lblWebApiResourceName = new MetroFramework.Controls.MetroLabel();
-            this.txtWebApiModelName = new MetroFramework.Controls.MetroTextBox();
-            this.lblWebApiModelName = new MetroFramework.Controls.MetroLabel();
-            this.txtWebApiViewId = new MetroFramework.Controls.MetroTextBox();
-            this.lblWebApiViewId = new MetroFramework.Controls.MetroLabel();
             this.pnlWebApiCredential = new System.Windows.Forms.Panel();
             this.lblWebApiModule = new MetroFramework.Controls.MetroLabel();
             this.cboWebApiModule = new MetroFramework.Controls.MetroComboBox();
@@ -180,7 +169,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.splitSteps.Panel1.SuspendLayout();
             this.splitSteps.Panel2.SuspendLayout();
             this.splitSteps.SuspendLayout();
-            this.pnlWebApiEntity.SuspendLayout();
             this.pnlWebApiCredential.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlEntities.SuspendLayout();
@@ -470,7 +458,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtViewID.UseSelectable = true;
             this.txtViewID.WaterMarkColor = System.Drawing.Color.Maroon;
             this.txtViewID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtViewID.Click += new System.EventHandler(this.txtViewID_Click);
             this.txtViewID.Leave += new System.EventHandler(this.txtViewID_Leave);
             // 
             // grdResourceInfo
@@ -572,7 +559,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             // splitSteps.Panel1
             // 
-            this.splitSteps.Panel1.Controls.Add(this.pnlWebApiEntity);
             this.splitSteps.Panel1.Controls.Add(this.pnlWebApiCredential);
             this.splitSteps.Panel1.Controls.Add(this.pnlEntities);
             this.splitSteps.Panel1.Controls.Add(this.pnlUIGeneration);
@@ -587,238 +573,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.splitSteps.Size = new System.Drawing.Size(3820, 537);
             this.splitSteps.SplitterDistance = 430;
             this.splitSteps.TabIndex = 52;
-            // 
-            // pnlWebApiEntity
-            // 
-            this.pnlWebApiEntity.Controls.Add(this.txtWebapiViewKeyType);
-            this.pnlWebApiEntity.Controls.Add(this.lblWebapiViewKeyType);
-            this.pnlWebApiEntity.Controls.Add(this.txtWebApiViewProtocolType);
-            this.pnlWebApiEntity.Controls.Add(this.lblWebApiViewProtocolType);
-            this.pnlWebApiEntity.Controls.Add(this.txtWebApiResourceName);
-            this.pnlWebApiEntity.Controls.Add(this.lblWebApiResourceName);
-            this.pnlWebApiEntity.Controls.Add(this.txtWebApiModelName);
-            this.pnlWebApiEntity.Controls.Add(this.lblWebApiModelName);
-            this.pnlWebApiEntity.Controls.Add(this.txtWebApiViewId);
-            this.pnlWebApiEntity.Controls.Add(this.lblWebApiViewId);
-            this.pnlWebApiEntity.Location = new System.Drawing.Point(2375, 17);
-            this.pnlWebApiEntity.Name = "pnlWebApiEntity";
-            this.pnlWebApiEntity.Size = new System.Drawing.Size(697, 360);
-            this.pnlWebApiEntity.TabIndex = 46;
-            // 
-            // txtWebapiViewKeyType
-            // 
-            // 
-            // 
-            // 
-            this.txtWebapiViewKeyType.CustomButton.Image = null;
-            this.txtWebapiViewKeyType.CustomButton.Location = new System.Drawing.Point(185, 1);
-            this.txtWebapiViewKeyType.CustomButton.Name = "";
-            this.txtWebapiViewKeyType.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtWebapiViewKeyType.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtWebapiViewKeyType.CustomButton.TabIndex = 1;
-            this.txtWebapiViewKeyType.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebapiViewKeyType.CustomButton.UseSelectable = true;
-            this.txtWebapiViewKeyType.CustomButton.Visible = false;
-            this.txtWebapiViewKeyType.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebapiViewKeyType.Lines = new string[0];
-            this.txtWebapiViewKeyType.Location = new System.Drawing.Point(153, 186);
-            this.txtWebapiViewKeyType.MaxLength = 32767;
-            this.txtWebapiViewKeyType.Name = "txtWebapiViewKeyType";
-            this.txtWebapiViewKeyType.PasswordChar = '\0';
-            this.txtWebapiViewKeyType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtWebapiViewKeyType.SelectedText = "";
-            this.txtWebapiViewKeyType.SelectionLength = 0;
-            this.txtWebapiViewKeyType.SelectionStart = 0;
-            this.txtWebapiViewKeyType.ShortcutsEnabled = true;
-            this.txtWebapiViewKeyType.Size = new System.Drawing.Size(209, 25);
-            this.txtWebapiViewKeyType.Style = MetroFramework.MetroColorStyle.Green;
-            this.txtWebapiViewKeyType.TabIndex = 22;
-            this.txtWebapiViewKeyType.UseSelectable = true;
-            this.txtWebapiViewKeyType.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtWebapiViewKeyType.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblWebapiViewKeyType
-            // 
-            this.lblWebapiViewKeyType.AutoSize = true;
-            this.lblWebapiViewKeyType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblWebapiViewKeyType.Location = new System.Drawing.Point(19, 187);
-            this.lblWebapiViewKeyType.Name = "lblWebapiViewKeyType";
-            this.lblWebapiViewKeyType.Size = new System.Drawing.Size(99, 19);
-            this.lblWebapiViewKeyType.TabIndex = 21;
-            this.lblWebapiViewKeyType.Text = "View Key Type:";
-            // 
-            // txtWebApiViewProtocolType
-            // 
-            // 
-            // 
-            // 
-            this.txtWebApiViewProtocolType.CustomButton.Image = null;
-            this.txtWebApiViewProtocolType.CustomButton.Location = new System.Drawing.Point(185, 1);
-            this.txtWebApiViewProtocolType.CustomButton.Name = "";
-            this.txtWebApiViewProtocolType.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtWebApiViewProtocolType.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtWebApiViewProtocolType.CustomButton.TabIndex = 1;
-            this.txtWebApiViewProtocolType.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebApiViewProtocolType.CustomButton.UseSelectable = true;
-            this.txtWebApiViewProtocolType.CustomButton.Visible = false;
-            this.txtWebApiViewProtocolType.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiViewProtocolType.Lines = new string[0];
-            this.txtWebApiViewProtocolType.Location = new System.Drawing.Point(153, 155);
-            this.txtWebApiViewProtocolType.MaxLength = 32767;
-            this.txtWebApiViewProtocolType.Name = "txtWebApiViewProtocolType";
-            this.txtWebApiViewProtocolType.PasswordChar = '\0';
-            this.txtWebApiViewProtocolType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtWebApiViewProtocolType.SelectedText = "";
-            this.txtWebApiViewProtocolType.SelectionLength = 0;
-            this.txtWebApiViewProtocolType.SelectionStart = 0;
-            this.txtWebApiViewProtocolType.ShortcutsEnabled = true;
-            this.txtWebApiViewProtocolType.Size = new System.Drawing.Size(209, 25);
-            this.txtWebApiViewProtocolType.Style = MetroFramework.MetroColorStyle.Green;
-            this.txtWebApiViewProtocolType.TabIndex = 20;
-            this.txtWebApiViewProtocolType.UseSelectable = true;
-            this.txtWebApiViewProtocolType.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtWebApiViewProtocolType.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblWebApiViewProtocolType
-            // 
-            this.lblWebApiViewProtocolType.AutoSize = true;
-            this.lblWebApiViewProtocolType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblWebApiViewProtocolType.Location = new System.Drawing.Point(19, 155);
-            this.lblWebApiViewProtocolType.Name = "lblWebApiViewProtocolType";
-            this.lblWebApiViewProtocolType.Size = new System.Drawing.Size(128, 19);
-            this.lblWebApiViewProtocolType.TabIndex = 19;
-            this.lblWebApiViewProtocolType.Text = "View Protocol Type:";
-            // 
-            // txtWebApiResourceName
-            // 
-            // 
-            // 
-            // 
-            this.txtWebApiResourceName.CustomButton.Image = null;
-            this.txtWebApiResourceName.CustomButton.Location = new System.Drawing.Point(185, 1);
-            this.txtWebApiResourceName.CustomButton.Name = "";
-            this.txtWebApiResourceName.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtWebApiResourceName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtWebApiResourceName.CustomButton.TabIndex = 1;
-            this.txtWebApiResourceName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebApiResourceName.CustomButton.UseSelectable = true;
-            this.txtWebApiResourceName.CustomButton.Visible = false;
-            this.txtWebApiResourceName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiResourceName.Lines = new string[0];
-            this.txtWebApiResourceName.Location = new System.Drawing.Point(153, 119);
-            this.txtWebApiResourceName.MaxLength = 32767;
-            this.txtWebApiResourceName.Name = "txtWebApiResourceName";
-            this.txtWebApiResourceName.PasswordChar = '\0';
-            this.txtWebApiResourceName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtWebApiResourceName.SelectedText = "";
-            this.txtWebApiResourceName.SelectionLength = 0;
-            this.txtWebApiResourceName.SelectionStart = 0;
-            this.txtWebApiResourceName.ShortcutsEnabled = true;
-            this.txtWebApiResourceName.Size = new System.Drawing.Size(209, 25);
-            this.txtWebApiResourceName.Style = MetroFramework.MetroColorStyle.Green;
-            this.txtWebApiResourceName.TabIndex = 18;
-            this.txtWebApiResourceName.UseSelectable = true;
-            this.txtWebApiResourceName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtWebApiResourceName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblWebApiResourceName
-            // 
-            this.lblWebApiResourceName.AutoSize = true;
-            this.lblWebApiResourceName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblWebApiResourceName.Location = new System.Drawing.Point(19, 119);
-            this.lblWebApiResourceName.Name = "lblWebApiResourceName";
-            this.lblWebApiResourceName.Size = new System.Drawing.Size(107, 19);
-            this.lblWebApiResourceName.TabIndex = 17;
-            this.lblWebApiResourceName.Text = "Resource Name:";
-            // 
-            // txtWebApiModelName
-            // 
-            // 
-            // 
-            // 
-            this.txtWebApiModelName.CustomButton.Image = null;
-            this.txtWebApiModelName.CustomButton.Location = new System.Drawing.Point(185, 1);
-            this.txtWebApiModelName.CustomButton.Name = "";
-            this.txtWebApiModelName.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtWebApiModelName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtWebApiModelName.CustomButton.TabIndex = 1;
-            this.txtWebApiModelName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebApiModelName.CustomButton.UseSelectable = true;
-            this.txtWebApiModelName.CustomButton.Visible = false;
-            this.txtWebApiModelName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiModelName.Lines = new string[0];
-            this.txtWebApiModelName.Location = new System.Drawing.Point(153, 78);
-            this.txtWebApiModelName.MaxLength = 32767;
-            this.txtWebApiModelName.Name = "txtWebApiModelName";
-            this.txtWebApiModelName.PasswordChar = '\0';
-            this.txtWebApiModelName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtWebApiModelName.SelectedText = "";
-            this.txtWebApiModelName.SelectionLength = 0;
-            this.txtWebApiModelName.SelectionStart = 0;
-            this.txtWebApiModelName.ShortcutsEnabled = true;
-            this.txtWebApiModelName.Size = new System.Drawing.Size(209, 25);
-            this.txtWebApiModelName.Style = MetroFramework.MetroColorStyle.Green;
-            this.txtWebApiModelName.TabIndex = 16;
-            this.txtWebApiModelName.UseSelectable = true;
-            this.txtWebApiModelName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtWebApiModelName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // lblWebApiModelName
-            // 
-            this.lblWebApiModelName.AutoSize = true;
-            this.lblWebApiModelName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblWebApiModelName.Location = new System.Drawing.Point(19, 78);
-            this.lblWebApiModelName.Name = "lblWebApiModelName";
-            this.lblWebApiModelName.Size = new System.Drawing.Size(91, 19);
-            this.lblWebApiModelName.TabIndex = 15;
-            this.lblWebApiModelName.Text = "Model Name:";
-            // 
-            // txtWebApiViewId
-            // 
-            this.txtWebApiViewId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
-            // 
-            this.txtWebApiViewId.CustomButton.Image = null;
-            this.txtWebApiViewId.CustomButton.Location = new System.Drawing.Point(165, 1);
-            this.txtWebApiViewId.CustomButton.Name = "";
-            this.txtWebApiViewId.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtWebApiViewId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtWebApiViewId.CustomButton.TabIndex = 1;
-            this.txtWebApiViewId.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebApiViewId.CustomButton.UseSelectable = true;
-            this.txtWebApiViewId.CustomButton.Visible = false;
-            this.txtWebApiViewId.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiViewId.Lines = new string[] {
-        "AP0012"};
-            this.txtWebApiViewId.Location = new System.Drawing.Point(153, 37);
-            this.txtWebApiViewId.MaxLength = 32767;
-            this.txtWebApiViewId.Name = "txtWebApiViewId";
-            this.txtWebApiViewId.PasswordChar = '\0';
-            this.txtWebApiViewId.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtWebApiViewId.SelectedText = "";
-            this.txtWebApiViewId.SelectionLength = 0;
-            this.txtWebApiViewId.SelectionStart = 0;
-            this.txtWebApiViewId.ShortcutsEnabled = true;
-            this.txtWebApiViewId.Size = new System.Drawing.Size(189, 25);
-            this.txtWebApiViewId.Style = MetroFramework.MetroColorStyle.Green;
-            this.txtWebApiViewId.TabIndex = 5;
-            this.txtWebApiViewId.Text = "AP0012";
-            this.txtWebApiViewId.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtWebApiViewId.UseSelectable = true;
-            this.txtWebApiViewId.WaterMarkColor = System.Drawing.Color.Maroon;
-            this.txtWebApiViewId.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtWebApiViewId.Leave += new System.EventHandler(this.txtWebApiViewId_Leave);
-            // 
-            // lblWebApiViewId
-            // 
-            this.lblWebApiViewId.AutoSize = true;
-            this.lblWebApiViewId.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblWebApiViewId.Location = new System.Drawing.Point(19, 37);
-            this.lblWebApiViewId.Name = "lblWebApiViewId";
-            this.lblWebApiViewId.Size = new System.Drawing.Size(59, 19);
-            this.lblWebApiViewId.TabIndex = 4;
-            this.lblWebApiViewId.Text = "View ID:";
             // 
             // pnlWebApiCredential
             // 
@@ -2366,8 +2120,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.splitSteps.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitSteps)).EndInit();
             this.splitSteps.ResumeLayout(false);
-            this.pnlWebApiEntity.ResumeLayout(false);
-            this.pnlWebApiEntity.PerformLayout();
             this.pnlWebApiCredential.ResumeLayout(false);
             this.pnlWebApiCredential.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -2542,17 +2294,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         private MetroFramework.Controls.MetroLabel lblWebApiVersion;
         private MetroFramework.Controls.MetroLabel lblWebApiPassword;
         private MetroFramework.Controls.MetroLabel lblWebApiUser;
-        private System.Windows.Forms.Panel pnlWebApiEntity;
-        private MetroFramework.Controls.MetroTextBox txtWebApiModelName;
-        private MetroFramework.Controls.MetroLabel lblWebApiModelName;
-        private MetroFramework.Controls.MetroTextBox txtWebApiViewId;
-        private MetroFramework.Controls.MetroLabel lblWebApiViewId;
-        private MetroFramework.Controls.MetroTextBox txtWebapiViewKeyType;
-        private MetroFramework.Controls.MetroLabel lblWebapiViewKeyType;
-        private MetroFramework.Controls.MetroTextBox txtWebApiViewProtocolType;
-        private MetroFramework.Controls.MetroLabel lblWebApiViewProtocolType;
-        private MetroFramework.Controls.MetroTextBox txtWebApiResourceName;
-        private MetroFramework.Controls.MetroLabel lblWebApiResourceName;
         private MetroFramework.Controls.MetroLabel lblWebApiModule;
         private MetroFramework.Controls.MetroComboBox cboWebApiModule;
         private MetroFramework.Controls.MetroTabPage tabPage5;
