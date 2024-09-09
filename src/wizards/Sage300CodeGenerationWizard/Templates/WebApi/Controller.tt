@@ -19,6 +19,7 @@
 <# /* OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ #>
 <#@ template language="C#" #>
 <#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard" #>
 <#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Settings" name="settings" #>
 <#@ parameter type="Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.ControllerSettings" name="controllerSettings" #>
@@ -68,24 +69,59 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         /// Registers this resource as a Web API endpoint
         /// </summary>
         /// <param name="builder"></param>
-        public static void RegisterODataEntity(ODataModelBuilder builder)
-        {
-            builder.EntitySet<<#=modelName#>>("<#=resourceName#>");
-<#
-    foreach (var detail in controllerSettings.Details)
-    {
+<# 
+var templateFirstLevelEntityList = string.Join(", ", BuildFirstLevelEntityList().Select(e => "T" + e));
+var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", BuildFirstLevelEntityList().Select(e => "Where T" + e + " : class"));
 #>
-            builder.ComplexType<<#=detail.BusinessView.Properties[BusinessView.Constants.ModelName]#>>();
+
+        public static void RegisterODataEntityBase<<#=templateFirstLevelEntityList#>>(ODataModelBuilder builder, string entityName)
+        <#=templateFirstLevelEntityListWithConstraints#>
+        {
+            builder.EntitySet<T<#=modelName#>>(entityName);
 <#
-    }
+		foreach (var detail in controllerSettings.Details)
+		{
+			WriteLine("            builder.ComplexType<T{0}>();", detail.BusinessView.Properties[BusinessView.Constants.ModelName]);
+		}
 #>
         }
+
+
+
+        /// <summary>
+        /// Base method for registering this resource as a Web API endpoint 
+        /// </summary>
+<#
+        WriteLine("        /// <typeparam name=\"{0}\"></typeparam>", modelName);
+        foreach (var detail in controllerSettings.Details)
+        {
+            WriteLine("        /// <typeparam name=\"{0}\"></typeparam>", detail.BusinessView.Properties[BusinessView.Constants.ModelName]);
+        }
+#>
+        /// <param name="builder">ODataModelBuilder</param>
+        /// <param name="entityName">Entity Name</param>
+        /// <param name="builder"></param>
+        public static void RegisterODataEntity(ODataModelBuilder builder)
+        {
+<#
+              WriteLine("            RegisterODataEntityBase<{0}>(builder, \"{1}\")", string.Join(",", BuildFirstLevelEntityList()), resourceName);
+#>
+        }
+
+<#
+	var entityList = new List<string>();
+	BuildAllEntities(entityList, controllerSettings);
+	var templateEntityList = string.Join(", ", entityList.Select(e => "T" + e));
+	var templateEntityListWithConstraints = string.Join("\r\n        ", entityList.Select(e => "where T" + e + " :" + e + ", new()"));
+#>
+
 
         /// <summary>
         /// Specifies the Sage views and their relationships that backs this resource
         /// </summary>
         /// <returns>An instance of IViewEntity which contains the Sage views and corresponding relationships</returns>
-        protected override IViewResourceEntity GetViewEntityHierarchy()
+        public IViewResourceEntity GetViewEntityHierarchyBase<<#=templateEntityList#>>
+        <#=templateEntityListWithConstraints#>
         {
 <#
     DefineEntities(controllerSettings, "");
@@ -95,6 +131,15 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         }
     }
 }
+
+        /// <summary>
+        /// Specifies the Sage views and their relationships that backs this resource
+        /// </summary>
+        /// <returns>An instance of IViewEntity which contains the Sage views and corresponding relationships</returns>
+        protected override IViewResourceEntity GetViewEntityHierarchy()
+        {
+            return GetViewEntityHierarchyBase<<#=templateEntityList#>>();
+        }
 
 <#+
     public void DefineEntities(ControllerSettings current, string Prefix)
@@ -107,7 +152,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         }
 		var viewModelName = current.BusinessView.Properties[BusinessView.Constants.ModelName];
 #>
-            var <#=Prefix#><#=viewModelName#>Entity = ViewResourceEntity<<#=viewModelName#>>.Create(<#=keyType#><#=keySegments#>);
+            var <#=Prefix#><#=viewModelName#>Entity = ViewResourceEntity<T<#=viewModelName#>>.Create(<#=keyType#><#=keySegments#>);
 <#+
         foreach (var detailSettings in current.Details)
         {
@@ -131,3 +176,26 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         }
     }
 #>
+
+<#+ private List<string> BuildFirstLevelEntityList()
+{
+	var entityList = new List<string>();
+	entityList.Add(controllerSettings.BusinessView.Properties[BusinessView.Constants.ModelName]);
+	foreach (var detail in controllerSettings.Details)
+	{
+		entityList.Add(detail.BusinessView.Properties[BusinessView.Constants.ModelName]);
+	}
+	return entityList;
+} 
+#>
+
+<#+ private void BuildAllEntities(List<string> entities, ControllerSettings controllerSettings)
+{
+	entities.Add(controllerSettings.BusinessView.Properties[BusinessView.Constants.ModelName]);
+	foreach (var detail in controllerSettings.Details)
+	{
+		BuildAllEntities(entities, detail);
+	}
+}
+#>
+
