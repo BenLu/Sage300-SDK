@@ -175,7 +175,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
             InitPanel(pnlKendo);
             InitPanel(pnlResourceFiles);
             InitPanel(pnlGenerateSolution);
-            AddStep(Resources.StepTitleInfo, Resources.StepProjectType, pnlProjectType);
+            AddStep(Resources.SelectSolutionTypeStepTitle, Resources.SelectSolutionTypeStepDesc, pnlProjectType);
 
             // Display first step
             NextStep();
@@ -232,8 +232,8 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard
                     if (IsCurrentPanel(Constants.PanelProjectType))
                     {
                         _wizardSteps.Clear();
-                        AddStep(Resources.StepTitleInfo, Resources.StepDescriptionInfo, pnlProjectType);
-                        AddStep(Resources.StepTitleInfo, Resources.StepDescriptionInfo, pnlInfo);
+                        AddStep(Resources.SelectSolutionTypeStepTitle, Resources.SelectSolutionTypeStepDesc, pnlProjectType);
+                        AddStep(Resources.EnterInformationStepTitle, Resources.EnterInformationStepDesc, pnlInfo);
                         if (radioButtonWeb.Checked)
                         {
                             AddStep(Resources.StepTitleKendo, Resources.StepDescriptionKendo, pnlKendo);

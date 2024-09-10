@@ -152,6 +152,24 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The wizard will create a solution based upon the required fields..
+        /// </summary>
+        internal static string EnterInformationStepDesc {
+            get {
+                return ResourceManager.GetString("EnterInformationStepDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Information.
+        /// </summary>
+        internal static string EnterInformationStepTitle {
+            get {
+                return ResourceManager.GetString("EnterInformationStepTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to French.
         /// </summary>
         internal static string French {
@@ -343,7 +361,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Web Project.
+        ///   Looks up a localized string similar to Web.
         /// </summary>
         internal static string ProjectWeb {
             get {
@@ -352,7 +370,7 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Web Api Project.
+        ///   Looks up a localized string similar to Web API.
         /// </summary>
         internal static string ProjectWebApi {
             get {
@@ -377,6 +395,24 @@ namespace Sage.CA.SBS.ERP.Sage300.SolutionWizard.Properties {
             get {
                 object obj = ResourceManager.GetObject("sage300_logo_sq", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This wizard will generate a solution..
+        /// </summary>
+        internal static string SelectSolutionTypeStepDesc {
+            get {
+                return ResourceManager.GetString("SelectSolutionTypeStepDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Solution Type.
+        /// </summary>
+        internal static string SelectSolutionTypeStepTitle {
+            get {
+                return ResourceManager.GetString("SelectSolutionTypeStepTitle", resourceCulture);
             }
         }
         

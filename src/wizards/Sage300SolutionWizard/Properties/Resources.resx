@@ -257,9 +257,21 @@ prior to deployment.</value>
     <value>Select Project Type</value>
   </data>
   <data name="ProjectWeb" xml:space="preserve">
-    <value>Web Project</value>
+    <value>Web</value>
   </data>
   <data name="ProjectWebApi" xml:space="preserve">
-    <value>Web Api Project</value>
+    <value>Web API</value>
+  </data>
+  <data name="SelectSolutionTypeStepTitle" xml:space="preserve">
+    <value>Select Solution Type</value>
+  </data>
+  <data name="SelectSolutionTypeStepDesc" xml:space="preserve">
+    <value>This wizard will generate a solution.</value>
+  </data>
+  <data name="EnterInformationStepDesc" xml:space="preserve">
+    <value>The wizard will create a solution based upon the required fields.</value>
+  </data>
+  <data name="EnterInformationStepTitle" xml:space="preserve">
+    <value>Enter Information</value>
   </data>
 </root>
