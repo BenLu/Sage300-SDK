@@ -112,6 +112,7 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
 	var entityList = new List<string>();
 	BuildAllEntities(entityList, controllerSettings);
 	var templateEntityList = string.Join(", ", entityList.Select(e => "T" + e));
+	var templateEntityList2 = string.Join(", ", entityList);
 	var templateEntityListWithConstraints = string.Join("\r\n        ", entityList.Select(e => "where T" + e + " :" + e + ", new()"));
 #>
 
@@ -138,7 +139,7 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
         /// <returns>An instance of IViewEntity which contains the Sage views and corresponding relationships</returns>
         protected override IViewResourceEntity GetViewEntityHierarchy()
         {
-            return GetViewEntityHierarchyBase<<#=templateEntityList#>>();
+            return GetViewEntityHierarchyBase<<#=templateEntityList2#>>();
         }
 
 <#+
