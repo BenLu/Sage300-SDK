@@ -68,6 +68,17 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             }
             return string.Empty;
         }
+
+        /// <summary>
+        /// Gets Value for enumeration (Web Api). Specially handle DateTime
+        /// </summary>
+        /// <param name="value">Enum value</param>
+        /// <returns>Value from EnumValue</returns>
+        public static string GetValueForWebApi(Enum value)
+        {
+            var output = GetValue(value);
+            return (output.Equals("DateTime")? "DateTime?": output);
+        }
         #endregion
     }
 }

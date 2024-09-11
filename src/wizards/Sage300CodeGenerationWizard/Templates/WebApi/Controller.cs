@@ -273,7 +273,7 @@ namespace ");
             #line 72 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\Controller.tt"
  
 var templateFirstLevelEntityList = string.Join(", ", BuildFirstLevelEntityList().Select(e => "T" + e));
-var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", BuildFirstLevelEntityList().Select(e => "Where T" + e + " : class"));
+var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", BuildFirstLevelEntityList().Select(e => "where T" + e + " : class"));
 
             
             #line default
@@ -332,7 +332,7 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
             
             #line 106 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\Controller.tt"
 
-              WriteLine("            RegisterODataEntityBase<{0}>(builder, \"{1}\")", string.Join(",", BuildFirstLevelEntityList()), resourceName);
+              WriteLine("            RegisterODataEntityBase<{0}>(builder, \"{1}\");", string.Join(",", BuildFirstLevelEntityList()), resourceName);
 
             
             #line default

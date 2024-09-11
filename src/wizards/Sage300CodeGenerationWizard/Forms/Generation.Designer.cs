@@ -1102,11 +1102,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             // 
             this.lblResxName.AutoSize = true;
             this.lblResxName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblResxName.Location = new System.Drawing.Point(448, 79);
+            this.lblResxName.Location = new System.Drawing.Point(421, 79);
             this.lblResxName.Name = "lblResxName";
-            this.lblResxName.Size = new System.Drawing.Size(79, 19);
+            this.lblResxName.Size = new System.Drawing.Size(107, 19);
             this.lblResxName.TabIndex = 15;
-            this.lblResxName.Text = "Resx Name:";
+            this.lblResxName.Text = "Resource Name:";
             // 
             // lblReportProgramId
             // 

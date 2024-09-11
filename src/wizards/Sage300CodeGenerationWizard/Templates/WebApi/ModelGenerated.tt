@@ -119,7 +119,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Models<#=extension#>
                 
                 // Property
 #>
-        public <#=(field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValue(field.Type))#> <#=fieldName#> { get { return <#=backingFieldName#>; } set { <#=backingFieldName#> = value; PropertySet(); } }
+        public <#=(field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValueForWebApi(field.Type))#> <#=fieldName#> { get { return <#=backingFieldName#>; } set { <#=backingFieldName#> = value; PropertySet(); } }
 
 <#
             }
@@ -152,7 +152,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Models<#=extension#>
                 var fieldName = field.Name;
                 var backingFieldName = "_" + char.ToLower(fieldName[0]).ToString() + fieldName.Substring(1);
 #>
-        private <#=(field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValue(field.Type))#> <#=backingFieldName#>;
+        private <#=(field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValueForWebApi(field.Type))#> <#=backingFieldName#>;
 <#
             }
 

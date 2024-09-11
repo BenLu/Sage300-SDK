@@ -19,7 +19,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1279,6 +1279,24 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource Name.
+        /// </summary>
+        internal static string ResourceName {
+            get {
+                return ResourceManager.GetString("ResourceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name is defaulted from the Business View.
+        /// </summary>
+        internal static string ResourceNameTip {
+            get {
+                return ResourceManager.GetString("ResourceNameTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resx.
         /// </summary>
         internal static string Resx {
@@ -1465,6 +1483,24 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties {
         internal static string StepTitleGenerateUICode {
             get {
                 return ResourceManager.GetString("StepTitleGenerateUICode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Credentials.
+        /// </summary>
+        internal static string StepWebApiCredentials {
+            get {
+                return ResourceManager.GetString("StepWebApiCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This wizard will generate Web API code..
+        /// </summary>
+        internal static string StepWebApiCredentialsDesc {
+            get {
+                return ResourceManager.GetString("StepWebApiCredentialsDesc", resourceCulture);
             }
         }
         

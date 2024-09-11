@@ -496,7 +496,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 foreach (var controllerSettings in settings.ControllerSettings)
                 {
 
-                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Properties[BusinessView.Constants.ModuleId] + controllerSettings.BusinessView.Text + "Controller.cs",
+                    CreateClass(controllerSettings.BusinessView, controllerSettings.BusinessView.Properties[BusinessView.Constants.ModuleId] + controllerSettings.BusinessView.Properties[BusinessView.Constants.ResourceName] + "Controller.cs",
                         WebApiTransformTemplateToText(settings, controllerSettings,
                             "Templates.WebApi.Controller"),
                         Constants.WebApiKey, Constants.SubfolderWebApiControllerKey);

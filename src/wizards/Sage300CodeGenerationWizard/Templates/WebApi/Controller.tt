@@ -71,7 +71,7 @@ namespace <#=companyNamespace#>.<#=moduleId#>.WebApi.Controllers<#=extension#>
         /// <param name="builder"></param>
 <# 
 var templateFirstLevelEntityList = string.Join(", ", BuildFirstLevelEntityList().Select(e => "T" + e));
-var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", BuildFirstLevelEntityList().Select(e => "Where T" + e + " : class"));
+var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", BuildFirstLevelEntityList().Select(e => "where T" + e + " : class"));
 #>
 
         public static void RegisterODataEntityBase<<#=templateFirstLevelEntityList#>>(ODataModelBuilder builder, string entityName)
@@ -104,7 +104,7 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
         public static void RegisterODataEntity(ODataModelBuilder builder)
         {
 <#
-              WriteLine("            RegisterODataEntityBase<{0}>(builder, \"{1}\")", string.Join(",", BuildFirstLevelEntityList()), resourceName);
+              WriteLine("            RegisterODataEntityBase<{0}>(builder, \"{1}\");", string.Join(",", BuildFirstLevelEntityList()), resourceName);
 #>
         }
 

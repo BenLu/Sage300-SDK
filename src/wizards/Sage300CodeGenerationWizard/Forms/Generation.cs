@@ -496,7 +496,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             InitPanel(pnlGeneratedCode);
 
             // Add steps
-            AddStep(Resources.StepTitleCodeType, Resources.StepDescriptionCodeType, pnlWebApiCredential);
+            AddStep(Resources.StepWebApiCredentials, Resources.StepWebApiCredentialsDesc, pnlWebApiCredential);
             AddStep(Resources.StepTitleEntities, Resources.StepDescriptionEntities, pnlEntities);
             AddStep(Resources.StepTitleGeneratedCode, Resources.StepDescriptionGeneratedCode, pnlGeneratedCode);
 
@@ -592,8 +592,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 tabEntity.TabPages.Remove(tabPage2);
                 tabEntity.TabPages.Remove(tabPage4);
 
-                lblResxName.Visible = false;
-                txtResxName.Visible = false;
                 txtReportIniFile.Visible = false;
                 lblReportIniFile.Visible = false;
                 lblReportKeys.Visible = false;
@@ -1001,7 +999,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             }
 
             // Resx name must end with Resx
-            if (!resxName.EndsWith(Resources.Resx))
+            if (_wizardType == WizardType.WEB && !resxName.EndsWith(Resources.Resx))
             {
                 return Resources.InvalidResxName;
             }
@@ -1200,6 +1198,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <summary> Localize </summary>
         private void LocalizeWebApi()
         {
+            lblResxName.Text = Resources.ResourceName;
+            tooltip.SetToolTip(lblResxName, Resources.ResourceNameTip);
         }
 
         /// <summary> Determine if the Solution is valid </summary>
@@ -1906,7 +1906,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 
             txtEntityName.Text = businessView.Properties[BusinessView.Constants.EntityName];
             txtModelName.Text = businessView.Properties[BusinessView.Constants.ModelName];
-            txtResxName.Text = businessView.Properties[BusinessView.Constants.ResxName];
+            txtResxName.Text = _wizardType == WizardType.WEB?businessView.Properties[BusinessView.Constants.ResxName] : businessView.Properties[BusinessView.Constants.ResourceName];
 
             // Options tab
             chkGenerateFinder.Checked = businessView.Options[BusinessView.Constants.GenerateFinder];
@@ -2163,11 +2163,15 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             {
                 // override the ProgramId for non-WebApi projects
                 businessView.Properties[BusinessView.Constants.ProgramId] = txtReportProgramId.Text;
+                businessView.Properties[BusinessView.Constants.ResxName] = txtResxName.Text;
+            }
+            else
+            {
+                businessView.Properties[BusinessView.Constants.ResourceName] = txtResxName.Text;
             }
 
             businessView.Properties[BusinessView.Constants.EntityName] = txtEntityName.Text;
             businessView.Properties[BusinessView.Constants.ModelName] = txtModelName.Text;
-            businessView.Properties[BusinessView.Constants.ResxName] = txtResxName.Text;
 
             businessView.Properties[BusinessView.Constants.WorkflowKindId] =
                 (repositoryType.Equals(RepositoryType.Process)) ? Guid.NewGuid().ToString() : Guid.Empty.ToString();
@@ -6191,7 +6195,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     txtModelName.Text = businessView.Properties[BusinessView.Constants.ModelName];
 
                     // Assign to control
-                    txtResxName.Text = txtEntityName.Text.Trim() + "Resx";
+                    if (_wizardType == WizardType.WEB)
+                    {
+                        txtResxName.Text = txtEntityName.Text.Trim() + "Resx";
+                    }
+                    else
+                    {
+                        txtResxName.Text = businessView.Properties[BusinessView.Constants.ResourceName];
+                    }
 
                     // Clear before assigning
                     DeleteRows();
@@ -6376,9 +6387,13 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             var text = BusinessViewHelper.Replace(txtEntityName.Text);
             txtEntityName.Text = text;
             txtModelName.Text = text;
-            txtResxName.Text = text + "Resx";
-        }
 
+            if (_wizardType == WizardType.WEB)
+            {
+                txtResxName.Text = text + "Resx";
+            }
+        }
+    
         /// <summary> Replace any invalid chars</summary>
         /// <param name="sender">Sender object </param>
         /// <param name="e">Event Args </param>

@@ -350,7 +350,7 @@ foreach (var oneEnum in view.Enums.Values)
             this.Write("        public ");
             
             #line 122 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValue(field.Type))));
+            this.Write(this.ToStringHelper.ToStringWithCulture((field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValueForWebApi(field.Type))));
             
             #line default
             #line hidden
@@ -420,7 +420,7 @@ foreach (var oneEnum in view.Enums.Values)
             this.Write("        private ");
             
             #line 155 "C:\CNA2\Sage300-SDK\src\wizards\Sage300CodeGenerationWizard\Templates\WebApi\ModelGenerated.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValue(field.Type))));
+            this.Write(this.ToStringHelper.ToStringWithCulture((field.Type.Equals(BusinessDataType.Enumeration) ? field.Name + "Enum" : EnumValue.GetValueForWebApi(field.Type))));
             
             #line default
             #line hidden
