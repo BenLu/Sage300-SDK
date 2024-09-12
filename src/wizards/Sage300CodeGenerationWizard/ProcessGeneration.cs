@@ -38,6 +38,7 @@ using Newtonsoft.Json;
 using Jint.Runtime;
 using Newtonsoft.Json.Linq;
 using Thread = System.Threading.Thread;
+using static Microsoft.VisualStudio.VSConstants;
 
 #endregion
 
@@ -556,7 +557,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <param name="viewId">View Id</param>
         /// <param name="moduleId">Module Id</param>
         public static void GetBusinessView(BusinessView businessView, string user,
-            string password, string company, string version, string viewId, string moduleId)
+            string password, string company, string version, string viewId, string moduleId, WizardType wizardType)
         {
             // Locals
             var session = new Session();
@@ -611,7 +612,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
 #if ENABLE_TK_244885
             businessView.Properties[BusinessView.Constants.CustomCommonResxName] = PrivateConstants.CustomCommonResx;
 #endif
-            GenerateFieldsAndEnums(businessView, view, uniqueDescriptions);
+            GenerateFieldsAndEnums(businessView, view, uniqueDescriptions, wizardType);
 
             // Any compositions
             if (view.CompositeNames != null)
@@ -1353,7 +1354,8 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 return field.Name;
             }
 
-            return BusinessViewHelper.Replace(field.Description);
+            var name = BusinessViewHelper.Replace(field.Description);
+            return name.Equals("Type")? prefix + name : name;
         }
 
 
@@ -1434,6 +1436,63 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             return BusinessDataType.Double;
         }
 
+        /// <summary>
+        /// Get field's data type
+        /// </summary>
+        /// <param name="field">The field the data type is to be determined</param>
+        /// <returns>Data type of the field</returns>
+        private static BusinessDataType FieldTypeForWebApi(ViewField field)
+        {
+            //Need to use enum field.Type.HasFlag
+            var viewfieldType = field.Type;
+            var typeHash = viewfieldType.GetHashCode();
+
+            if (typeHash == ViewFieldType.Bool.GetHashCode())
+            {
+                return BusinessDataType.Boolean;
+            }
+            if (field.PresentationType == ViewFieldPresentationType.List)
+            {
+                if (typeHash != ViewFieldType.Char.GetHashCode() || field.Size == 1)
+                    return BusinessDataType.Enumeration;
+            }
+            if (typeHash == ViewFieldType.Long.GetHashCode())
+            {
+                return BusinessDataType.Long;
+            }
+            if (typeHash == ViewFieldType.LongLong.GetHashCode())
+            {
+                return BusinessDataType.Long;
+            }
+            if (typeHash == ViewFieldType.Char.GetHashCode())
+            {
+                return BusinessDataType.String;
+            }
+            if (typeHash == ViewFieldType.Date.GetHashCode())
+            {
+                return BusinessDataType.DateTime;
+            }
+            if (typeHash == ViewFieldType.Int.GetHashCode())
+            {
+                return BusinessDataType.Integer;
+            }
+            if (typeHash == ViewFieldType.Decimal.GetHashCode())
+            {
+                return BusinessDataType.Decimal;
+            }
+            if (typeHash == ViewFieldType.Time.GetHashCode())
+            {
+                return BusinessDataType.DateTime;
+            }
+            if (typeHash == ViewFieldType.Byte.GetHashCode())
+            {
+                return BusinessDataType.Byte;
+            }
+
+            return BusinessDataType.Double;
+        }
+
+
         /// <summary> ValidateFields</summary>
         /// <param name="entityFields">the list of BusinessFields to iterate</param>
         /// <param name="uniqueDescriptions">Dictionary of unique descriptions</param>
@@ -1484,7 +1543,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
         /// <param name="businessView">Business View</param>
         /// <param name="view">Accpac Business View</param>
         /// <param name="uniqueDescriptions">Dictionary of unique descriptions</param>
-        private static void GenerateFieldsAndEnums(BusinessView businessView, View view, Dictionary<string, bool> uniqueDescriptions)
+        private static void GenerateFieldsAndEnums(BusinessView businessView, View view, Dictionary<string, bool> uniqueDescriptions, WizardType wizardType)
         {
             // Iterate Accpac View
             for (var i = 0; i < view.Fields.Count; i++)
@@ -1497,7 +1556,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                 }
 
                 var field = view.Fields[i];
-                var type = FieldType(field);
+
+                var type = (wizardType == WizardType.WEB)? FieldType(field): FieldTypeForWebApi(field);
+
                 var isNumeric = type == BusinessDataType.Decimal ||
                                 type == BusinessDataType.Double ||
                                 type == BusinessDataType.Integer ||

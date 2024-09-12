@@ -4868,70 +4868,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             return headerNode;
         }
 
-        private void ParseXml(String xmlFilename)
-        {
-            var xdoc = XDocument.Load(xmlFilename);
-
-            _entitiesContainerName = xdoc.Root.Attribute("container")?.Value;
-
-            // open all the entities
-            foreach (var ent in xdoc.Root.Descendants().Where(e => e.Name == "entity"))
-            {
-                var businessView = new BusinessView();
-
-                businessView.Properties[BusinessView.Constants.ModuleId] =
-                    ent.Attribute(ProcessGeneration.Constants.PropertyModule).Value;
-                businessView.Properties[BusinessView.Constants.ViewId] =
-                    ent.Attribute(ProcessGeneration.Constants.PropertyViewId).Value;
-
-                ProcessGeneration.GetBusinessView(businessView, txtUser.Text.Trim(), txtPassword.Text.Trim(),
-                    txtCompany.Text.Trim(), txtVersion.Text.Trim(),
-                    businessView.Properties[BusinessView.Constants.ViewId],
-                    businessView.Properties[BusinessView.Constants.ModuleId]);
-
-                businessView.Properties[BusinessView.Constants.EntityName] =
-                    ent.Attribute(ProcessGeneration.Constants.PropertyEntity).Value;
-                businessView.Properties[BusinessView.Constants.ModelName] =
-                    ent.Attribute(ProcessGeneration.Constants.PropertyModel).Value;
-                businessView.Properties[BusinessView.Constants.ResxName] =
-                    ent.Attribute(ProcessGeneration.Constants.PropertyResxName).Value;
-
-                // compositions
-                foreach (var compositionElem in ent.Elements().Where(e => e.Name == "compositions").Descendants())
-                {
-                    var composition = new Composition();
-
-                    composition.ViewId = compositionElem.Attribute(ProcessGeneration.Constants.PropertyViewId).Value;
-                    composition.EntityName =
-                        compositionElem.Attribute(ProcessGeneration.Constants.PropertyEntity).Value;
-                    composition.Include =
-                        bool.Parse(compositionElem.Attribute(ProcessGeneration.Constants.PropertyInclude).Value);
-                    businessView.Compositions.Add(composition);
-                }
-
-
-                // options
-                var option = ent.Elements().Where(e => e.Name == "options").Descendants().First();
-
-                businessView.Options[BusinessView.Constants.GenerateFinder] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertyFinder).Value);
-                businessView.Options[BusinessView.Constants.GenerateGridModel] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertyGridModel).Value);
-                businessView.Options[BusinessView.Constants.SeqenceRevisionList] = bool.Parse(
-                    option.Attribute(ProcessGeneration.Constants.PropertySequenceRevisionList)?.Value ?? "false");
-                businessView.Options[BusinessView.Constants.GenerateDynamicEnablement] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertyEnablement).Value);
-                businessView.Options[BusinessView.Constants.GenerateClientFiles] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertyClientFiles).Value);
-                businessView.Options[BusinessView.Constants.GenerateIfAlreadyExists] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertyIfExists).Value);
-                businessView.Options[BusinessView.Constants.GenerateEnumsInSingleFile] =
-                    bool.Parse(option.Attribute(ProcessGeneration.Constants.PropertySingleFile).Value);
-
-                _entities.Add(businessView);
-            }
-        }
-
         /// <summary> Next/Generate Navigation </summary>
         /// <remarks>Next wizard step or Generate if last step</remarks>
         private void NextStep()
@@ -6180,14 +6116,14 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     {
                         // Get business view (web)
                         ProcessGeneration.GetBusinessView(businessView, txtUser.Text.Trim(), txtPassword.Text.Trim(),
-                            txtCompany.Text.Trim(), txtVersion.Text.Trim(), txtViewID.Text, cboModule.Text);
+                            txtCompany.Text.Trim(), txtVersion.Text.Trim(), txtViewID.Text, cboModule.Text, WizardType.WEB);
                     }
                     else
                     {
                         // Get business view (web API)
                         ProcessGeneration.GetBusinessView(businessView, txtWebApiUser.Text.Trim(),
                             txtWebApiPassword.Text.Trim(),
-                            txtWebApiCompany.Text.Trim(), "72A", txtViewID.Text, cboWebApiModule.Text);
+                            txtWebApiCompany.Text.Trim(), "72A", txtViewID.Text, cboWebApiModule.Text, WizardType.WEBAPI);
                     }
 
                     // Assign to entity and model fields
