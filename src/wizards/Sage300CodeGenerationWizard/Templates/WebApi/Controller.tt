@@ -121,7 +121,7 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
         /// Specifies the Sage views and their relationships that backs this resource
         /// </summary>
         /// <returns>An instance of IViewEntity which contains the Sage views and corresponding relationships</returns>
-        public IViewResourceEntity GetViewEntityHierarchyBase<<#=templateEntityList#>>
+        public IViewResourceEntity GetViewEntityHierarchyBase<<#=templateEntityList#>>()
         <#=templateEntityListWithConstraints#>
         {
 <#
@@ -130,8 +130,6 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
 #>
             return <#=modelName#>Entity;
         }
-    }
-}
 
         /// <summary>
         /// Specifies the Sage views and their relationships that backs this resource
@@ -141,7 +139,8 @@ var templateFirstLevelEntityListWithConstraints = string.Join("\r\n        ", Bu
         {
             return GetViewEntityHierarchyBase<<#=templateEntityList2#>>();
         }
-
+    }
+}
 <#+
     public void DefineEntities(ControllerSettings current, string Prefix)
     {
