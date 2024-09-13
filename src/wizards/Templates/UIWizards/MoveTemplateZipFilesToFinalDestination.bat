@@ -50,6 +50,13 @@ del /Q Services.zip
 copy /Y Web.zip %targetPath%Web.Web.zip
 del /Q Web.zip
 
+copy /Y WebApi.WebApi.zip %targetPath%
+del /Q  WebApi.WebApi.zip
+
+copy /Y WebApi.Models.zip %targetPath%
+del /Q  WebApi.Models.zip
+
+
 copy /Y Sage300SolutionTemplate.zip %targetPath%
 del /Q Sage300SolutionTemplate.zip
 
