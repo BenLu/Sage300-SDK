@@ -112,6 +112,9 @@
       <Name>$companynamespace$.$applicationid$.WebApi.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+   <Content Include="$applicationid$Bootstrapper.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
