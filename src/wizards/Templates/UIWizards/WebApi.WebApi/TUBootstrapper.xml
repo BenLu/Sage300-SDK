@@ -1,0 +1,5 @@
+<bootstrapper>
+  <assemblies>
+    <add assembly="$companynamespace$.$applicationid$.*.dll" />
+  </assemblies>
+</bootstrapper>
