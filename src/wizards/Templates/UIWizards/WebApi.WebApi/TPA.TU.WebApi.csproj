@@ -117,4 +117,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+	xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)___DEPLOY___\ /I /Y
+	xcopy $(ProjectDir)\$applicationid$Bootstrapper.xml $(SolutionDir)___DEPLOY___\ /I /Y
+	</PostBuildEvent>
+  </PropertyGroup>
 </Project>

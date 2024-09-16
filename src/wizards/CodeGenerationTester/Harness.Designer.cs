@@ -59,7 +59,6 @@
             this.txtSolution.Name = "txtSolution";
             this.txtSolution.Size = new System.Drawing.Size(591, 20);
             this.txtSolution.TabIndex = 2;
-            this.txtSolution.Text = "C:\\CNA2\\Columbus-WebApi\\webapi.sln";
             // 
             // Form1
             // 

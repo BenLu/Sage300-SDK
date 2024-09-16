@@ -1,5 +1,5 @@
 <bootstrapper>
   <assemblies>
-    <add assembly="$companynamespace$.($applicationid$).WebApi.dll" />
+    <add assemblyFilter="$companynamespace$.($applicationid$).WebApi.dll" />
   </assemblies>
 </bootstrapper>

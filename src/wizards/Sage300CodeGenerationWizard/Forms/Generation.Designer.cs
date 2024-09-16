@@ -709,8 +709,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiPassword.CustomButton.UseSelectable = true;
             this.txtWebApiPassword.CustomButton.Visible = false;
             this.txtWebApiPassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtWebApiPassword.Lines = new string[] {
-        "Sage12345!"};
+            this.txtWebApiPassword.Lines = new string[0];
             this.txtWebApiPassword.Location = new System.Drawing.Point(84, 57);
             this.txtWebApiPassword.MaxLength = 32767;
             this.txtWebApiPassword.Name = "txtWebApiPassword";
@@ -723,7 +722,6 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.txtWebApiPassword.Size = new System.Drawing.Size(115, 25);
             this.txtWebApiPassword.Style = MetroFramework.MetroColorStyle.Green;
             this.txtWebApiPassword.TabIndex = 6;
-            this.txtWebApiPassword.Text = "Sage12345!";
             this.txtWebApiPassword.UseSelectable = true;
             this.txtWebApiPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtWebApiPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
