@@ -590,7 +590,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             businessView.Properties[BusinessView.Constants.ModuleId] = moduleId;
 
             GenerateUniqueDescriptions(view, uniqueDescriptions);
-
+            
             var description = MakeItSingular(BusinessViewHelper.Replace(view.Description));
 
             businessView.Properties[BusinessView.Constants.ModelName] = description;
@@ -1592,6 +1592,11 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
                     Mask = field.PresentationMask,
                     ViewFieldType = field.Type
                 };
+
+                if (string.CompareOrdinal(businessField.Name, businessView.Properties[BusinessView.Constants.ModelName]) == 0 && businessField.IsKey)
+                {
+                    businessField.Name += "Key";
+                }
 
                 // No longer necessary (TK-253029)
                 // Add to Keys if it is a key
