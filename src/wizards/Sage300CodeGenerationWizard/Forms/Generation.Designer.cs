@@ -894,7 +894,7 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             this.tabEntity.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.tabEntity.Location = new System.Drawing.Point(0, 0);
             this.tabEntity.Name = "tabEntity";
-            this.tabEntity.SelectedIndex = 0;
+            this.tabEntity.SelectedIndex = 4;
             this.tabEntity.Size = new System.Drawing.Size(790, 206);
             this.tabEntity.Style = MetroFramework.MetroColorStyle.Green;
             this.tabEntity.TabIndex = 1;

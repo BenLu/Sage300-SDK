@@ -1596,6 +1596,24 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HTTP Verbs.
+        /// </summary>
+        internal static string Verbs {
+            get {
+                return ResourceManager.GetString("Verbs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select verbs  permitted on this entity.
+        /// </summary>
+        internal static string VerbsTip {
+            get {
+                return ResourceManager.GetString("VerbsTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version:.
         /// </summary>
         internal static string Version {

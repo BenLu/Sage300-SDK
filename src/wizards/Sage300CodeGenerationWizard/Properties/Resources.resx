@@ -655,4 +655,10 @@
   <data name="ResourceNameTip" xml:space="preserve">
     <value>The name is defaulted from the Business View</value>
   </data>
+  <data name="Verbs" xml:space="preserve">
+    <value>HTTP Verbs</value>
+  </data>
+  <data name="VerbsTip" xml:space="preserve">
+    <value>Select verbs permitted on this entity</value>
+  </data>
 </root>

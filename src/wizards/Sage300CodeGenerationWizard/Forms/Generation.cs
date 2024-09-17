@@ -40,6 +40,7 @@ using System.Dynamic;
 using System.Xml;
 using System.Runtime;
 using System.Text;
+using Jint.Runtime;
 
 #endregion
 
@@ -1159,6 +1160,9 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             tabPage4.Text = Resources.Composition;
             tabPage4.ToolTipText = Resources.CompositionTip;
 
+            tabPage5.Text = Resources.Verbs;
+            tabPage5.ToolTipText = Resources.VerbsTip;
+
             tooltip.SetToolTip(grdEntityCompositions, Resources.EntityCompositionGridTip);
 
             // UI Step
@@ -1734,6 +1738,18 @@ namespace Sage.CA.SBS.ERP.Sage300.CodeGenerationWizard
             if (txtViewID.Enabled)
             {
                 txtViewID.Focus();
+            }
+
+            // hide verbs tab if it is a detail view
+            if (treeNode.Parent.Parent != null && _wizardType == WizardType.WEBAPI)
+            {
+                if (tabEntity.TabPages.Contains(tabPage5))
+                    tabEntity.TabPages.Remove(tabPage5);
+            }
+            else
+            {
+                if (!tabEntity.TabPages.Contains(tabPage5))
+                    tabEntity.TabPages.Add(tabPage5);
             }
         }
 
